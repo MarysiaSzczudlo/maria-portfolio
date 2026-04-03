@@ -589,7 +589,7 @@ function ContactSection() {
                 Email Me
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/maria-szczudlo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="backdrop-blur-md bg-white/10 hover:bg-white/20 px-10 py-4 rounded-2xl transition-all border border-white/20 hover:scale-105 transform duration-300"
