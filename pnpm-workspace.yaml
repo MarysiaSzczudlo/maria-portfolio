@@ -1,0 +1,17 @@
+packages:
+  - '.'
+allowBuilds:
+  /: true
+  '@': true
+  a: true
+  c: true
+  d: true
+  e: true
+  i: true
+  l: true
+  n: true
+  o: true
+  s: true
+  t: true
+  w: true
+  x: true
