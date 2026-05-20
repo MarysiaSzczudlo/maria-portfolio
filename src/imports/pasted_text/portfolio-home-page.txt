@@ -1,0 +1,233 @@
+⚠️ IMPORTANT: Create this in a BRAND NEW, EMPTY Figma file.
+Do NOT use any existing styles, gradients, or components from other files.
+
+=====================================================================
+PART 1 — MAIN PAGE (HOME)
+=====================================================================
+
+CREATE A DESKTOP PORTFOLIO WEBSITE (1440×900 viewport, scrollable).
+
+--- LAYOUT ---
+Split-screen layout:
+• LEFT PANEL (fixed, ~35% width, ~500px): Static — does NOT scroll. Contains intro content.
+• RIGHT PANEL (scrollable, ~65% width): Scrolls vertically, showing project cards.
+• A subtle vertical divider line (1px, #D1D5DB) separates left from right.
+
+--- COLOR PALETTE (STRICT) ---
+• Background: #F0F2F5 (misty gray-blue, very light, almost white with cool undertone)
+• Left panel background: #F7F8FA (slightly lighter than main bg)
+• Text primary: #1A1A2E (very dark navy-black)
+• Text secondary: #6B7280 (medium gray)
+• Accent: #2563EB (clean blue, used sparingly — links, hover states, active nav)
+• Sketch lines: #1A1A2E (black, thin, 1-1.5px stroke)
+• Device frame stroke: #374151 (dark gray, 2px)
+
+🚫 FORBIDDEN: Gradients, neon colors, purple, orange, pink, shadows heavier than 4px blur, rounded pill badges, skill bars, neumorphism.
+
+--- TYPOGRAPHY ---
+• Font: Space Grotesk (Google Fonts) — use throughout entire design
+• Headings: Space Grotesk Bold, 32-48px
+• Body: Space Grotesk Regular, 16-18px
+• Small/caption: Space Grotesk Light, 12-14px
+• Letter-spacing on headings: -0.02em (slightly tight)
+
+--- LEFT PANEL CONTENT (STATIC) ---
+Vertically centered, with generous padding (48px left, 32px right):
+
+1. Name: "Maria Szczudło" — Bold, 28px
+2. Title: "Senior UX/UI Designer" — Regular, 18px, text-secondary color
+3. Tagline/Motto: "Designing systems that feel invisible." — Regular italic, 16px, text-secondary
+4. Short bio (3 lines max): "I design digital products with precision, empathy, and systemic thinking. Currently focused on automotive HMI, fintech, and AI-driven experiences."
+5. Mini navigation (vertical list, 24px spacing between items):
+   • Projects ← active state (accent color)
+   • About
+   • Contact
+6. Bottom of left panel: small social icons row (LinkedIn, GitHub, Dribbble) — monochrome, 20px
+
+--- RIGHT PANEL — PROJECT CARDS (SCROLLABLE) ---
+The right panel shows 5 project cards stacked vertically with 80px gap between them.
+
+Each card structure:
+┌─────────────────────────────────────────┐
+│  [DEVICE MOCKUP — SKETCH STATE]         │
+│                                          │
+│  Project Title — Bold, 20px             │
+│  Brief description — Regular, 14px      │
+│  Tags: e.g. "Automotive • HMI • Research"│
+└─────────────────────────────────────────┘
+
+Card background: #FFFFFF (pure white), border-radius: 12px, border: 1px solid #E5E7EB
+Card padding: 32px
+Card width: fill container with 48px margin on each side
+
+--- THE 5 PROJECT CARDS (in order) ---
+
+CARD 1 — Hyundai Tucson NX4
+• Device frame: CAR DASHBOARD SCREEN (wide rectangle, 16:9 ratio, rounded corners 8px)
+• Sketch content inside: simplified line drawing of a car cockpit interface — navigation map outline, media player controls, HVAC indicators. All as thin black outlines only.
+• Title: "Hyundai Tucson NX4 — Cockpit Redesign"
+• Description: "End-to-end UX redesign of the infotainment system. Research-driven, solving 22 identified pain points across 345 NHTSA complaints."
+• Tags: Automotive • HMI • UX Research • Interaction Design
+
+CARD 2 — HSBC Banking
+• Device frame: MOBILE PHONE (iPhone-style, portrait, ~180×360px visible)
+• Sketch content inside: line drawing of a banking card interface — credit card rectangle, balance number placeholder, small transaction list lines.
+• Title: "HSBC — Mobile Banking Redesign"
+• Description: "Redesigning the core banking experience. Nominated for iF Design Award 2026."
+• Tags: Fintech • Mobile • Visual Design • Design System
+• Badge: Small "iF Design Award 2026 Nominee" label — accent color border, 10px font
+
+CARD 3 — Frisco / FriscoAch
+• Device frame: MOBILE PHONE (same dimensions as HSBC)
+• Sketch content inside: line drawing of a chat interface — speech bubbles (2-3), a recipe card outline with image placeholder rectangle and text lines.
+• Title: "FriscoAch — AI Culinary Assistant"
+• Description: "Conversational AI assistant for meal planning, integrated into Frisco's grocery ecosystem. LLM-powered recipe generation."
+• Tags: AI/LLM • Mobile • Conversational UI • E-commerce
+
+CARD 4 — ACN Bank (Internal)
+• Device frame: MOBILE PHONE (same dimensions)
+• Sketch content inside: line drawing of an identity verification screen — circular avatar placeholder, document scan area rectangle, progress steps (3 dots connected by line).
+• Title: "ACN Bank — Internal Banking Platform"
+• Description: "Enterprise banking application for Accenture. Identity verification flows and secure transaction management."
+• Tags: Enterprise • Fintech • Mobile • Security UX
+
+CARD 5 — Senioring
+• Device frame: LAPTOP (MacBook-style, landscape, ~320×200px visible)
+• Sketch content inside: line drawing of a booking platform — search bar at top, 3 card-like result blocks with image placeholders and text lines.
+• Title: "Senioring — Booking Platform for Seniors"
+• Description: "Accessible travel booking platform designed for elderly users. Lizard Media Software House collaboration."
+• Tags: Accessibility • Web • Booking • UX Research
+
+--- INTERACTION STATES (PROTOTYPE) ---
+
+STATE 1 — DEFAULT (Sketch):
+• All device mockups show BLACK LINE DRAWINGS ONLY (no fill, no color)
+• Lines are thin (1-1.5px), hand-drawn feel but clean (not messy)
+• Device frames are also drawn as outlines (2px dark gray stroke, no fill)
+
+STATE 2 — HOVER (Desktop) / TAP (Mobile):
+• On hover over a card:
+  - The sketch FILLS WITH COLOR — transition from line drawing to full-color mockup image
+  - Transition: 400ms ease-in-out, opacity from 0→1 on the color layer
+  - The device frame gets a subtle shadow (0 4px 16px rgba(0,0,0,0.08))
+  - Card border changes to accent color (#2563EB)
+  - Title color changes to accent
+• This simulates "bringing the design to life" — sketch → real product
+
+STATE 3 — CLICK:
+• Clicking on a card navigates to a separate frame (case study page)
+• Use Figma prototype "Navigate to" interaction
+
+=====================================================================
+PART 2 — CASE STUDY PAGE TEMPLATE
+=====================================================================
+
+Create ONE template frame (1440×auto, scrollable vertically) that will be duplicated for each project.
+
+Structure (top to bottom):
+
+SECTION A — Hero Banner (full width, 560px height)
+• Large project title — Bold, 48px, centered
+• Subtitle/tagline — Regular, 20px, text-secondary
+• Role + Timeline + Team size — small caps, 14px, row of 3 columns
+• Background: white or very subtle color tint related to project
+
+SECTION B — Overview (max-width 800px, centered)
+• "Overview" section heading — Bold, 24px
+• 2-3 paragraph text block — Regular, 16px, line-height 1.6
+• Key metrics row (if applicable): 3-4 stat boxes in a row
+  Each: large number (Bold, 36px) + label below (Regular, 14px)
+
+SECTION C — Process Steps
+• Horizontal stepper or vertical timeline showing: Research → Define → Ideate → Design → Test
+• Each step has an icon (simple line icon) + short label
+
+SECTION D — Research & Insights
+• Left-right alternating layout (image left + text right, then text left + image right)
+• Image placeholders: 16:10 ratio rectangles with "Insert image" text
+• Insight callout boxes: left border 3px accent color, italic text inside
+
+SECTION E — Design Solution
+• Full-width mockup showcase area
+• Grid of 2-3 mockup images
+• Below: description of key design decisions
+
+SECTION F — Results & Impact
+• Stat boxes or before/after comparison
+• Quote/testimonial box if applicable
+
+SECTION G — Navigation Footer
+• "← Previous Project" (left) and "Next Project →" (right)
+• Back to home link (center)
+
+=====================================================================
+PART 3 — ABOUT PAGE
+=====================================================================
+
+Accessible via "About" in left nav. Same split layout structure.
+
+Left panel: stays the same (name, nav — "About" now active)
+Right panel content:
+
+• Large photo placeholder (rounded rectangle, 280×350px) — label: "Insert photo"
+• Heading: "About Me" — Bold, 32px
+• Bio text (placeholder): "I'm a Senior UX/UI Designer with 5+ years of experience in fintech, automotive HMI, and enterprise platforms. I believe in research-driven design, systematic thinking, and creating interfaces that respect users' cognitive load. Currently based in Poland, working globally."
+• Experience timeline (compact):
+  - Solidigm / Intel — UX Designer (current)
+  - Accenture — UX/UI Designer
+  - Lizard Media — UX/UI Designer
+• Tools section: row of tool logos/icons (Figma, Sketch, Adobe XD, Miro, Jira)
+• Education: brief mention
+
+=====================================================================
+PART 4 — CONTACT PAGE
+=====================================================================
+
+Accessible via "Contact" in left nav. Same split layout.
+
+Right panel content:
+• Heading: "Let's connect" — Bold, 32px
+• Short text: "I'm open to new opportunities and collaborations. Feel free to reach out."
+• Email: maria.szczudlo@email.com (placeholder) — accent color, underlined
+• Links row: LinkedIn • GitHub • Dribbble
+• Optional: simple contact form (Name, Email, Message fields + Send button)
+  - Input fields: white bg, 1px border #D1D5DB, border-radius 8px
+  - Button: accent bg (#2563EB), white text, border-radius 8px
+
+=====================================================================
+PART 5 — MOBILE RESPONSIVE VERSION (375×812)
+=====================================================================
+
+Create a mobile version frame:
+• No split layout — single column, full width
+• Top: hamburger menu (☰) + name
+• Hero section: name, title, tagline stacked
+• Projects: vertical scroll, cards full-width, same sketch→color interaction (tap instead of hover)
+• Navigation: bottom sheet or slide-out drawer
+
+=====================================================================
+ATTACHMENTS I WILL ADD MANUALLY AFTER GENERATION:
+=====================================================================
+
+For each project card — I will replace the sketch placeholder with:
+1. A hand-drawn/outline version of my mockup (sketch state)
+2. The full-color mockup image (hover/active state)
+
+Provide clear placeholder rectangles labeled:
+• "[SKETCH LAYER — replace with outline version]"
+• "[COLOR LAYER — replace with full mockup, hidden by default]"
+
+=====================================================================
+STYLE REFERENCE:
+=====================================================================
+
+Overall feeling: Clean, architectural, precise. Like a designer's sketchbook
+that comes to life. Think: Dieter Rams meets digital portfolio.
+
+References:
+• yichenxie.com (split layout, clean typography, project focus)
+• Kinfolk magazine (whitespace, editorial precision)
+• Apple product pages (smooth transitions, minimal color)
+
+The portfolio should feel like opening an architect's notebook —
+structured sketches that reveal finished work on interaction.

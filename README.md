@@ -1,7 +1,7 @@
 
-  # Portfolio website design
+  # Create portfolio
 
-  This is a code bundle for Portfolio website design. The original project is available at https://www.figma.com/design/sdag2v7CfWyPRQwutchPhu/Portfolio-website-design.
+  This is a code bundle for Create portfolio. The original project is available at https://www.figma.com/design/ntRfOjcgy7JUWAFed6AfIE/Create-portfolio.
 
   ## Running the code
 
