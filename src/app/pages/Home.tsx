@@ -242,11 +242,15 @@ type ScreenMode = 'mobile' | 'tablet' | 'desktop';
 
 export function Home() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [tappedId, setTappedId] = useState<string | null>(null);
   const [screenMode, setScreenMode] = useState<ScreenMode>('desktop');
+  const [viewportSize, setViewportSize] = useState({ width: 1920, height: 1080 });
 
   useEffect(() => {
     const checkScreenMode = () => {
       const width = window.innerWidth;
+      const height = window.innerHeight;
+      setViewportSize({ width, height });
       if (width < 768) {
         setScreenMode('mobile');
       } else if (width < 1024) {
@@ -268,6 +272,49 @@ export function Home() {
   const bgImage = isMobile ? mobileBg : desktopBg;
   const canvasWidth = isMobile ? 390 : isTablet ? 1024 : 1920;
   const canvasHeight = isMobile ? 844 : isTablet ? 900 : 1080;
+
+  // Calculate object-fit: cover offset compensation
+  // When the viewport aspect ratio differs from the canvas, the image is cropped
+  const getAdjustedPosition = (left: number, top: number, width: number, height: number) => {
+    const canvasAspect = canvasWidth / canvasHeight;
+    const viewportAspect = viewportSize.width / viewportSize.height;
+
+    let scale: number;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    if (viewportAspect > canvasAspect) {
+      // Viewport is wider — image scaled by width, cropped top/bottom
+      scale = viewportSize.width / canvasWidth;
+      const scaledHeight = canvasHeight * scale;
+      offsetY = (scaledHeight - viewportSize.height) / 2;
+    } else {
+      // Viewport is taller — image scaled by height, cropped left/right
+      scale = viewportSize.height / canvasHeight;
+      const scaledWidth = canvasWidth * scale;
+      offsetX = (scaledWidth - viewportSize.width) / 2;
+    }
+
+    const pixelLeft = left * scale - offsetX;
+    const pixelTop = top * scale - offsetY;
+    const pixelWidth = width * scale;
+    const pixelHeight = height * scale;
+
+    return {
+      left: `${(pixelLeft / viewportSize.width) * 100}%`,
+      top: `${(pixelTop / viewportSize.height) * 100}%`,
+      width: `${(pixelWidth / viewportSize.width) * 100}%`,
+      height: `${(pixelHeight / viewportSize.height) * 100}%`,
+    };
+  };
+
+  // Mobile tap handler with visual feedback
+  const handleTap = (projectId: string) => {
+    if (isMobile) {
+      setTappedId(projectId);
+      setTimeout(() => setTappedId(null), 300);
+    }
+  };
 
   return (
     <div
@@ -309,13 +356,12 @@ export function Home() {
         {/* Clickable project areas - positioned relative to viewport */}
         {projects.map((project) => {
           const isHovered = hoveredId === project.id && !isMobile;
+          const isTapped = tappedId === project.id;
+          const isActive = isHovered || isTapped;
           const { left, top, width, height, rotation, svgPath, viewBox } = project.area;
 
-          // Calculate position based on viewport
-          const leftPercent = (left / canvasWidth) * 100;
-          const topPercent = (top / canvasHeight) * 100;
-          const widthPercent = (width / canvasWidth) * 100;
-          const heightPercent = (height / canvasHeight) * 100;
+          // Use cover-aware positioning
+          const pos = getAdjustedPosition(left, top, width, height);
 
           return (
             <Link
@@ -323,25 +369,26 @@ export function Home() {
               to={`/project/${project.id}`}
               onMouseEnter={() => !isMobile && setHoveredId(project.id)}
               onMouseLeave={() => !isMobile && setHoveredId(null)}
+              onTouchStart={() => handleTap(project.id)}
               style={{
                 position: 'absolute',
-                left: `${leftPercent}%`,
-                top: `${topPercent}%`,
-                width: `${widthPercent}%`,
-                height: `${heightPercent}%`,
+                left: pos.left,
+                top: pos.top,
+                width: pos.width,
+                height: pos.height,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                zIndex: isHovered ? 20 : 10,
+                zIndex: isActive ? 20 : 10,
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                filter: isHovered
+                filter: isActive
                   ? 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2)) brightness(1.08)'
                   : 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05)) brightness(1)',
-                transform: isHovered ? 'scale(1.02) translateY(-2px)' : 'scale(1) translateY(0)',
+                transform: isActive ? 'scale(1.03) translateY(-2px)' : 'scale(1) translateY(0)',
               }}
             >
-              {/* SVG clickable area shape with enhanced hover effect */}
+              {/* SVG clickable area shape */}
               {svgPath && (
                 <div
                   style={{
@@ -358,7 +405,7 @@ export function Home() {
                       position: 'absolute',
                       width: '100%',
                       height: '100%',
-                      filter: isHovered
+                      filter: isActive
                         ? 'drop-shadow(0 6px 16px rgba(100, 170, 255, 0.3)) drop-shadow(0 2px 8px rgba(100, 170, 255, 0.4))'
                         : 'drop-shadow(0 2px 6px rgba(100, 170, 255, 0.15))',
                       transition: 'all 0.3s ease',
@@ -370,9 +417,9 @@ export function Home() {
                   >
                     <path
                       d={svgPath}
-                      fill={isHovered ? 'rgba(100, 170, 255, 0.08)' : 'transparent'}
-                      stroke={isHovered ? 'rgba(100, 170, 255, 0.9)' : 'rgba(100, 170, 255, 0.5)'}
-                      strokeWidth={isHovered ? '2' : '1.2'}
+                      fill={isActive ? 'rgba(100, 170, 255, 0.08)' : 'transparent'}
+                      stroke={isActive ? 'rgba(100, 170, 255, 0.9)' : 'rgba(100, 170, 255, 0.5)'}
+                      strokeWidth={isActive ? '2' : '1.2'}
                       vectorEffect="non-scaling-stroke"
                       style={{
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -380,8 +427,8 @@ export function Home() {
                     />
                   </svg>
 
-                  {/* Animated glow effect on hover */}
-                  {isHovered && (
+                  {/* Animated glow effect on hover/tap */}
+                  {isActive && (
                     <svg
                       style={{
                         position: 'absolute',
