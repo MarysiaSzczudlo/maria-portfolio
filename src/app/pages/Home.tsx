@@ -244,12 +244,13 @@ export function Home() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [tappedId, setTappedId] = useState<string | null>(null);
   const [screenMode, setScreenMode] = useState<ScreenMode>('desktop');
-  const [viewportSize, setViewportSize] = useState({ width: 1920, height: 1080 });
+  const headerOffset = 50;
+  const [viewportSize, setViewportSize] = useState({ width: 1920, height: 1080 - headerOffset });
 
   useEffect(() => {
     const checkScreenMode = () => {
       const width = window.innerWidth;
-      const height = window.innerHeight;
+      const height = window.innerHeight - headerOffset;
       setViewportSize({ width, height });
       if (width < 768) {
         setScreenMode('mobile');
@@ -273,30 +274,28 @@ export function Home() {
   const canvasWidth = isMobile ? 390 : isTablet ? 1024 : 1920;
   const canvasHeight = isMobile ? 844 : isTablet ? 900 : 1080;
 
-  // Calculate object-fit: cover offset compensation
-  // When the viewport aspect ratio differs from the canvas, the image is cropped
+  // Calculate object-fit: contain position compensation
+  // With contain, the full image is always visible (no cropping)
   const getAdjustedPosition = (left: number, top: number, width: number, height: number) => {
     const canvasAspect = canvasWidth / canvasHeight;
     const viewportAspect = viewportSize.width / viewportSize.height;
 
     let scale: number;
-    let offsetX = 0;
-    let offsetY = 0;
+    let imageStartX = 0;
+    let imageStartY = 0;
 
     if (viewportAspect > canvasAspect) {
-      // Viewport is wider — image scaled by width, cropped top/bottom
-      scale = viewportSize.width / canvasWidth;
-      const scaledHeight = canvasHeight * scale;
-      offsetY = (scaledHeight - viewportSize.height) / 2;
-    } else {
-      // Viewport is taller — image scaled by height, cropped left/right
+      // Viewport is wider — image scaled by height, centered horizontally
       scale = viewportSize.height / canvasHeight;
-      const scaledWidth = canvasWidth * scale;
-      offsetX = (scaledWidth - viewportSize.width) / 2;
+      imageStartX = (viewportSize.width - canvasWidth * scale) / 2;
+    } else {
+      // Viewport is taller — image scaled by width, centered vertically
+      scale = viewportSize.width / canvasWidth;
+      imageStartY = (viewportSize.height - canvasHeight * scale) / 2;
     }
 
-    const pixelLeft = left * scale - offsetX;
-    const pixelTop = top * scale - offsetY;
+    const pixelLeft = left * scale + imageStartX;
+    const pixelTop = top * scale + imageStartY;
     const pixelWidth = width * scale;
     const pixelHeight = height * scale;
 
@@ -321,6 +320,8 @@ export function Home() {
       style={{
         width: '100vw',
         height: '100vh',
+        paddingTop: `${headerOffset}px`,
+        boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: '#f5f5f5',
@@ -347,7 +348,7 @@ export function Home() {
             inset: 0,
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            objectFit: 'contain',
             pointerEvents: 'none',
             imageRendering: 'high-quality',
           }}

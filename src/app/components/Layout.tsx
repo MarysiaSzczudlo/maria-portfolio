@@ -50,12 +50,12 @@ export function Layout() {
           boxShadow: '0 4px 32px rgba(0, 0, 0, 0.03)',
         }}
       >
-        <div className="w-full mx-auto px-4 md:px-6 py-3 md:py-5">
+        <div className="w-full mx-auto px-4 md:px-6 py-2 md:py-3">
           <div className="flex items-center justify-between">
             {/* Logo/Name with Title */}
             <Link
               to="/"
-              className="flex flex-col transition-all duration-300"
+              className="flex items-center gap-3 transition-all duration-300"
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateX(2px)';
               }}
@@ -66,18 +66,25 @@ export function Layout() {
               <h1
                 className="font-normal tracking-tight"
                 style={{
-                  fontSize: '18px',
+                  fontSize: '16px',
                   color: 'var(--portfolio-text-primary)',
                 }}
               >
                 Maria Szczudło
               </h1>
+              <span
+                style={{
+                  width: '1px',
+                  height: '14px',
+                  backgroundColor: 'var(--portfolio-text-tertiary)',
+                  opacity: 0.5,
+                }}
+              />
               <p
                 className="font-normal"
                 style={{
                   fontSize: '13px',
                   color: 'var(--portfolio-text-secondary)',
-                  marginTop: '2px',
                 }}
               >
                 UX/UI x GenAI Designer
@@ -147,7 +154,7 @@ export function Layout() {
       </header>
 
       {/* Main Content */}
-      <main id="main-content" className={isHomePage ? '' : 'pt-20 md:pt-24'}>
+      <main id="main-content" className={isHomePage ? '' : 'pt-16 md:pt-20'}>
         <Outlet />
       </main>
 
