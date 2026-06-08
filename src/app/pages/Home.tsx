@@ -358,7 +358,7 @@ export function Home() {
           const isHovered = hoveredId === project.id && !isMobile;
           const isTapped = tappedId === project.id;
           const isActive = isHovered || isTapped;
-          const { left, top, width, height, rotation, svgPath, viewBox } = project.area;
+          const { left, top, width, height } = project.area;
 
           // Use cover-aware positioning
           const pos = getAdjustedPosition(left, top, width, height);
@@ -381,81 +381,38 @@ export function Home() {
                 justifyContent: 'center',
                 cursor: 'pointer',
                 zIndex: isActive ? 20 : 10,
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                transform: isActive ? 'scale(1.04)' : 'scale(1)',
                 filter: isActive
-                  ? 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2)) brightness(1.08)'
-                  : 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05)) brightness(1)',
-                transform: isActive ? 'scale(1.03) translateY(-2px)' : 'scale(1) translateY(0)',
+                  ? 'drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15)) brightness(1.05)'
+                  : 'none',
               }}
             >
-              {/* SVG clickable area shape */}
-              {svgPath && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <svg
-                    style={{
-                      position: 'absolute',
-                      width: '100%',
-                      height: '100%',
-                      filter: isActive
-                        ? 'drop-shadow(0 6px 16px rgba(100, 170, 255, 0.3)) drop-shadow(0 2px 8px rgba(100, 170, 255, 0.4))'
-                        : 'drop-shadow(0 2px 6px rgba(100, 170, 255, 0.15))',
-                      transition: 'all 0.3s ease',
-                      transform: `rotate(${rotation}deg)`,
-                    }}
-                    fill="none"
-                    preserveAspectRatio="xMidYMid meet"
-                    viewBox={viewBox}
-                  >
-                    <path
-                      d={svgPath}
-                      fill={isActive ? 'rgba(100, 170, 255, 0.08)' : 'transparent'}
-                      stroke={isActive ? 'rgba(100, 170, 255, 0.9)' : 'rgba(100, 170, 255, 0.5)'}
-                      strokeWidth={isActive ? '2' : '1.2'}
-                      vectorEffect="non-scaling-stroke"
-                      style={{
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      }}
-                    />
-                  </svg>
-
-                  {/* Animated glow effect on hover/tap */}
-                  {isActive && (
-                    <svg
-                      style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        opacity: 0.4,
-                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        transform: `rotate(${rotation}deg)`,
-                      }}
-                      fill="none"
-                      preserveAspectRatio="xMidYMid meet"
-                      viewBox={viewBox}
-                    >
-                      <path
-                        d={svgPath}
-                        fill="transparent"
-                        stroke="rgba(100, 170, 255, 0.7)"
-                        strokeWidth="3"
-                        vectorEffect="non-scaling-stroke"
-                        style={{
-                          filter: 'blur(4px)',
-                        }}
-                      />
-                    </svg>
-                  )}
-                </div>
-              )}
+              {/* Floating project title - appears on hover/tap */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-28px',
+                  left: '50%',
+                  transform: `translateX(-50%) ${isActive ? 'translateY(0) scale(1)' : 'translateY(-4px) scale(0.95)'}`,
+                  opacity: isActive ? 1 : 0,
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  pointerEvents: 'none',
+                  whiteSpace: 'nowrap',
+                  padding: '6px 12px',
+                  borderRadius: '20px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                  boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--portfolio-text-primary)',
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                {project.title}
+              </div>
             </Link>
           );
         })}
@@ -515,20 +472,6 @@ export function Home() {
           </a>
         </div>
       </footer>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 0.3;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.5;
-            transform: scale(1.02);
-          }
-        }
-      `}</style>
     </div>
   );
 }
