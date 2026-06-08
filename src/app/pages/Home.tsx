@@ -1,111 +1,487 @@
-import { ProjectCard } from '../components/ProjectCard';
-import { ScrollVideo } from '../components/ScrollVideo';
-import { MovingMotto } from '../components/MovingMotto';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router';
 
-import hyundaiCover from '../../imports/Hyundai_Tucson.jpg';
-import hsbcCover from '../../imports/HSBC.png';
-import friscoCover from '../../imports/Frisco.jpg';
-import acnCover from '../../imports/Banking_app_Accenture.jpg';
-import senioringCover from '../../imports/Booking_Platform.jpg';
+// Desktop and Mobile backgrounds
+import desktopBg from '../../imports/Desktop/278a41b3679425556268866a9b0a95c2bf5eb525.png';
+import mobileBg from '../../imports/Mobile/e1aa24ad07528e3bceb3e487fcaf30ef63672f40.png';
+
+// SVG paths for clickable areas
+import desktopSvgPaths from '../../imports/Desktop/svg-jj0jyqf7xc';
+import mobileSvgPaths from '../../imports/Mobile/svg-4wmxkncz1h';
+
+// Colorful project images for hover states
+import hyundaiImg from '../../imports/Hyundai_Tucson.png';
+import hsbcImg from '../../imports/HSBC.png';
+import friscoImg from '../../imports/Frisco.png';
+import acnImg from '../../imports/Banking_app_Accenture.jpg';
+import senioringImg from '../../imports/Booking_platfrom_Senioring.png';
+
+// Desktop project areas (1919×1080 canvas)
+const desktopProjects = [
+  {
+    id: 'hyundai-tucson',
+    title: 'Hyundai Tucson NX4',
+    image: hyundaiImg,
+    area: {
+      left: 179.35,
+      top: 186.02,
+      width: 344.218,
+      height: 298.983,
+      rotation: 0.3,
+      svgPath: desktopSvgPaths.p3ed04c80,
+      viewBox: '0 0 342.646 297.148',
+    },
+  },
+  {
+    id: 'hsbc-banking',
+    title: 'HSBC',
+    image: hsbcImg,
+    area: {
+      left: 909.07,
+      top: 113.42,
+      width: 211.733,
+      height: 359.624,
+      rotation: 0.3,
+      svgPath: desktopSvgPaths.p357c8670,
+      viewBox: '0 0 209.819 358.48',
+    },
+  },
+  {
+    id: 'senioring',
+    title: 'Senioring',
+    image: senioringImg,
+    area: {
+      left: 1314.45,
+      top: 226.02,
+      width: 331.052,
+      height: 297.456,
+      rotation: 0.71,
+      svgPath: desktopSvgPaths.p339c3f00,
+      viewBox: '0 0 327.379 293.375',
+    },
+  },
+  {
+    id: 'acn-bank',
+    title: 'ACN Bank',
+    image: acnImg,
+    area: {
+      left: 427.75,
+      top: 503.58,
+      width: 348.09,
+      height: 354.418,
+      rotation: 0.71,
+      svgPath: desktopSvgPaths.p1b7ae500,
+      viewBox: '0 0 343.775 350.183',
+    },
+  },
+  {
+    id: 'frisco-ach',
+    title: 'FrisCoach',
+    image: friscoImg,
+    area: {
+      left: 1363.76,
+      top: 560,
+      width: 351.057,
+      height: 312,
+      rotation: 0.71,
+      svgPath: desktopSvgPaths.pda6e200,
+      viewBox: '0 0 347.269 307.719',
+    },
+  },
+];
+
+// Mobile project areas (390×844 canvas)
+const mobileProjects = [
+  {
+    id: 'hyundai-tucson',
+    title: 'Hyundai Tucson NX4',
+    image: hyundaiImg,
+    area: {
+      left: 26,
+      top: 215.68,
+      width: 114.326,
+      height: 117.786,
+      rotation: 0.3,
+      svgPath: mobileSvgPaths.p353e8680,
+      viewBox: '0 0 113.7 117.147',
+    },
+  },
+  {
+    id: 'hsbc-banking',
+    title: 'HSBC',
+    image: hsbcImg,
+    area: {
+      left: 174.78,
+      top: 183,
+      width: 83.205,
+      height: 158.782,
+      rotation: 0.3,
+      svgPath: 'M0 0L82.373 0L82.373 158.351L0 158.351Z',
+      viewBox: '0 0 82.373 158.351',
+    },
+  },
+  {
+    id: 'senioring',
+    title: 'Senioring',
+    image: senioringImg,
+    area: {
+      left: 240.54,
+      top: 341.53,
+      width: 136.004,
+      height: 126.469,
+      rotation: 0.71,
+      svgPath: 'M0 0L134.468 0L134.468 124.811L0 124.811Z',
+      viewBox: '0 0 134.468 124.811',
+    },
+  },
+  {
+    id: 'acn-bank',
+    title: 'ACN Bank',
+    image: acnImg,
+    area: {
+      left: 24.74,
+      top: 422,
+      width: 140.096,
+      height: 143.5,
+      rotation: 0.71,
+      svgPath: mobileSvgPaths.p254e3fc0,
+      viewBox: '0 0 138.349 141.796',
+    },
+  },
+  {
+    id: 'frisco-ach',
+    title: 'FrisCoach',
+    image: friscoImg,
+    area: {
+      left: 232.92,
+      top: 519,
+      width: 126.513,
+      height: 128.438,
+      rotation: 0.71,
+      svgPath: mobileSvgPaths.p13cfacf0,
+      viewBox: '0 0 124.949 126.899',
+    },
+  },
+];
+
+// Tablet project areas (768-1024px) — uses desktop layout scaled down with adjusted positions
+const tabletProjects = [
+  {
+    id: 'hyundai-tucson',
+    title: 'Hyundai Tucson NX4',
+    image: hyundaiImg,
+    area: {
+      left: 90,
+      top: 186,
+      width: 280,
+      height: 243,
+      rotation: 0.3,
+      svgPath: desktopSvgPaths.p3ed04c80,
+      viewBox: '0 0 342.646 297.148',
+    },
+  },
+  {
+    id: 'hsbc-banking',
+    title: 'HSBC',
+    image: hsbcImg,
+    area: {
+      left: 460,
+      top: 113,
+      width: 170,
+      height: 290,
+      rotation: 0.3,
+      svgPath: desktopSvgPaths.p357c8670,
+      viewBox: '0 0 209.819 358.48',
+    },
+  },
+  {
+    id: 'senioring',
+    title: 'Senioring',
+    image: senioringImg,
+    area: {
+      left: 670,
+      top: 226,
+      width: 268,
+      height: 241,
+      rotation: 0.71,
+      svgPath: desktopSvgPaths.p339c3f00,
+      viewBox: '0 0 327.379 293.375',
+    },
+  },
+  {
+    id: 'acn-bank',
+    title: 'ACN Bank',
+    image: acnImg,
+    area: {
+      left: 215,
+      top: 490,
+      width: 282,
+      height: 287,
+      rotation: 0.71,
+      svgPath: desktopSvgPaths.p1b7ae500,
+      viewBox: '0 0 343.775 350.183',
+    },
+  },
+  {
+    id: 'frisco-ach',
+    title: 'FrisCoach',
+    image: friscoImg,
+    area: {
+      left: 695,
+      top: 540,
+      width: 284,
+      height: 252,
+      rotation: 0.71,
+      svgPath: desktopSvgPaths.pda6e200,
+      viewBox: '0 0 347.269 307.719',
+    },
+  },
+];
+
+type ScreenMode = 'mobile' | 'tablet' | 'desktop';
 
 export function Home() {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [screenMode, setScreenMode] = useState<ScreenMode>('desktop');
+
+  useEffect(() => {
+    const checkScreenMode = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setScreenMode('mobile');
+      } else if (width < 1024) {
+        setScreenMode('tablet');
+      } else {
+        setScreenMode('desktop');
+      }
+    };
+
+    checkScreenMode();
+    window.addEventListener('resize', checkScreenMode);
+    return () => window.removeEventListener('resize', checkScreenMode);
+  }, []);
+
+  const isMobile = screenMode === 'mobile';
+  const isTablet = screenMode === 'tablet';
+
+  const projects = isMobile ? mobileProjects : isTablet ? tabletProjects : desktopProjects;
+  const bgImage = isMobile ? mobileBg : desktopBg;
+  const canvasWidth = isMobile ? 390 : isTablet ? 1024 : 1920;
+  const canvasHeight = isMobile ? 844 : isTablet ? 900 : 1080;
+
   return (
-    <div className="max-w-[1400px] mx-auto px-12 pb-24">
-      {/* Hero Section */}
-      <div className="mb-20">
-        <h1
-          className="font-normal mb-4"
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#f5f5f5',
+        overflow: 'hidden',
+        position: 'relative',
+      }}
+    >
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {/* Background image - full screen */}
+        <img
+          src={bgImage}
+          alt=""
           style={{
-            fontSize: '48px',
-            color: 'var(--portfolio-text-primary)',
-            lineHeight: '1.2',
-            letterSpacing: '-0.01em',
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            pointerEvents: 'none',
+            imageRendering: 'high-quality',
+          }}
+        />
+
+        {/* Clickable project areas - positioned relative to viewport */}
+        {projects.map((project) => {
+          const isHovered = hoveredId === project.id && !isMobile;
+          const { left, top, width, height, rotation, svgPath, viewBox } = project.area;
+
+          // Calculate position based on viewport
+          const leftPercent = (left / canvasWidth) * 100;
+          const topPercent = (top / canvasHeight) * 100;
+          const widthPercent = (width / canvasWidth) * 100;
+          const heightPercent = (height / canvasHeight) * 100;
+
+          return (
+            <Link
+              key={project.id}
+              to={`/project/${project.id}`}
+              onMouseEnter={() => !isMobile && setHoveredId(project.id)}
+              onMouseLeave={() => !isMobile && setHoveredId(null)}
+              style={{
+                position: 'absolute',
+                left: `${leftPercent}%`,
+                top: `${topPercent}%`,
+                width: `${widthPercent}%`,
+                height: `${heightPercent}%`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: isHovered ? 20 : 10,
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                filter: isHovered
+                  ? 'drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2)) brightness(1.08)'
+                  : 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05)) brightness(1)',
+                transform: isHovered ? 'scale(1.02) translateY(-2px)' : 'scale(1) translateY(0)',
+              }}
+            >
+              {/* SVG clickable area shape with enhanced hover effect */}
+              {svgPath && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <svg
+                    style={{
+                      position: 'absolute',
+                      width: '100%',
+                      height: '100%',
+                      filter: isHovered
+                        ? 'drop-shadow(0 6px 16px rgba(100, 170, 255, 0.3)) drop-shadow(0 2px 8px rgba(100, 170, 255, 0.4))'
+                        : 'drop-shadow(0 2px 6px rgba(100, 170, 255, 0.15))',
+                      transition: 'all 0.3s ease',
+                      transform: `rotate(${rotation}deg)`,
+                    }}
+                    fill="none"
+                    preserveAspectRatio="xMidYMid meet"
+                    viewBox={viewBox}
+                  >
+                    <path
+                      d={svgPath}
+                      fill={isHovered ? 'rgba(100, 170, 255, 0.08)' : 'transparent'}
+                      stroke={isHovered ? 'rgba(100, 170, 255, 0.9)' : 'rgba(100, 170, 255, 0.5)'}
+                      strokeWidth={isHovered ? '2' : '1.2'}
+                      vectorEffect="non-scaling-stroke"
+                      style={{
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}
+                    />
+                  </svg>
+
+                  {/* Animated glow effect on hover */}
+                  {isHovered && (
+                    <svg
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        opacity: 0.4,
+                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        transform: `rotate(${rotation}deg)`,
+                      }}
+                      fill="none"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox={viewBox}
+                    >
+                      <path
+                        d={svgPath}
+                        fill="transparent"
+                        stroke="rgba(100, 170, 255, 0.7)"
+                        strokeWidth="3"
+                        vectorEffect="non-scaling-stroke"
+                        style={{
+                          filter: 'blur(4px)',
+                        }}
+                      />
+                    </svg>
+                  )}
+                </div>
+              )}
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Footer at bottom of scene */}
+      <footer
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: '16px 20px',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderTop: '1px solid rgba(0, 0, 0, 0.05)',
+          zIndex: 5,
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '1920px',
+            margin: '0 auto',
+            display: 'flex',
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: isMobile ? 'flex-start' : 'center',
+            justifyContent: 'space-between',
+            gap: isMobile ? '8px' : '0',
           }}
         >
-          UX/UI Product Designer with GenAI Experience
-        </h1>
-        <p
-          className="font-normal max-w-2xl"
-          style={{
-            fontSize: '20px',
-            color: 'var(--portfolio-text-secondary)',
-            lineHeight: '1.6',
-          }}
-        >
-          I design digital products with precision, empathy, and systemic thinking.
-          Currently focused on automotive HMI, fintech, and AI-driven experiences.
-        </p>
-      </div>
+          <p
+            style={{
+              margin: 0,
+              fontSize: '12px',
+              color: 'var(--portfolio-text-tertiary)',
+            }}
+          >
+            © 2026 Maria Szczudło
+          </p>
+          <a
+            href="mailto:marysia.szczudlo1994@gmail.com"
+            style={{
+              fontSize: '12px',
+              color: 'var(--portfolio-text-secondary)',
+              textDecoration: 'none',
+              transition: 'opacity 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.opacity = '0.6';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.opacity = '1';
+            }}
+          >
+            marysia.szczudlo1994@gmail.com
+          </a>
+        </div>
+      </footer>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-24">
-        {/* Project 1: Hyundai Tucson NX4 */}
-        <ProjectCard
-          id="hyundai-tucson"
-          title="Hyundai Tucson NX4"
-          subtitle="Cockpit Redesign"
-          description="End-to-end UX redesign of the infotainment system. Research-driven, solving 22 identified pain points across 345 NHTSA complaints."
-          tags={['Automotive', 'HMI', 'UX Research', 'Interaction Design']}
-          year="2026"
-          coverImage={hyundaiCover}
-        />
-
-        {/* Project 2: HSBC Banking */}
-        <ProjectCard
-          id="hsbc-banking"
-          title="HSBC"
-          subtitle="Mobile Banking Redesign"
-          description="Redesigning the core banking experience. Nominated for iF Design Award 2026."
-          tags={['Fintech', 'Mobile', 'Visual Design', 'Design System']}
-          year="2025"
-          badge="iF Design Award 2026 Nominee"
-          coverImage={hsbcCover}
-        />
-      </div>
-
-      {/* Moving Motto */}
-      <MovingMotto />
-
-      {/* Scroll Video Section */}
-      <div className="my-24">
-        <ScrollVideo />
-      </div>
-
-      {/* Continue Projects Grid */}
-      <div className="grid grid-cols-1 gap-24">
-        {/* Project 3: FriscoAch */}
-        <ProjectCard
-          id="frisco-ach"
-          title="FriscoAch"
-          subtitle="AI Culinary Assistant"
-          description="Conversational AI assistant for meal planning, integrated into Frisco's grocery ecosystem. LLM-powered recipe generation."
-          tags={['AI/LLM', 'Mobile', 'Conversational UI', 'E-commerce']}
-          year="2025"
-          coverImage={friscoCover}
-        />
-
-        {/* Project 4: ACN Bank */}
-        <ProjectCard
-          id="acn-bank"
-          title="ACN Bank"
-          subtitle="Internal Banking Platform"
-          description="Enterprise banking application for Accenture. Identity verification flows and secure transaction management."
-          tags={['Enterprise', 'Fintech', 'Mobile', 'Security UX']}
-          year="2025"
-          coverImage={acnCover}
-        />
-
-        {/* Project 5: Senioring */}
-        <ProjectCard
-          id="senioring"
-          title="Senioring"
-          subtitle="Booking Platform for Seniors"
-          description="Accessible travel booking platform designed for elderly users. Lizard Media Software House collaboration."
-          tags={['Accessibility', 'Web', 'Booking', 'UX Research']}
-          year="2023"
-          coverImage={senioringCover}
-        />
-      </div>
+      {/* Animations */}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.5;
+            transform: scale(1.02);
+          }
+        }
+      `}</style>
     </div>
   );
 }

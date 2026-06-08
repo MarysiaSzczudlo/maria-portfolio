@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 export function Layout() {
   const location = useLocation();
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
 
   const navItems = [
     { path: '/', label: 'Projects' },
@@ -32,63 +33,111 @@ export function Layout() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const isHomePage = location.pathname === '/';
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--portfolio-bg)' }}>
       <CursorFollower />
 
-      {/* Top Navigation with Glassmorphism */}
+      {/* Top Navigation with Enhanced Frosted Glass Effect */}
       <header
         className="fixed top-0 left-0 right-0 z-50"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+          backgroundColor: 'rgba(255, 255, 255, 0.65)',
+          backdropFilter: 'blur(40px)',
+          WebkitBackdropFilter: 'blur(40px)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
+          boxShadow: '0 4px 32px rgba(0, 0, 0, 0.03)',
         }}
       >
-        <div className="max-w-[1400px] mx-auto px-12 py-8">
+        <div className="w-full mx-auto px-4 md:px-6 py-3 md:py-5">
           <div className="flex items-center justify-between">
-            {/* Logo/Name */}
-            <Link to="/" className="flex items-center">
+            {/* Logo/Name with Title */}
+            <Link
+              to="/"
+              className="flex flex-col transition-all duration-300"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateX(2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateX(0)';
+              }}
+            >
               <h1
                 className="font-normal tracking-tight"
                 style={{
-                  fontSize: '20px',
+                  fontSize: '18px',
                   color: 'var(--portfolio-text-primary)',
                 }}
               >
                 Maria Szczudło
               </h1>
+              <p
+                className="font-normal"
+                style={{
+                  fontSize: '13px',
+                  color: 'var(--portfolio-text-secondary)',
+                  marginTop: '2px',
+                }}
+              >
+                UX/UI x GenAI Designer
+              </p>
             </Link>
 
             {/* Navigation */}
-            <nav className="flex items-center gap-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="font-normal transition-colors duration-200"
-                  style={{
-                    fontSize: '16px',
-                    color: isActive(item.path)
-                      ? 'var(--portfolio-text-primary)'
-                      : 'var(--portfolio-text-secondary)',
-                  }}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <nav className="flex items-center gap-4 md:gap-6">
+              {navItems.map((item) => {
+                const isHovered = hoveredNav === item.path;
+                const active = isActive(item.path);
+
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className="font-normal transition-all duration-300 relative"
+                    style={{
+                      fontSize: '15px',
+                      color: active || isHovered
+                        ? 'var(--portfolio-text-primary)'
+                        : 'var(--portfolio-text-secondary)',
+                      transform: isHovered ? 'translateY(-2px)' : 'translateY(0)',
+                    }}
+                    onMouseEnter={() => setHoveredNav(item.path)}
+                    onMouseLeave={() => setHoveredNav(null)}
+                  >
+                    {item.label}
+                    {/* Underline on hover/active */}
+                    <span
+                      className="absolute left-0 right-0 h-[2px] rounded-full transition-all duration-300"
+                      style={{
+                        bottom: '-6px',
+                        backgroundColor: 'var(--portfolio-accent)',
+                        transform: (active || isHovered) ? 'scaleX(1)' : 'scaleX(0)',
+                        opacity: (active || isHovered) ? 1 : 0,
+                      }}
+                    />
+                  </Link>
+                );
+              })}
 
               {/* Social Icons */}
-              <div className="flex items-center gap-4 ml-4">
+              <div className="flex items-center gap-3 md:ml-4">
                 <a
                   href="https://www.linkedin.com/in/maria-szczudlo/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-opacity hover:opacity-60"
+                  className="transition-all duration-300"
                   style={{ color: 'var(--portfolio-text-secondary)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px) scale(1.1)';
+                    e.currentTarget.style.color = 'var(--portfolio-accent)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.color = 'var(--portfolio-text-secondary)';
+                  }}
                 >
-                  <Linkedin size={18} />
+                  <Linkedin size={20} />
                 </a>
               </div>
             </nav>
@@ -97,7 +146,7 @@ export function Layout() {
       </header>
 
       {/* Main Content */}
-      <main className="pt-24">
+      <main className={isHomePage ? '' : 'pt-20 md:pt-24'}>
         <Outlet />
       </main>
 
@@ -133,10 +182,11 @@ export function Layout() {
         <ArrowUp size={20} style={{ color: 'var(--portfolio-text-primary)' }} />
       </button>
 
-      {/* Footer */}
-      <footer className="py-16">
-        <div className="max-w-[1400px] mx-auto px-12">
-          <div className="flex items-center justify-between">
+      {/* Footer - hidden on Home page */}
+      {!isHomePage && (
+        <footer className="py-10 md:py-16">
+          <div className="max-w-[1400px] mx-auto px-5 md:px-12">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-0 justify-between">
             <p
               className="font-normal"
               style={{
@@ -159,6 +209,7 @@ export function Layout() {
           </div>
         </div>
       </footer>
+      )}
     </div>
   );
 }

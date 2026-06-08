@@ -10,6 +10,7 @@ interface ProjectCardProps {
   year: string;
   badge?: string;
   coverImage?: string;
+  contribution?: string;
 }
 
 export function ProjectCard({
@@ -21,6 +22,7 @@ export function ProjectCard({
   year,
   badge,
   coverImage,
+  contribution,
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -95,12 +97,12 @@ export function ProjectCard({
         {/* Content */}
         <div className="space-y-4">
           {/* Title Row */}
-          <div className="flex items-baseline justify-between">
-            <div className="flex items-baseline gap-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div className="flex flex-wrap items-baseline gap-2">
               <h3
                 className="font-normal"
                 style={{
-                  fontSize: '24px',
+                  fontSize: 'clamp(18px, 3vw, 24px)',
                   color: isHovered
                     ? 'var(--portfolio-accent)'
                     : 'var(--portfolio-text-primary)',
@@ -112,7 +114,7 @@ export function ProjectCard({
               <span
                 className="font-normal"
                 style={{
-                  fontSize: '20px',
+                  fontSize: 'clamp(15px, 2.5vw, 20px)',
                   color: 'var(--portfolio-text-tertiary)',
                 }}
               >
@@ -122,7 +124,7 @@ export function ProjectCard({
             <span
               className="font-normal"
               style={{
-                fontSize: '16px',
+                fontSize: '15px',
                 color: 'var(--portfolio-text-tertiary)',
               }}
             >
@@ -158,6 +160,26 @@ export function ProjectCard({
           >
             {description}
           </p>
+
+          {/* My Contribution */}
+          {contribution && (
+            <div
+              className="flex items-start gap-3 pl-3"
+              style={{ borderLeft: '2px solid var(--portfolio-accent)' }}
+            >
+              <p
+                className="font-normal"
+                style={{
+                  fontSize: '14px',
+                  color: 'var(--portfolio-text-secondary)',
+                  lineHeight: '1.5',
+                }}
+              >
+                <span style={{ color: 'var(--portfolio-accent)', marginRight: '6px' }}>My contribution</span>
+                {contribution}
+              </p>
+            </div>
+          )}
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2">

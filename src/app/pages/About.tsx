@@ -1,4 +1,4 @@
-import profileImage from '../../imports/image.png';
+import profileImage from '../../imports/maria.png';
 
 export function About() {
   const languages = [
@@ -28,23 +28,31 @@ export function About() {
   const recentExperience = [
     {
       title: 'Global Banking Application',
-      company: 'Accenture, Warsaw',
-      period: 'Jul 2023 - May 2026',
+      company: 'Accenture, HSBC',
+      period: 'Sept 2025 - Feb 2026',
+      roleLabel: 'Senior UX Designer',
+      seniority: 'senior',
     },
     {
       title: 'E-Grocery Retailer',
-      company: 'Frisco',
-      period: 'Mar 2023 - Oct 2023',
+      company: 'Accenture, Frisco',
+      period: 'Mar 2025 - Sep 2025',
+      roleLabel: 'Senior UX Designer',
+      seniority: 'senior',
     },
     {
       title: 'Financial Services',
-      company: 'Accenture, Warsaw',
-      period: 'Mar 2024 - May 2025',
+      company: 'Accenture, Internal Project',
+      period: 'Mar 2025 - Jun 2025',
+      roleLabel: 'Senior UX Designer/Support',
+      seniority: 'senior',
     },
     {
       title: 'E-Commerce',
       company: 'Lizard Media',
-      period: 'Jun 2022 - Jan 2023',
+      period: 'Jun 2022 - Dec 2023',
+      roleLabel: 'Junior UX Designer',
+      seniority: 'junior',
     },
   ];
 
@@ -86,9 +94,9 @@ export function About() {
   ];
 
   return (
-    <div className="h-screen flex overflow-hidden">
+    <div className="min-h-screen md:h-screen flex flex-col md:flex-row overflow-hidden">
       {/* Left Side - Scrollable Content */}
-      <div className="flex-1 overflow-y-auto px-12 py-16">
+      <div className="flex-1 overflow-y-auto px-5 md:px-12 py-8 md:py-16">
         <div className="max-w-3xl">
           {/* Header */}
           <div className="mb-16">
@@ -110,7 +118,7 @@ export function About() {
                 color: 'var(--portfolio-text-secondary)',
               }}
             >
-              UX/UI Product Designer with GenAI Experience
+              UX/UI x GenAI Designer
             </p>
 
             <p
@@ -204,51 +212,88 @@ export function About() {
             </ul>
           </div>
 
-          {/* Recent Experience */}
+          {/* Recent Experience — vertical timeline */}
           <div className="mb-16">
             <h2
-              className="font-normal mb-6"
-              style={{
-                fontSize: '24px',
-                color: 'var(--portfolio-text-primary)',
-              }}
+              className="font-normal mb-8"
+              style={{ fontSize: '24px', color: 'var(--portfolio-text-primary)' }}
             >
               Recent Experience
             </h2>
-            <div className="space-y-6">
-              {recentExperience.map((exp, index) => (
-                <div key={index} className="flex justify-between items-start gap-8">
-                  <div className="flex-1">
-                    <h3
-                      className="font-normal mb-1"
-                      style={{
-                        fontSize: '18px',
-                        color: 'var(--portfolio-text-primary)',
-                      }}
-                    >
-                      {exp.title}
-                    </h3>
-                    <p
-                      className="font-normal"
-                      style={{
-                        fontSize: '14px',
-                        color: 'var(--portfolio-text-secondary)',
-                      }}
-                    >
-                      {exp.company}
-                    </p>
-                  </div>
-                  <p
-                    className="font-normal text-right whitespace-nowrap"
-                    style={{
-                      fontSize: '14px',
-                      color: 'var(--portfolio-text-tertiary)',
-                    }}
-                  >
-                    {exp.period}
-                  </p>
-                </div>
-              ))}
+            <div className="relative">
+              {/* Vertical connecting line */}
+              <div
+                className="absolute left-[9px] top-2 bottom-2"
+                style={{ width: '1px', backgroundColor: 'var(--portfolio-border)' }}
+              />
+              <div className="space-y-8">
+                {recentExperience.map((exp, index) => {
+                  const dotSize = exp.seniority === 'senior' ? 20 : exp.seniority === 'mid' ? 16 : 12;
+                  const dotOffset = Math.round((20 - dotSize) / 2);
+                  return (
+                    <div key={index} className="flex gap-5">
+                      {/* Timeline dot */}
+                      <div
+                        className="flex-shrink-0 rounded-full"
+                        style={{
+                          width: `${dotSize}px`,
+                          height: `${dotSize}px`,
+                          marginTop: `${4 + dotOffset}px`,
+                          marginLeft: `${dotOffset}px`,
+                          backgroundColor: exp.seniority === 'senior'
+                            ? 'var(--portfolio-accent)'
+                            : exp.seniority === 'mid'
+                            ? 'rgba(0,102,255,0.4)'
+                            : 'rgba(0,102,255,0.15)',
+                          border: exp.seniority === 'senior'
+                            ? '2px solid var(--portfolio-accent)'
+                            : '2px solid rgba(0,102,255,0.3)',
+                          flexShrink: 0,
+                          position: 'relative',
+                          zIndex: 1,
+                        }}
+                      />
+                      {/* Content */}
+                      <div className="flex-1 pb-2">
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <h3
+                              className="font-normal mb-0.5"
+                              style={{ fontSize: '17px', color: 'var(--portfolio-text-primary)' }}
+                            >
+                              {exp.title}
+                            </h3>
+                            <p
+                              className="font-normal mb-1"
+                              style={{ fontSize: '13px', color: 'var(--portfolio-text-secondary)' }}
+                            >
+                              {exp.company}
+                            </p>
+                            <span
+                              className="inline-block px-2 py-0.5 rounded-full font-normal"
+                              style={{
+                                fontSize: '11px',
+                                letterSpacing: '0.04em',
+                                color: exp.seniority === 'senior' ? 'var(--portfolio-accent)' : 'var(--portfolio-text-secondary)',
+                                backgroundColor: exp.seniority === 'senior' ? 'rgba(0,102,255,0.06)' : 'rgba(0,0,0,0.03)',
+                                border: `1px solid ${exp.seniority === 'senior' ? 'rgba(0,102,255,0.15)' : 'var(--portfolio-border)'}`,
+                              }}
+                            >
+                              {exp.roleLabel}
+                            </span>
+                          </div>
+                          <p
+                            className="font-normal text-right whitespace-nowrap flex-shrink-0"
+                            style={{ fontSize: '13px', color: 'var(--portfolio-text-tertiary)' }}
+                          >
+                            {exp.period}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -391,30 +436,67 @@ export function About() {
         </div>
       </div>
 
-      {/* Right Side - Fixed Image */}
+      {/* Divider — visual cue that left scrolls, right is fixed (desktop only) */}
       <div
-        className="w-[45%] flex-shrink-0 flex items-center justify-center p-16"
+        className="hidden md:flex flex-shrink-0 flex-col items-center justify-center"
+        style={{ width: '16px' }}
+      >
+        {/* Thin line top */}
+        <div
+          style={{
+            flex: 1,
+            width: '1px',
+            backgroundColor: 'var(--portfolio-border)',
+          }}
+        />
+
+        {/* Pill handle */}
+        <div
+          style={{
+            width: '4px',
+            height: '48px',
+            borderRadius: '2px',
+            backgroundColor: 'var(--portfolio-border)',
+            flexShrink: 0,
+            margin: '8px 0',
+          }}
+        />
+
+        {/* Thin line bottom */}
+        <div
+          style={{
+            flex: 1,
+            width: '1px',
+            backgroundColor: 'var(--portfolio-border)',
+          }}
+        />
+      </div>
+
+      {/* Right Side - Image (Fixed on desktop, full-size on mobile) */}
+      <div
+        className="w-full md:w-[40%] flex-shrink-0 flex items-center justify-center p-5 md:p-8 md:sticky md:top-0"
         style={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
+          height: 'auto',
         }}
       >
         <div
-          className="relative overflow-hidden rounded-3xl"
-          style={{
-            width: '100%',
-            maxWidth: '500px',
-            aspectRatio: '3/4',
-            border: '1px solid var(--portfolio-border)',
-            boxShadow: '0 30px 80px rgba(0, 0, 0, 0.12)',
-          }}
+          className="relative overflow-hidden rounded-3xl w-full md:h-screen md:flex md:items-center md:justify-center"
         >
-          <img
-            src={profileImage}
-            alt="Maria Szczudło"
-            className="w-full h-full object-cover"
-          />
+          <div
+            className="relative overflow-hidden rounded-3xl w-full"
+            style={{
+              maxWidth: '500px',
+              aspectRatio: '3/4',
+              border: '1px solid var(--portfolio-border)',
+              boxShadow: '0 30px 80px rgba(0, 0, 0, 0.12)',
+            }}
+          >
+            <img
+              src={profileImage}
+              alt="Maria Szczudło"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </div>
