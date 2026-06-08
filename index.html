@@ -5,7 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maria Szczudło — UX/UI Designer</title>
     <meta name="description" content="Portfolio of Maria Szczudło — UX/UI Product Designer with GenAI Experience. Automotive HMI, fintech, and AI-driven experiences." />
-    <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+    <style>
+      html, body { height: 100%; margin: 0; }
+      #root { height: 100%; }
+
+      /* Respect reduced motion preferences */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Focus visible styles for keyboard navigation */
+      *:focus-visible {
+        outline: 2px solid #0066FF;
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* Skip to content link */
+      .skip-to-content {
+        position: absolute;
+        top: -40px;
+        left: 16px;
+        z-index: 9999;
+        padding: 8px 16px;
+        background: #0066FF;
+        color: white;
+        font-size: 14px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: top 0.2s;
+      }
+      .skip-to-content:focus {
+        top: 16px;
+      }
+    </style>
     <script>
       // Restore the URL captured by public/404.html (SPA fallback on GitHub Pages).
       (function (l) {
@@ -20,6 +58,7 @@
   </head>
 
   <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

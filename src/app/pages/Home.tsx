@@ -341,7 +341,7 @@ export function Home() {
         {/* Background image - full screen */}
         <img
           src={bgImage}
-          alt=""
+          alt="Illustrated landscape with project boards showcasing UX design work: Hyundai Tucson NX4, HSBC Banking, Senioring, ACN Bank, and FriscoAch"
           style={{
             position: 'absolute',
             inset: 0,
@@ -367,6 +367,7 @@ export function Home() {
             <Link
               key={project.id}
               to={`/project/${project.id}`}
+              aria-label={`View project: ${project.title}`}
               onMouseEnter={() => !isMobile && setHoveredId(project.id)}
               onMouseLeave={() => !isMobile && setHoveredId(null)}
               onTouchStart={() => handleTap(project.id)}
@@ -390,6 +391,7 @@ export function Home() {
             >
               {/* Floating project title - appears on hover/tap */}
               <div
+                aria-hidden="true"
                 style={{
                   position: 'absolute',
                   bottom: '-28px',

@@ -85,7 +85,7 @@ export function Layout() {
             </Link>
 
             {/* Navigation */}
-            <nav className="flex items-center gap-4 md:gap-6">
+            <nav className="flex items-center gap-4 md:gap-6" aria-label="Main navigation">
               {navItems.map((item) => {
                 const isHovered = hoveredNav === item.path;
                 const active = isActive(item.path);
@@ -126,6 +126,7 @@ export function Layout() {
                   href="https://www.linkedin.com/in/maria-szczudlo/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn profile"
                   className="transition-all duration-300"
                   style={{ color: 'var(--portfolio-text-secondary)' }}
                   onMouseEnter={(e) => {
@@ -146,13 +147,14 @@ export function Layout() {
       </header>
 
       {/* Main Content */}
-      <main className={isHomePage ? '' : 'pt-20 md:pt-24'}>
+      <main id="main-content" className={isHomePage ? '' : 'pt-20 md:pt-24'}>
         <Outlet />
       </main>
 
       {/* Floating Scroll to Top Button */}
       <button
         onClick={scrollToTop}
+        aria-label="Scroll to top"
         className="fixed bottom-8 right-8 z-40 transition-all duration-300 cursor-pointer"
         style={{
           width: '56px',
