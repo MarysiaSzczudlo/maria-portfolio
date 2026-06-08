@@ -63,6 +63,10 @@ export function CaseStudy() {
       scope: '12.3″ HMI Display + Physical Controls',
       heroImage: hyundaiHero,
       figmaLink: 'https://www.figma.com/proto/YEIbjTneX5QaA2lk3ACfDz/Tucson-NX4-Redesign?node-id=80-12405&m=draw&scaling=min-zoom&content-scaling=fixed&page-id=1%3A5&starting-point-node-id=80%3A12405&t=GE4kNmnrHwsp6QZ7-1',
+      prototypeVideo: {
+        url: 'https://player.vimeo.com/video/1199401747',
+        caption: 'Full prototype Walkthrough — 12.3″ HMI Display redesign',
+      },
       images: {
         designSystem: hyundaiDesignSystem,
         gallery: hyundaiGallery,
@@ -695,6 +699,39 @@ export function CaseStudy() {
                 <ZoomableImage src={project.images.gallery} alt="Screen Gallery" maxScale={5} />
               </div>
             )}
+          </SectionBlock>
+        )}
+
+        {/* Prototype Walkthrough Video */}
+        {project.prototypeVideo && (
+          <SectionBlock>
+            {sectionHeading('Prototype Walkthrough')}
+            <div
+              className="w-full rounded-2xl overflow-hidden mb-4 relative"
+              style={{
+                border: '1px solid var(--portfolio-border)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.06)',
+                aspectRatio: '16/9',
+              }}
+            >
+              <iframe
+                src={`${project.prototypeVideo.url}?autoplay=1&loop=1&muted=1&controls=1&autopause=0&background=1`}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  border: 'none',
+                }}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title="Prototype Walkthrough"
+              />
+            </div>
+            <p className="font-normal" style={{ fontSize: '15px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.6' }}>
+              {project.prototypeVideo.caption}
+            </p>
           </SectionBlock>
         )}
 
