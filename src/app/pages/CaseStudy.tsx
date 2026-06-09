@@ -56,8 +56,8 @@ export function CaseStudy() {
   const projects: Record<string, any> = {
     'hyundai-tucson': {
       title: 'Hyundai Tucson NX4',
-      subtitle: 'Cockpit Redesign',
-      role: 'Lead UX Designer',
+      subtitle: 'Cockpit Redesign · Concept Project',
+      role: 'UX/UI Designer',
       timeline: 'March - May 2026',
       tools: 'Figma · FigJam · Midjourney · Gamma · Figma Make · DaVinci Resolve',
       scope: '12.3″ HMI Display + Physical Controls',
@@ -73,7 +73,7 @@ export function CaseStudy() {
         additional: hyundaiImage,
       },
       overview:
-        'This project aimed to redesign the Hyundai Tucson NX4 infotainment system from the ground up. Through extensive analysis of 345 NHTSA complaints and user research, we identified 22 critical pain points affecting driver safety and satisfaction.',
+        'This is a self-initiated concept project exploring a redesign of the Hyundai Tucson NX4 infotainment system from the ground up. Through extensive analysis of 345 NHTSA complaints and user research, I identified 22 critical pain points affecting driver safety and satisfaction.',
       challenge:
         'The existing infotainment system received numerous complaints about confusing navigation, buried features, and distracting interfaces that competed for driver attention. Our goal was to simplify complex interactions while maintaining feature richness.',
       approach: [
@@ -84,7 +84,7 @@ export function CaseStudy() {
         'Developed and tested 3 design directions through iterative prototyping',
       ],
       outcome:
-        'The redesigned system prioritized essential driving information, simplified navigation to commonly-used features, and introduced adaptive UI that responds to driving context. Post-implementation testing showed significant improvements in task completion time and user satisfaction.',
+        'The redesigned system prioritized essential driving information, simplified navigation to commonly-used features, and introduced adaptive UI that responds to driving context. Prototype testing showed significant improvements in task completion time and user satisfaction.',
       metrics: [
         { label: 'NHTSA Complaints Analyzed', value: '345' },
         { label: 'Pain Points Identified', value: '22' },
@@ -95,13 +95,13 @@ export function CaseStudy() {
     'hsbc-banking': {
       title: 'HSBC',
       subtitle: 'Mobile Banking Redesign',
-      role: 'Senior UX/UI Designer',
+      role: 'UX/UI Designer & AI Specialist',
       timeline: 'Sept 2025 - Feb 2026',
       team: '10+ designers & researchers',
       client: 'HSBC Global · Accenture Song',
       heroImage: hsbcHero,
       awardLink: 'https://ifdesign.com/en/winner-ranking/project/hsbc-banking-app/769705',
-      awardText: 'Awarded in iF Design Award 2026',
+      awardText: 'iF Design Award 2026 Winner',
       images: {
         designSystem: hsbc1,
         gallery: hsbc3,
@@ -110,8 +110,8 @@ export function CaseStudy() {
       quickSummary: {
         problem: 'Fragmented legacy banking app underperforming across 26 markets',
         solution: 'Unified, intelligent, human-centered mobile experience for 50M+ customers',
-        role: 'UX Designer',
-        keyResult: 'iF Design Award 2026 Nominee',
+        role: 'UX/UI Designer & AI Specialist',
+        keyResult: 'iF Design Award 2026 Winner',
       },
       overview:
         'HSBC\'s Global Banking App reimagines what a global banking experience should be. As the world\'s only international bank, HSBC needed a unified mobile experience matching its scale and ambition. The old app was disjointed, and underperforming. Together we defined and delivered the vision for the "world\'s best banking app" — one platform serving over 50 million customers across 26 markets. The result is a single, intelligent, human-centered app combining personalisation, conversational banking and global consistency. It turns a fragmented legacy system into a fluid, intuitive, and personal experience, a home that feels personal, wherever you are.',
@@ -121,7 +121,7 @@ export function CaseStudy() {
       challenge:
         'The existing app suffered from fragmented user flows, inconsistent design patterns, and poor information hierarchy. Users struggled to complete basic banking tasks, leading to increased support calls and customer frustration.',
       designProcess: {
-        teamContext: 'Team of 10+ people · My role: UX Designer · HSBC CCT UK Project · Accenture Song',
+        teamContext: 'Team of 10+ people · My role: UX/UI Designer & AI Specialist · HSBC CCT UK Project · Accenture Song',
         phases: [
           {
             name: 'Research & Analysis',
@@ -164,7 +164,7 @@ export function CaseStudy() {
           {
             name: 'Design System',
             duration: '2 weeks',
-            weeks: 4,
+            weeks: 2,
             role: 'Core contributor',
             contributions: [
               'Contributed to the Conversational Experience Design System',
@@ -214,10 +214,10 @@ export function CaseStudy() {
       },
     },
     'frisco-ach': {
-      title: 'FriscoAch',
+      title: 'FrisCoach',
       subtitle: 'AI Culinary Assistant',
-      role: 'UX Designer & AI Specialist',
-      timeline: 'March 2025 - July 2025',
+      role: 'UX/UI Designer & AI Specialist',
+      timeline: 'March 2025 - September 2025',
       team: '2 designers, 3 AI engineers',
       client: 'Frisco',
       heroImage: friscoHero,
@@ -229,15 +229,15 @@ export function CaseStudy() {
       quickSummary: {
         problem: 'Users needed help with meal planning but existing solutions felt robotic',
         solution: 'LLM-powered conversational assistant integrated into grocery ecosystem',
-        role: 'Main UX Designer',
+        role: 'UX/UI Designer & AI Specialist',
         keyResult: '15K+ active users, 68% conversion to purchase',
       },
       overview:
-        'FriscoAch integrates an LLM-powered conversational assistant into Frisco\'s grocery ecosystem, helping users with meal planning, recipe discovery, and automated shopping list generation.',
+        'FrisCoach integrates an LLM-powered conversational assistant into Frisco\'s grocery ecosystem, helping users with meal planning, recipe discovery, and automated shopping list generation.',
       challenge:
         'Designing a conversational AI interface that feels natural and helpful without overpromising capabilities. Users needed clear boundaries of what the AI could do, while maintaining engagement and trust.',
       designProcess: {
-        teamContext: 'FriscoAch stream · My role: Main UX Designer · Separate Lead above',
+        teamContext: 'FrisCoach stream · My role: UX/UI Designer & AI Specialist · Separate Lead above',
         phases: [
           {
             name: 'Discover',
@@ -350,7 +350,7 @@ export function CaseStudy() {
     'senioring': {
       title: 'Senioring',
       subtitle: 'Booking Platform for Seniors',
-      role: 'Lead UX Designer',
+      role: 'UX Designer',
       timeline: 'Nov 2022 - Feb 2023',
       team: '2 designers, 1 Product Owner',
       client: 'Lizard Media Software House',

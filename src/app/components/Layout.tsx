@@ -203,7 +203,7 @@ export function Layout() {
                 color: 'var(--portfolio-text-tertiary)',
               }}
             >
-              © 2026 Maria Szczudło
+              © {new Date().getFullYear()} Maria Szczudło
             </p>
             <a
               href="mailto:marysia.szczudlo1994@gmail.com"

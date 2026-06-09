@@ -30,28 +30,28 @@ export function About() {
       title: 'Global Banking Application',
       company: 'Accenture, HSBC',
       period: 'Sept 2025 - Feb 2026',
-      roleLabel: 'Senior UX Designer',
+      roleLabel: 'UX/UI Designer & AI Specialist',
       seniority: 'senior',
     },
     {
       title: 'E-Grocery Retailer',
       company: 'Accenture, Frisco',
       period: 'Mar 2025 - Sep 2025',
-      roleLabel: 'Senior UX Designer',
+      roleLabel: 'UX/UI Designer & AI Specialist',
       seniority: 'senior',
     },
     {
       title: 'Financial Services',
       company: 'Accenture, Internal Project',
       period: 'Mar 2025 - Jun 2025',
-      roleLabel: 'Senior UX Designer/Support',
+      roleLabel: 'Senior UX Designer',
       seniority: 'senior',
     },
     {
       title: 'E-Commerce',
       company: 'Lizard Media',
       period: 'Jun 2022 - Dec 2023',
-      roleLabel: 'Junior UX Designer',
+      roleLabel: 'UX Designer',
       seniority: 'junior',
     },
   ];
@@ -129,10 +129,10 @@ export function About() {
                 lineHeight: '1.6',
               }}
             >
-              I am a Product Designer, with over 4.5 years of experience in UX/UI design, user
+              I am a Product Designer with over 4 years of experience in UX/UI design, user
               research, usability testing, and agile marketing. My expertise spans the entire
               product design process—from discovery and analysis to prototyping, testing, and
-              delivering user-centered solutions.
+              delivering user-centered solutions. This portfolio showcases selected projects; my professional experience began in 2021/2022 at Mahalo Media in Gdańsk — full details are available in my CV.
             </p>
 
             {/* Languages */}

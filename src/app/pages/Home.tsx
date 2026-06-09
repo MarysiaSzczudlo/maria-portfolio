@@ -342,7 +342,7 @@ export function Home() {
         {/* Background image - full screen */}
         <img
           src={bgImage}
-          alt="Illustrated landscape with project boards showcasing UX design work: Hyundai Tucson NX4, HSBC Banking, Senioring, ACN Bank, and FriscoAch"
+          alt="Illustrated landscape with project boards showcasing UX design work: Hyundai Tucson NX4, HSBC Banking, Senioring, ACN Bank, and FrisCoach"
           style={{
             position: 'absolute',
             inset: 0,
@@ -454,7 +454,7 @@ export function Home() {
               color: 'var(--portfolio-text-tertiary)',
             }}
           >
-            © 2026 Maria Szczudło
+            © {new Date().getFullYear()} Maria Szczudło
           </p>
           <a
             href="mailto:marysia.szczudlo1994@gmail.com"
