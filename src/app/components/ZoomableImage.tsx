@@ -69,6 +69,10 @@ export function ZoomableImage({ src, alt, className, maxScale = 5 }: ZoomableIma
       <div
         className={`relative cursor-zoom-in group ${className}`}
         onClick={() => setIsZoomed(true)}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setIsZoomed(true); } }}
+        role="button"
+        tabIndex={0}
+        aria-label={`Open larger view: ${alt}`}
       >
         <img src={src} alt={alt} className="w-full h-full object-cover" />
 
@@ -122,6 +126,7 @@ export function ZoomableImage({ src, alt, className, maxScale = 5 }: ZoomableIma
               border: '1px solid rgba(255, 255, 255, 0.2)',
             }}
             onClick={() => setIsZoomed(false)}
+            aria-label="Close image viewer"
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
             }}
@@ -148,6 +153,7 @@ export function ZoomableImage({ src, alt, className, maxScale = 5 }: ZoomableIma
                 backgroundColor: scale < maxScale ? 'rgba(255, 255, 255, 0.1)' : 'rgba(128, 128, 128, 0.1)',
               }}
               onClick={zoomIn}
+              aria-label="Zoom in"
               disabled={scale >= maxScale}
               onMouseEnter={(e) => {
                 if (scale < maxScale) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
@@ -164,6 +170,7 @@ export function ZoomableImage({ src, alt, className, maxScale = 5 }: ZoomableIma
                 backgroundColor: scale > 1 ? 'rgba(255, 255, 255, 0.1)' : 'rgba(128, 128, 128, 0.1)',
               }}
               onClick={zoomOut}
+              aria-label="Zoom out"
               disabled={scale <= 1}
               onMouseEnter={(e) => {
                 if (scale > 1) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
@@ -180,6 +187,7 @@ export function ZoomableImage({ src, alt, className, maxScale = 5 }: ZoomableIma
                 backgroundColor: scale > 1 ? 'rgba(255, 255, 255, 0.1)' : 'rgba(128, 128, 128, 0.1)',
               }}
               onClick={resetZoom}
+              aria-label="Reset zoom"
               disabled={scale <= 1}
               onMouseEnter={(e) => {
                 if (scale > 1) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';

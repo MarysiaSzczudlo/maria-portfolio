@@ -15,10 +15,38 @@ import hsbc2 from '../../imports/hsbc_2.png';
 import hsbc3 from '../../imports/hsbc_3.png';
 import hsbcBeforeFlow from '../../imports/Zrzut_ekranu_2026-06-7_o_19.33.43.png';
 import hsbcAfterFlow from '../../imports/1111.png';
+import hsbcVirtualAssistant from '../../imports/hsbc_virtual_assistant.mp4';
+import hsbcVirtualAssistantPoster from '../../imports/hsbc_virtual_assistant_poster.jpg';
+import hsbcDarkMode from '../../imports/hsbc_dark_mode.png';
+import hsbcShareDocuments from '../../imports/hsbc_share_documents.png';
+import hsbcMainScreen from '../../imports/hsbc_main_screen.png';
+import hsbcSecondary from '../../imports/hsbc_secondary.png';
+import hsbcCardHub from '../../imports/hsbc_card_hub.png';
+import hsbcErrorState from '../../imports/hsbc_error_state.png';
+import hsbcWarning from '../../imports/hsbc_warning.png';
+import hsbcInvalidAmount from '../../imports/hsbc_invalid_amount.png';
+import hsbcUploadDocument from '../../imports/hsbc_upload_document.png';
+import hsbcCashLimit from '../../imports/hsbc_cash_limit.png';
+import hsbcViewStatements from '../../imports/hsbc_view_statements.png';
 import friscoHero from '../../imports/Frisco.png';
 import friscoGuardrial from '../../imports/GUARDRIAL_MESSAGES.png';
 import friscoDetail from '../../imports/friscooo.png';
 import friscoMockups from '../../imports/frisco_mockups.png';
+import friscoSurveyHousehold from '../../imports/frisco_survey_household.png';
+import friscoSurveyPreferences from '../../imports/frisco_survey_preferences.png';
+import friscoSurveySummary from '../../imports/frisco_survey_summary.png';
+import friscoGuardrail1 from '../../imports/frisco_guardrail_1.png';
+import friscoGuardrail2 from '../../imports/frisco_guardrail_2.png';
+import friscoGuardrail3 from '../../imports/frisco_guardrail_3.png';
+import friscoGuardrail4 from '../../imports/frisco_guardrail_4.png';
+import friscoGuardrail5 from '../../imports/frisco_guardrail_5.png';
+import friscoRecipeBasket from '../../imports/frisco_recipe_basket.png';
+import friscoChatProducts from '../../imports/frisco_chat_products.png';
+import friscoChat1 from '../../imports/frisco_chat_1.png';
+import friscoChat2 from '../../imports/frisco_chat_2.png';
+import friscoChat3 from '../../imports/frisco_chat_3.png';
+import friscoChat4 from '../../imports/frisco_chat_4.png';
+import friscoChat5 from '../../imports/frisco_chat_5.png';
 import acnHero from '../../imports/ACN_Bank.png';
 import senioringHero from '../../imports/Booking_platfrom_Senioring.png';
 import senioring1 from '../../imports/Zrzut_ekranu_2026-05-19_o_20.55.17.png';
@@ -30,13 +58,11 @@ function SectionBlock({ children, alt }: { children: React.ReactNode; alt?: bool
   return (
     <section
       style={{
-        backgroundColor: alt ? 'rgba(0,0,0,0.015)' : 'transparent',
+        backgroundColor: alt ? 'rgba(0,0,0,0.018)' : 'transparent',
         borderRadius: alt ? '16px' : '0',
-        padding: alt ? '40px 36px' : '0',
-        marginLeft: alt ? '-36px' : '0',
-        marginRight: alt ? '-36px' : '0',
+        padding: alt ? 'clamp(22px, 4vw, 40px) clamp(18px, 4vw, 36px)' : '0',
       }}
-      className="mb-12 md:mb-16"
+      className="mb-12 md:mb-16 min-w-0"
     >
       {children}
     </section>
@@ -62,6 +88,12 @@ export function CaseStudy() {
       tools: 'Figma · FigJam · Midjourney · Gamma · Figma Make · DaVinci Resolve',
       scope: '12.3″ HMI Display + Physical Controls',
       heroImage: hyundaiHero,
+      quickSummary: {
+        problem: 'Complex infotainment architecture increased cognitive load and buried key driving tasks',
+        solution: 'Research-led HMI redesign with clearer hierarchy, contextual controls and predictable navigation',
+        role: 'UX/UI Designer',
+        keyResult: '48 user tests · 22 pain points identified · 345 complaints analysed',
+      },
       figmaLink: 'https://www.figma.com/proto/YEIbjTneX5QaA2lk3ACfDz/Tucson-NX4-Redesign?node-id=80-12405&m=draw&scaling=min-zoom&content-scaling=fixed&page-id=1%3A5&starting-point-node-id=80%3A12405&t=GE4kNmnrHwsp6QZ7-1',
       prototypeVideo: {
         url: 'https://player.vimeo.com/video/1199401747',
@@ -111,7 +143,7 @@ export function CaseStudy() {
         problem: 'Fragmented legacy banking app underperforming across 26 markets',
         solution: 'Unified, intelligent, human-centered mobile experience for 50M+ customers',
         role: 'UX/UI Designer & AI Specialist',
-        keyResult: 'iF Design Award 2026 Winner',
+        keyResult: '−35% support tickets · +65% satisfaction · −40% task time',
       },
       overview:
         'HSBC\'s Global Banking App reimagines what a global banking experience should be. As the world\'s only international bank, HSBC needed a unified mobile experience matching its scale and ambition. The old app was disjointed, and underperforming. Together we defined and delivered the vision for the "world\'s best banking app" — one platform serving over 50 million customers across 26 markets. The result is a single, intelligent, human-centered app combining personalisation, conversational banking and global consistency. It turns a fragmented legacy system into a fluid, intuitive, and personal experience, a home that feels personal, wherever you are.',
@@ -189,8 +221,23 @@ export function CaseStudy() {
       beforeAfter: {
         before: hsbcBeforeFlow,
         after: hsbcAfterFlow,
-        title: 'Downloading statements journey - Before and after',
-        caption: 'One of many redesigned application flows. By implementing intuitive navigation and adding numerous new features, such as setting custom statement dates, switching to a paperless option, selecting a specific account, and much more, we have given users more control and options.',
+        title: 'From fragmented flows to clearer banking journeys',
+        caption: 'A representative example of how we simplified a legacy task while giving customers more control: clearer account selection, custom statement dates, paperless options and a more predictable path to completion.',
+      },
+      hsbcShowcase: {
+        video: hsbcVirtualAssistant,
+        poster: hsbcVirtualAssistantPoster,
+        darkMode: hsbcDarkMode,
+        shareDocuments: hsbcShareDocuments,
+        mainScreen: hsbcMainScreen,
+        secondary: hsbcSecondary,
+        cardHub: hsbcCardHub,
+        errorState: hsbcErrorState,
+        warning: hsbcWarning,
+        invalidAmount: hsbcInvalidAmount,
+        uploadDocument: hsbcUploadDocument,
+        cashLimit: hsbcCashLimit,
+        viewStatements: hsbcViewStatements,
       },
       approach: [
         'Analyzed user analytics data from 2M+ monthly active users',
@@ -230,7 +277,7 @@ export function CaseStudy() {
         problem: 'Users needed help with meal planning but existing solutions felt robotic',
         solution: 'LLM-powered conversational assistant integrated into grocery ecosystem',
         role: 'UX/UI Designer & AI Specialist',
-        keyResult: '15K+ active users, 68% conversion to purchase',
+        keyResult: '+120% engagement rate, 15K+ active users, 68% conversion to purchase',
       },
       overview:
         'FrisCoach integrates an LLM-powered conversational assistant into Frisco\'s grocery ecosystem, helping users with meal planning, recipe discovery, and automated shopping list generation.',
@@ -398,7 +445,10 @@ export function CaseStudy() {
 
   const currentIndex = projectOrder.indexOf(currentId);
   const nextId = projectOrder[(currentIndex + 1) % projectOrder.length];
-  const nextProject = projects[nextId];
+  // FrisCoach intentionally points to Hyundai as the next visible portfolio case study.
+  // ACN Bank is no longer part of the public portfolio journey.
+  const displayNextId = currentId === 'frisco-ach' ? 'hyundai-tucson' : nextId;
+  const nextProject = projects[displayNextId];
 
   const sectionHeading = (text: string) => (
     <h2
@@ -523,9 +573,9 @@ export function CaseStudy() {
           <div className="mt-8 flex justify-center">
             <a href={project.awardLink} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 group"
-              style={{ backgroundColor: 'rgba(212, 175, 55, 0.05)', backdropFilter: 'blur(10px)', border: '1px solid #D4AF37', color: '#D4AF37' }}
-              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#D4AF37'; e.currentTarget.style.color = '#FFFFFF'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.05)'; e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              style={{ backgroundColor: 'rgba(212, 175, 55, 0.05)', backdropFilter: 'blur(10px)', border: '1px solid #806000', color: '#806000' }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#806000'; e.currentTarget.style.color = '#FFFFFF'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 175, 55, 0.05)'; e.currentTarget.style.color = '#806000'; e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <span className="font-normal" style={{ fontSize: '16px' }}>{project.awardText || 'View Award'}</span>
               <ExternalLink size={18} className="group-hover:rotate-12 transition-transform" />
@@ -557,8 +607,8 @@ export function CaseStudy() {
         />
       )}
 
-      {/* Content — max-w-3xl with alternating section backgrounds */}
-      <div className="max-w-3xl">
+      {/* Case-study content: centered, wider editorial canvas */}
+      <div className={(projectId === 'hsbc-banking' || projectId === 'frisco-ach' || projectId === 'hyundai-tucson') ? 'max-w-6xl mx-auto' : 'max-w-3xl'}>
 
         {/* Overview */}
         <SectionBlock>
@@ -605,64 +655,189 @@ export function CaseStudy() {
           </SectionBlock>
         )}
 
-        {/* Before & After — HSBC specific */}
-        {project.beforeAfter && (
-          <SectionBlock alt={!project.roleDescription}>
-            {sectionHeading(project.beforeAfter.title || 'Before & After')}
+        {/* HSBC selected work — editorial case-study showcase */}
+        {projectId === 'hsbc-banking' && project.beforeAfter && project.hsbcShowcase ? (
+          <>
+            <SectionBlock>
+              <div className="mb-8">
+                <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Selected UX work</div>
+                {sectionHeading(project.beforeAfter.title)}
+                <p className="font-normal max-w-3xl" style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.65' }}>
+                  Instead of treating the redesign as a collection of screens, we focused on the moments where clarity, control and recovery matter most.
+                </p>
+              </div>
 
-            {/* New Before/After Layout */}
-            {project.beforeAfter.before && project.beforeAfter.after ? (
-              <div className="space-y-6 mb-4">
-                {/* Before Section */}
-                <div>
-                  <h3 className="font-normal mb-3" style={{ fontSize: '16px', color: 'var(--portfolio-text-primary)', fontWeight: '600' }}>
-                    Before
-                  </h3>
-                  <div
-                    className="w-full rounded-2xl overflow-hidden"
-                    style={{ border: `1px solid var(--portfolio-border)`, boxShadow: '0 8px 32px rgba(0,0,0,0.06)' }}
-                  >
-                    <ZoomableImage src={project.beforeAfter.before} alt="Before - Downloading statements journey" maxScale={5} />
+              <div className="mt-10 mb-12 grid grid-cols-1 lg:grid-cols-[.72fr_1.28fr] gap-10 xl:gap-14 items-center">
+                  <div>
+                    <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Conversational entry points</div>
+                    {sectionHeading('Making the AI assistant easy to discover')}
+                    <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.7' }}>
+                      We placed conversational doors to the AI assistant directly on the Home and Cards surfaces as a primary entrance into support. The goal was to make help available in context, without forcing customers to search for a separate chatbot destination.
+                    </p>
+                    <div className="mt-7 space-y-4">
+                      <div className="grid grid-cols-[32px_1fr] gap-3 pt-4" style={{ borderTop: '1px solid var(--portfolio-border)' }}>
+                        <span style={{ fontSize: '12px', color: 'var(--portfolio-accent)', fontWeight: 600 }}>01</span>
+                        <div><div style={{ fontSize: '15px', fontWeight: 600 }}>Home Page entrance</div><p className="mt-1" style={{ fontSize: '14px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.55' }}>Persistent conversational entry near core account content keeps assistance within reach.</p></div>
+                      </div>
+                      <div className="grid grid-cols-[32px_1fr] gap-3 pt-4" style={{ borderTop: '1px solid var(--portfolio-border)' }}>
+                        <span style={{ fontSize: '12px', color: 'var(--portfolio-accent)', fontWeight: 600 }}>02</span>
+                        <div><div style={{ fontSize: '15px', fontWeight: 600 }}>Contextual support</div><p className="mt-1" style={{ fontSize: '14px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.55' }}>The same pattern carries into product areas such as Cards, where help can be triggered next to the task itself.</p></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-end">
+                    <figure className="rounded-[22px] overflow-hidden bg-white p-4 flex items-end justify-center" style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 14px 38px rgba(0,0,0,.06)', minHeight: '360px' }}>
+                      <img src={project.hsbcShowcase.mainScreen} alt="HSBC Home and Cards screens showing conversational entry points" style={{ width: '100%', height: 'auto', maxHeight: '430px', objectFit: 'contain', objectPosition: 'center bottom', display: 'block' }} />
+                    </figure>
+                    <figure className="rounded-[22px] overflow-hidden bg-white p-3 flex items-end justify-center" style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 14px 38px rgba(0,0,0,.06)', minHeight: '360px' }}>
+                      <img src={project.hsbcShowcase.cardHub} alt="HSBC Cards screen with AI assistant entry point" style={{ width: '100%', height: 'auto', maxHeight: '430px', objectFit: 'contain', objectPosition: 'center bottom', display: 'block' }} />
+                    </figure>
                   </div>
                 </div>
 
-                {/* After Section */}
-                <div>
-                  <h3 className="font-normal mb-3" style={{ fontSize: '16px', color: 'var(--portfolio-text-primary)', fontWeight: '600' }}>
-                    After
-                  </h3>
-                  <div
-                    className="w-full rounded-2xl overflow-hidden"
-                    style={{ border: `1px solid var(--portfolio-border)`, boxShadow: '0 8px 32px rgba(0,0,0,0.06)' }}
-                  >
-                    <ZoomableImage src={project.beforeAfter.after} alt="After - Downloading statements journey" maxScale={5} />
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <div className="rounded-2xl overflow-hidden" style={{ background: '#f6f7f9', border: '1px solid var(--portfolio-border)' }}>
+                  <div className="px-5 pt-5 pb-3 flex items-center justify-between gap-4">
+                    <div>
+                      <div className="uppercase tracking-[0.14em] mb-1" style={{ fontSize: '11px', color: 'var(--portfolio-text-secondary)' }}>Legacy journey</div>
+                      <div style={{ fontSize: '16px', fontWeight: 600 }}>Before</div>
+                    </div>
+                    <span className="px-3 py-1 rounded-full" style={{ fontSize: '12px', background: '#fff', border: '1px solid var(--portfolio-border)', color: 'var(--portfolio-text-secondary)' }}>More hidden steps</span>
                   </div>
+                  <div className="px-4 pb-4"><div className="rounded-xl overflow-hidden bg-white"><ZoomableImage src={project.beforeAfter.before} alt="Legacy HSBC statement journey before redesign" maxScale={5} /></div></div>
+                </div>
+                <div className="rounded-2xl overflow-hidden" style={{ background: '#f6f7f9', border: '1px solid var(--portfolio-border)' }}>
+                  <div className="px-5 pt-5 pb-3 flex items-center justify-between gap-4">
+                    <div>
+                      <div className="uppercase tracking-[0.14em] mb-1" style={{ fontSize: '11px', color: 'var(--portfolio-accent)' }}>Redesigned journey</div>
+                      <div style={{ fontSize: '16px', fontWeight: 600 }}>After</div>
+                    </div>
+                    <span className="px-3 py-1 rounded-full" style={{ fontSize: '12px', background: 'rgba(0,112,255,.07)', border: '1px solid rgba(0,112,255,.16)', color: 'var(--portfolio-accent)' }}>More control</span>
+                  </div>
+                  <div className="px-4 pb-4"><div className="rounded-xl overflow-hidden bg-white"><ZoomableImage src={project.beforeAfter.after} alt="Redesigned HSBC statement journey" maxScale={5} /></div></div>
                 </div>
               </div>
-            ) : project.beforeAfter.images ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                {project.beforeAfter.images.map((img: string, idx: number) => (
-                  <div
-                    key={idx}
-                    className="w-full rounded-2xl overflow-hidden"
-                    style={{ border: `1px solid var(--portfolio-border)`, boxShadow: '0 8px 32px rgba(0,0,0,0.06)' }}
-                  >
-                    <ZoomableImage src={img} alt={`Before and After comparison ${idx + 1}`} maxScale={5} />
+              <p className="font-normal mt-5 max-w-4xl" style={{ fontSize: '15px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.65' }}>{project.beforeAfter.caption}</p>
+            </SectionBlock>
+
+            <SectionBlock alt>
+              <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_.75fr] gap-10 xl:gap-14 items-center">
+                <div>
+                  <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Conversational banking</div>
+                  {sectionHeading('Virtual Assistant — designing beyond static screens')}
+                  <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.65' }}>
+                    I worked on conversational flows, interaction logic and motion for the in-app Virtual Assistant. The prototype shows how the experience moves from entry points into guided banking support while keeping the interaction lightweight and familiar.
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    {['Conversational UX', 'Interaction design', 'Motion', 'GenAI patterns'].map((tag) => <span key={tag} className="px-3 py-2 rounded-full" style={{ fontSize: '12px', border: '1px solid var(--portfolio-border)', background: '#fff' }}>{tag}</span>)}
+                  </div>
+                </div>
+                <div className="rounded-[24px] overflow-hidden bg-black w-full mx-auto" style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 18px 50px rgba(0,0,0,.10)', maxWidth: '360px' }}>
+                  <video src={project.hsbcShowcase.video} poster={project.hsbcShowcase.poster} controls playsInline preload="metadata" style={{ width: '100%', height: 'auto', maxHeight: '72vh', display: 'block', objectFit: 'contain', background: '#000' }} aria-label="HSBC Virtual Assistant interactive prototype" />
+                </div>
+              </div>
+            </SectionBlock>
+
+            <SectionBlock>
+              <div className="grid grid-cols-1 lg:grid-cols-[.72fr_1.28fr] gap-10 xl:gap-14 items-start">
+                <div className="lg:sticky lg:top-28">
+                  <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Selected stream redesigns</div>
+                  {sectionHeading('Turning complex banking tasks into clearer flows')}
+                  <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.7' }}>
+                    Alongside conversational banking, I worked within the team on individual product streams where clarity, validation and confidence are critical. These selected screens show three redesigned journeys across document upload, cash limits and bank statements.
+                  </p>
+                  <div className="mt-7 space-y-4">
+                    {[
+                      ['01', 'Upload documents', 'Clear requirements and a visible upload action reduce uncertainty before submission.'],
+                      ['02', 'Set cash limits', 'Constraints are communicated before submission, helping prevent avoidable validation errors.'],
+                      ['03', 'View statements', 'Filtering and statement history are surfaced in a predictable, scannable structure.'],
+                    ].map(([n, title, copy]) => (
+                      <div key={n} className="grid grid-cols-[32px_1fr] gap-3 pt-4" style={{ borderTop: '1px solid var(--portfolio-border)' }}>
+                        <span style={{ fontSize: '12px', color: 'var(--portfolio-accent)', fontWeight: 600 }}>{n}</span>
+                        <div><div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--portfolio-text-primary)' }}>{title}</div><p className="mt-1" style={{ fontSize: '14px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.55' }}>{copy}</p></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
+                  {[
+                    [project.hsbcShowcase.uploadDocument, 'HSBC redesigned document upload screen'],
+                    [project.hsbcShowcase.cashLimit, 'HSBC redesigned ATM daily cash limit screen'],
+                    [project.hsbcShowcase.viewStatements, 'HSBC redesigned bank statements screen'],
+                  ].map(([img, alt]: string[], i: number) => (
+                    <figure key={alt} className={i === 1 ? 'sm:mt-12' : i === 2 ? 'sm:mt-24' : ''}>
+                      <div className="rounded-[20px] overflow-hidden bg-white" style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 14px 38px rgba(0,0,0,.07)' }}>
+                        <ZoomableImage src={img} alt={alt} maxScale={5} />
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </SectionBlock>
+
+            <SectionBlock>
+              <div className="grid grid-cols-1 lg:grid-cols-[.75fr_1.25fr] gap-10 items-start">
+                <div className="lg:sticky lg:top-28">
+                  <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Resilience & recovery</div>
+                  {sectionHeading('Designing the moments when things go wrong')}
+                  <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.65' }}>
+                    Banking UX is not only about the happy path. Error states, warnings and validation need to explain what happened, preserve trust and give customers an obvious next step.
+                  </p>
+                </div>
+                <div className="grid grid-cols-3 gap-3 md:gap-4 items-start">
+                  {[project.hsbcShowcase.errorState, project.hsbcShowcase.warning, project.hsbcShowcase.invalidAmount].map((img: string, i: number) => (
+                    <div key={i} className="rounded-2xl overflow-hidden bg-white" style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 10px 30px rgba(0,0,0,.05)' }}>
+                      <ZoomableImage src={img} alt={['HSBC service unavailable recovery state', 'HSBC statement connection warning state', 'HSBC ATM limit validation state'][i]} maxScale={5} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionBlock>
+
+            <SectionBlock alt>
+              <div className="mb-7 max-w-3xl">
+                <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Visual system in context</div>
+                {sectionHeading('A global product, designed as one coherent system')}
+                <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.65' }}>Selected screens show how cards, actions, messaging and conversational entry points work together across the wider mobile banking experience.</p>
+              </div>
+              <div className="rounded-2xl overflow-hidden bg-white" style={{ border: '1px solid var(--portfolio-border)' }}><ZoomableImage src={project.hsbcShowcase.secondary} alt="HSBC global mobile design system overview" maxScale={5} /></div>
+            </SectionBlock>
+          </>
+        ) : project.beforeAfter && (
+          <SectionBlock alt={!project.roleDescription}>
+            {sectionHeading(project.beforeAfter.title || 'Before & After')}
+            <div className="space-y-6 mb-4">
+              <div className="w-full rounded-2xl overflow-hidden" style={{ border: `1px solid var(--portfolio-border)` }}><ZoomableImage src={project.beforeAfter.before} alt="Before" maxScale={5} /></div>
+              <div className="w-full rounded-2xl overflow-hidden" style={{ border: `1px solid var(--portfolio-border)` }}><ZoomableImage src={project.beforeAfter.after} alt="After" maxScale={5} /></div>
+            </div>
+            <p style={{ fontSize: '15px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.6' }}>{project.beforeAfter.caption}</p>
+          </SectionBlock>
+        )}
+
+        {projectId === 'hyundai-tucson' && (
+          <SectionBlock alt>
+            <div className="grid grid-cols-1 lg:grid-cols-[0.72fr_1.28fr] gap-8 lg:gap-12 items-start">
+              <div>
+                <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Research-led HMI redesign</div>
+                {sectionHeading('Reducing cognitive load without removing capability')}
+                <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.7' }}>
+                  The redesign was grounded in complaint analysis, competitive benchmarking and user testing. Rather than simplifying by hiding functionality, I reorganised information around driving context, clearer hierarchy and more predictable interaction patterns.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+                {[
+                  ['345', 'NHTSA complaints analysed'],
+                  ['22', 'critical pain points'],
+                  ['48', 'user testing sessions'],
+                  ['12', 'driving scenarios mapped'],
+                ].map(([value, label]) => (
+                  <div key={label} className="rounded-2xl bg-white p-4 md:p-5" style={{ border: '1px solid var(--portfolio-border)' }}>
+                    <div style={{ fontSize: '30px', lineHeight: 1.1, color: 'var(--portfolio-text-primary)' }}>{value}</div>
+                    <div className="mt-2" style={{ fontSize: '14px', lineHeight: 1.45, color: 'var(--portfolio-text-secondary)' }}>{label}</div>
                   </div>
                 ))}
               </div>
-            ) : (
-              <div
-                className="w-full rounded-2xl overflow-hidden mb-4"
-                style={{ border: `1px solid var(--portfolio-border)`, boxShadow: '0 8px 32px rgba(0,0,0,0.06)' }}
-              >
-                <ZoomableImage src={project.beforeAfter.image} alt="Before and After comparison" maxScale={5} />
-              </div>
-            )}
-
-            <p className="font-normal" style={{ fontSize: '15px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.6' }}>
-              {project.beforeAfter.caption}
-            </p>
+            </div>
           </SectionBlock>
         )}
 
@@ -679,24 +854,100 @@ export function CaseStudy() {
           </ul>
         </SectionBlock>
 
+        {projectId === 'frisco-ach' && (
+          <>
+            <SectionBlock alt>
+              <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-12 items-start">
+                <div>
+                  <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Personalized onboarding</div>
+                  {sectionHeading('Teaching the assistant what matters to each user')}
+                  <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.7' }}>I designed an onboarding questionnaire around household size, dietary preferences and shopping priorities. These signals give FrisCoach useful context before the first conversation, so recipe and ingredient recommendations can be more relevant from the start.</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {[friscoSurveyHousehold, friscoSurveyPreferences, friscoSurveySummary].map((img, i) => <div key={i} className="rounded-2xl overflow-hidden bg-white" style={{border:'1px solid var(--portfolio-border)'}}><ZoomableImage src={img} alt={['FrisCoach onboarding questionnaire for household size','FrisCoach onboarding questionnaire for food and shopping preferences','FrisCoach personalization summary before recommendations'][i]} maxScale={5}/></div>)}
+                </div>
+              </div>
+            </SectionBlock>
+            <SectionBlock>
+              <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-12 items-start">
+                <div>
+                  <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>AI safety & recovery</div>
+                  {sectionHeading('Guardrail messages for edge cases')}
+                  <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.7' }}>I designed explicit fallback and guardrail states for situations the assistant should not answer normally: unexpected errors, requests outside the culinary scope, authentication limits, usage limits and unsafe or abusive prompts. Each state explains what happened and gives the user a clear next step.</p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3 items-start">
+                  {[friscoGuardrail1, friscoGuardrail2, friscoGuardrail3, friscoGuardrail4, friscoGuardrail5].map((img, i) => <div key={i} className="rounded-2xl overflow-hidden bg-white" style={{border:'1px solid var(--portfolio-border)'}}><ZoomableImage src={img} alt={['Unexpected error recovery message','Out-of-scope financial information guardrail','Login required continuation message','Daily usage limit message','Unsafe or abusive content 24-hour restriction message'][i]} maxScale={5}/></div>)}
+                </div>
+              </div>
+            </SectionBlock>
+            <SectionBlock alt>
+              <div className="grid grid-cols-1 lg:grid-cols-[0.72fr_1.28fr] gap-8 lg:gap-12 items-start">
+                <div className="lg:sticky lg:top-28">
+                  <div className="uppercase tracking-[0.16em] mb-3" style={{ fontSize: '12px', color: 'var(--portfolio-accent)' }}>Conversation to commerce</div>
+                  {sectionHeading('From a prompt to a recipe, products and basket')}
+                  <p style={{ fontSize: '17px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.7' }}>
+                    I designed the conversational journey so the assistant could move naturally from understanding what a user already has, through recipe inspiration, to concrete products available in Frisco. The flow keeps the user in control: they can choose a recipe, review the proposed ingredients and continue with an editable shopping list before adding products to the main cart.
+                  </p>
+                  <div className="mt-7 space-y-4">
+                    {[
+                      ['01', 'Understand intent', 'The assistant starts from the user’s ingredients or meal goal and confirms what kind of help is needed.'],
+                      ['02', 'Suggest recipes', 'Recipe cards turn an open-ended conversation into clear, comparable options.'],
+                      ['03', 'Translate recipe into products', 'Ingredients are mapped to real grocery items so inspiration can become an actionable shopping journey.'],
+                      ['04', 'Keep control before checkout', 'Users can review, replace or remove products before moving them into the main basket.'],
+                    ].map(([n, title, copy]) => (
+                      <div key={n} className="grid grid-cols-[32px_1fr] gap-3 pt-4" style={{ borderTop: '1px solid var(--portfolio-border)' }}>
+                        <span style={{ fontSize: '12px', color: 'var(--portfolio-accent)', fontWeight: 700 }}>{n}</span>
+                        <div><div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--portfolio-text-primary)' }}>{title}</div><p className="mt-1" style={{ fontSize: '14px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.55' }}>{copy}</p></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 items-start">
+                    {[friscoChat1, friscoChat2, friscoChat3, friscoChat4, friscoChat5].map((img, i) => (
+                      <figure key={i} className="rounded-2xl overflow-hidden bg-white" style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 10px 28px rgba(0,0,0,.05)' }}>
+                        <ZoomableImage src={img} alt={[
+                          'FrisCoach conversation opening and ingredient-based cooking request',
+                          'FrisCoach recipe suggestions presented as conversational cards',
+                          'FrisCoach selected shakshuka recipe with ingredients and cooking details',
+                          'FrisCoach recommended grocery products for the selected recipe',
+                          'FrisCoach product list ready to become an editable shopping list',
+                        ][i]} maxScale={5}/>
+                      </figure>
+                    ))}
+                  </div>
+                  <div className="mt-6 flex justify-center lg:justify-end">
+                    <div
+                      className="w-full max-w-[420px] rounded-2xl overflow-hidden bg-white"
+                      style={{ border: '1px solid var(--portfolio-border)', boxShadow: '0 12px 34px rgba(0,0,0,.05)' }}
+                    >
+                      <ZoomableImage src={friscoRecipeBasket} alt="Frisco ingredient basket assembled from the selected recipe with editable product alternatives" maxScale={5}/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SectionBlock>
+          </>
+        )}
+
         {/* Images Grid */}
-        {project.images && !project.hideGallery && (
+        {project.images && !project.hideGallery && projectId !== 'hsbc-banking' && projectId !== 'frisco-ach' && (
           <SectionBlock alt>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6">
               {project.images.designSystem && (
                 <div className="rounded-lg overflow-hidden" style={{ border: `1px solid var(--portfolio-border)` }}>
-                  <ZoomableImage src={project.images.designSystem} alt="Design System" maxScale={5} />
+                  <ZoomableImage src={project.images.designSystem} alt={projectId === 'hyundai-tucson' ? 'Hyundai Tucson HMI design system and interface foundations' : 'Design system'} maxScale={5} />
                 </div>
               )}
               {project.images.additional && (
                 <div className="rounded-lg overflow-hidden" style={{ border: `1px solid var(--portfolio-border)` }}>
-                  <ZoomableImage src={project.images.additional} alt="Project Detail" maxScale={5} />
+                  <ZoomableImage src={project.images.additional} alt={projectId === 'hyundai-tucson' ? 'Hyundai Tucson cockpit interface exploration and final HMI design' : 'Project detail'} maxScale={5} />
                 </div>
               )}
             </div>
             {project.images.gallery && (
               <div className="w-full rounded-lg overflow-hidden" style={{ border: `1px solid var(--portfolio-border)` }}>
-                <ZoomableImage src={project.images.gallery} alt="Screen Gallery" maxScale={5} />
+                <ZoomableImage src={project.images.gallery} alt={projectId === 'hyundai-tucson' ? 'Hyundai Tucson HMI screen gallery showing navigation, media and vehicle controls' : 'Screen gallery'} maxScale={5} />
               </div>
             )}
           </SectionBlock>
@@ -745,11 +996,16 @@ export function CaseStudy() {
 
         {/* Metrics */}
         <SectionBlock alt>
-          {sectionHeading('Impact')}
-          <div className="grid grid-cols-2 gap-6 md:gap-8">
+          {sectionHeading(projectId === 'hsbc-banking' ? 'Key results' : 'Impact')}
+          {projectId === 'hsbc-banking' && (
+            <p className="mb-8 max-w-3xl" style={{ fontSize: '16px', color: 'var(--portfolio-text-secondary)', lineHeight: '1.65' }}>
+              Success was measured through customer and operational outcomes — not the award itself. The iF Design Award acts as an additional external signal validating the quality of the final product.
+            </p>
+          )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
             {project.metrics.map((metric: any, index: number) => (
-              <div key={index}>
-                <p className="font-normal mb-2" style={{ fontSize: '32px', color: 'var(--portfolio-text-primary)' }}>
+              <div key={index} className="rounded-2xl p-5 md:p-6" style={{ border: '1px solid var(--portfolio-border)', background: '#fff' }}>
+                <p className="font-normal mb-2" style={{ fontSize: '34px', color: 'var(--portfolio-text-primary)', lineHeight: 1.15 }}>
                   {metric.value}
                 </p>
                 <p className="font-normal" style={{ fontSize: '16px', color: 'var(--portfolio-text-secondary)' }}>
@@ -758,6 +1014,13 @@ export function CaseStudy() {
               </div>
             ))}
           </div>
+          {projectId === 'hsbc-banking' && project.awardLink && (
+            <a href={project.awardLink} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-3 rounded-full px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2" style={{ border: '1px solid #9d0000', color: '#8a0000', background: '#fff7f7', fontSize: '14px', fontWeight: 600 }} aria-label="View HSBC iF Design Award 2026 winner page">
+              <span aria-hidden="true" className="inline-flex items-center justify-center rounded-sm" style={{ width: '26px', height: '26px', background: '#e30613', color: '#fff', fontWeight: 700 }}>iF</span>
+              iF Design Award 2026 Winner — external recognition
+              <ExternalLink size={15} aria-hidden="true" />
+            </a>
+          )}
         </SectionBlock>
 
         {/* Testimonial — HSBC specific */}
@@ -806,11 +1069,11 @@ export function CaseStudy() {
       </div>
 
       {/* Bottom: Next Project + Let's Talk CTA */}
-      <div className="mt-20 pt-12 max-w-3xl" style={{ borderTop: `1px solid var(--portfolio-border)` }}>
+      <div className={`mt-20 pt-12 ${(projectId === 'hsbc-banking' || projectId === 'frisco-ach' || projectId === 'hyundai-tucson') ? 'max-w-6xl mx-auto' : 'max-w-3xl'}`} style={{ borderTop: `1px solid var(--portfolio-border)` }}>
         <div className="flex flex-col md:flex-row gap-6">
           {/* Next Project card */}
           <Link
-            to={`/project/${nextId}`}
+            to={`/project/${displayNextId}`}
             className="flex-1 group rounded-xl overflow-hidden transition-all duration-300"
             style={{
               border: '1px solid var(--portfolio-border)',
@@ -823,7 +1086,7 @@ export function CaseStudy() {
             {/* Thumbnail */}
             <div className="w-full overflow-hidden" style={{ aspectRatio: '16/7' }}>
               <img
-                src={heroImages[nextId]}
+                src={heroImages[displayNextId]}
                 alt={nextProject.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

@@ -1,0 +1,3314 @@
+.home-v2 {
+  --ink: #11243d;
+  --muted: #4d627b;
+  --blue: #1769ff;
+  --paper: #fafaf8;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* HERO / STORY */
+.clarity-story {
+  height: 190vh;
+  position: relative;
+  background:
+    radial-gradient(circle at 74% 44%, rgba(94, 115, 255, .055), transparent 34%),
+    linear-gradient(180deg, #fbfbfa 0%, #f8f8f6 100%);
+}
+
+.clarity-stage {
+  height: 100vh;
+  min-height: 700px;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(520px, .95fr) minmax(520px, 1.05fr);
+  align-items: center;
+  padding: 100px clamp(42px, 5.4vw, 92px) 58px;
+}
+
+.clarity-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .24;
+  background-image: radial-gradient(rgba(36, 63, 104, .22) .65px, transparent .8px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(90deg, transparent 0, transparent 34%, black 58%, black 100%);
+}
+
+
+/* FULLSCREEN CLARITY TRANSITION */
+.fullscreen-clarity-field {
+  position: absolute;
+  z-index: 2;
+  left: 66%;
+  top: 50%;
+  width: min(74vmax, 1180px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+
+.fullscreen-clarity-field__halo {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.98) 0 3%, rgba(157,211,255,.70) 6%, rgba(76,141,255,.34) 18%, rgba(90,92,244,.24) 38%, rgba(150,118,255,.12) 57%, rgba(255,255,255,0) 76%);
+  filter: blur(18px);
+  box-shadow: 0 0 110px rgba(70, 123, 255, .12);
+}
+
+.fullscreen-clarity-field__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(48, 112, 232, .19);
+  transform: translate(-50%, -50%);
+}
+.fullscreen-clarity-field__ring--1 { width: 36%; height: 30%; transform: translate(-50%, -50%) rotate(-14deg); }
+.fullscreen-clarity-field__ring--2 { width: 54%; height: 44%; transform: translate(-50%, -50%) rotate(21deg); }
+.fullscreen-clarity-field__ring--3 { width: 72%; height: 61%; transform: translate(-50%, -50%) rotate(-7deg); opacity: .72; }
+
+.fullscreen-clarity-field__label {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(50% - 36px);
+  translate: -50% -50%;
+  white-space: nowrap;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: .12em;
+  font-weight: 760;
+  color: rgba(27, 92, 198, .82);
+}
+
+.fullscreen-clarity-field__core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow:
+    0 0 0 8px rgba(39, 117, 255, .08),
+    0 0 34px 15px rgba(58, 132, 255, .46),
+    0 0 80px 30px rgba(101, 91, 238, .18);
+}
+
+/* The center stays sharp while peripheral context loses focus. */
+.peripheral-focus-blur {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(250,250,248,.015);
+  -webkit-mask-image: radial-gradient(circle at 67% 50%, transparent 0 31%, rgba(0,0,0,.10) 39%, rgba(0,0,0,.78) 61%, #000 78%);
+  mask-image: radial-gradient(circle at 67% 50%, transparent 0 31%, rgba(0,0,0,.10) 39%, rgba(0,0,0,.78) 61%, #000 78%);
+  will-change: opacity;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 8;
+  max-width: 690px;
+  align-self: center;
+  will-change: transform, opacity;
+}
+
+.hero-eyebrow,
+.section-index {
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: .13em;
+  font-weight: 700;
+  color: #31577f;
+  margin: 0 0 25px;
+}
+
+.hero-title {
+  margin: 0;
+  max-width: 690px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .985;
+  font-size: clamp(52px, 4.45vw, 72px);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.hero-title span { color: var(--blue); }
+
+.hero-subtitle {
+  max-width: 540px;
+  margin: 30px 0 0;
+  font-size: 18px;
+  line-height: 1.58;
+  color: #3e546f;
+}
+
+.hero-expertise {
+  margin: 17px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #31577f;
+}
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.primary-cta,
+.project-cta {
+  min-height: 50px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 680;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.primary-cta {
+  background: #10233b;
+  color: white;
+  box-shadow: 0 10px 24px rgba(16, 35, 59, .12);
+}
+.primary-cta:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(16, 35, 59, .17); }
+
+.text-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 46px;
+  color: #223a57;
+  font-size: 15px;
+  font-weight: 630;
+  text-decoration: none;
+}
+
+.hero-status {
+  margin-top: 42px;
+  padding-top: 15px;
+  width: min(415px, 100%);
+  border-top: 1px solid rgba(19, 39, 68, .16);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hero-status span { font-size: 12px; font-weight: 700; letter-spacing: .11em; color: #516780; }
+.hero-status strong { font-size: 14px; font-weight: 540; color: #263e5a; }
+
+/* CLARITY FIELD */
+.clarity-field-wrap {
+  position: relative;
+  width: min(48vw, 760px);
+  aspect-ratio: 1.12 / 1;
+  justify-self: end;
+  z-index: 5;
+  transform-origin: 51% 52%;
+  will-change: transform, opacity;
+}
+
+.clarity-field { position: absolute; inset: 0; isolation: isolate; }
+
+.cf-aura {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(42px);
+  mix-blend-mode: multiply;
+}
+.cf-aura--one {
+  width: 76%; height: 70%; left: 13%; top: 14%;
+  opacity: .72;
+  background: radial-gradient(circle at 48% 44%, rgba(96, 162, 255, .58), rgba(82, 93, 242, .30) 40%, rgba(150, 107, 255, .13) 66%, transparent 80%);
+}
+.cf-aura--two {
+  width: 50%; height: 48%; right: 2%; bottom: 11%;
+  opacity: .48;
+  background: radial-gradient(circle, rgba(103, 78, 238, .27), rgba(41, 133, 255, .10) 47%, transparent 73%);
+}
+
+.cf-grid {
+  position: absolute;
+  width: 76%; height: 70%; right: 4%; top: 12%;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(38, 73, 130, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(38, 73, 130, .12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle, black 15%, rgba(0,0,0,.72) 49%, transparent 78%);
+  transform: rotate(-5deg) skewY(2deg);
+}
+
+.cf-lines {
+  position: absolute;
+  inset: 1% 0 0 0;
+  width: 100%; height: 100%;
+  overflow: visible;
+  z-index: 3;
+}
+.cf-lines path {
+  stroke: rgba(24, 93, 206, .45);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-dasharray: 5 8;
+}
+.cf-lines circle { fill: #2876ff; opacity: .84; }
+
+.cf-lens {
+  position: absolute;
+  width: 30%; aspect-ratio: 1;
+  left: 42%; top: 36%;
+  z-index: 5;
+  filter: drop-shadow(0 18px 45px rgba(43, 105, 255, .17));
+}
+.cf-lens__surface {
+  position: absolute; inset: 0;
+  border-radius: 48% 52% 55% 45% / 50% 43% 57% 50%;
+  background:
+    radial-gradient(circle at 41% 37%, rgba(255,255,255,.98) 0 4%, rgba(173,216,255,.64) 6%, rgba(89,143,255,.24) 23%, rgba(101,78,229,.13) 49%, rgba(255,255,255,.06) 68%, transparent 75%);
+  border: 1px solid rgba(68, 111, 214, .28);
+  backdrop-filter: blur(4px);
+}
+.cf-lens__ellipse { position: absolute; border: 1px solid rgba(49, 109, 226, .28); border-radius: 50%; }
+.cf-lens__ellipse--a { width: 118%; height: 57%; left: -10%; top: 21%; transform: rotate(-18deg); }
+.cf-lens__ellipse--b { width: 73%; height: 115%; left: 14%; top: -8%; transform: rotate(27deg); }
+.cf-lens__focus {
+  position: absolute; width: 9px; height: 9px; left: 46%; top: 45%;
+  border-radius: 50%; background: white;
+  box-shadow: 0 0 0 8px rgba(55, 134, 255, .08), 0 0 24px 10px rgba(69, 139, 255, .48);
+}
+
+.cf-input-layer,
+.cf-output-layer { position: absolute; inset: 0; z-index: 6; }
+
+.cf-artifact {
+  position: absolute;
+  border: 1px solid rgba(25, 59, 110, .16);
+  background: rgba(255, 255, 255, .62);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 36px rgba(34, 56, 93, .06);
+  border-radius: 8px;
+  padding: 10px 11px;
+  color: #324c6d;
+}
+.cf-artifact__eyebrow,
+.cf-label { font-size: 9px; letter-spacing: .095em; font-weight: 720; color: rgba(38, 73, 117, .72); }
+.cf-research { width: 144px; left: 4%; top: 25%; transform: rotate(-3deg); opacity: .6; }
+.cf-data { width: 158px; left: 12%; top: 56%; transform: rotate(2deg); }
+.cf-ai { width: 170px; left: 24%; top: 10%; transform: rotate(1deg); }
+.cf-system { width: 164px; right: 1%; top: 25%; transform: rotate(2deg); }
+.cf-components { width: 180px; right: 5%; bottom: 17%; transform: rotate(-2deg); }
+.cf-label { position: absolute; }
+.cf-label--user { left: 18%; bottom: 16%; }
+.cf-label--testing { right: 25%; top: 13%; }
+
+.mini-lines { display:grid; gap:5px; margin-top:9px; }
+.mini-lines i { height:4px; border-radius:4px; background:rgba(41,75,116,.16); }
+.mini-lines i:nth-child(2){ width:80%; }.mini-lines i:nth-child(3){width:62%;}
+.mini-chart { height:46px; display:flex; align-items:end; gap:6px; margin-top:8px; border-bottom:1px solid rgba(41,75,116,.16); }
+.mini-chart i { display:block; width:17%; background:linear-gradient(#4b8cff,#c6dcff); border-radius:3px 3px 0 0; }
+.mini-chart i:nth-child(1){height:25%;}.mini-chart i:nth-child(2){height:55%;}.mini-chart i:nth-child(3){height:41%;}.mini-chart i:nth-child(4){height:78%;}
+.mini-chat { margin-top:8px; display:grid; gap:6px; }
+.mini-chat i { height:10px; background:rgba(64,105,165,.12); border-radius:6px; }
+.mini-chat i:last-child { width:68%; }
+.mini-chat span { width:76%; justify-self:end; height:14px; background:rgba(30,111,255,.15); border-radius:7px; }
+.mini-system { display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-top:9px; }
+.mini-system i { height:19px; border-radius:4px; border:1px solid rgba(47,93,157,.17); background:rgba(236,244,255,.7); }
+.mini-components { margin-top:9px; display:flex; gap:6px; }
+.mini-components i { height:30px; flex:1; border-radius:5px; background:rgba(51,111,205,.08); border:1px solid rgba(47,93,157,.16); }
+
+.scroll-hint {
+  position: absolute;
+  z-index: 12;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #356292;
+  font-size: 10px;
+  font-weight: 720;
+  letter-spacing: .11em;
+}
+.scroll-hint__circle {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 1px solid rgba(20,103,255,.42);
+  display:grid; place-items:center; color: var(--blue);
+  animation: floatHint 2.3s ease-in-out infinite;
+}
+@keyframes floatHint { 0%,100%{transform:translateY(0)}50%{transform:translateY(4px)} }
+
+/* FIRST PROJECT */
+.work-intro {
+  min-height: 100vh;
+  background: #fbfbf9;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(460px, 1.08fr);
+  gap: clamp(54px, 7vw, 116px);
+  padding: clamp(108px, 10vw, 150px) clamp(42px, 6vw, 104px);
+  align-items: center;
+  border-top: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.work-intro::before {
+  content: '';
+  position: absolute;
+  left: 42%;
+  top: -180px;
+  width: 52vw;
+  height: 320px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 48% 18%, rgba(91, 126, 255, .10), rgba(112, 94, 239, .055) 32%, transparent 72%);
+  filter: blur(18px);
+  opacity: .75;
+}
+
+.work-intro__copy { max-width: 610px; }
+.work-intro__copy h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(46px, 4.3vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  font-weight: 400;
+  color: var(--ink);
+}
+.work-intro__lead { margin:25px 0 0; font-size:19px; line-height:1.58; color:#3f566f; max-width:560px; }
+.work-intro__support { margin: 0 0 28px; font-size:15px; line-height:1.62; color:#5a6d82; max-width:540px; }
+.work-meta {
+  display:grid;
+  grid-template-columns:1.05fr 1.3fr;
+  gap:22px;
+  margin:34px 0 24px;
+  padding-top:18px;
+  border-top:1px solid rgba(19,39,68,.14);
+}
+.work-meta div { display:flex; flex-direction:column; gap:6px; }
+.work-meta span { font-size:11px; letter-spacing:.11em; font-weight:720; color:#526986; }
+.work-meta strong { font-size:14px; font-weight:570; color:#273f5a; }
+.project-cta { border:1px solid rgba(20,103,255,.38); color:#0f58d5; background:white; }
+.project-cta:hover { transform:translateY(-2px); border-color:#1467ff; box-shadow:0 10px 24px rgba(20,103,255,.10); }
+
+.work-intro__visual {
+  position:relative;
+  min-width:0;
+  min-height: 640px;
+  display:grid;
+  place-items:center;
+}
+.work-intro__visual::before {
+  content:'';
+  position:absolute;
+  width:82%; aspect-ratio:1;
+  background:radial-gradient(circle, rgba(61,129,255,.20), rgba(121,102,244,.075) 42%, transparent 70%);
+  filter:blur(34px);
+  border-radius:50%;
+}
+.hsbc-phone-frame {
+  position:relative;
+  z-index:2;
+  width:min(325px, 70%);
+  padding:10px;
+  border-radius:44px;
+  background:linear-gradient(145deg,#151515,#454545 45%,#0d0d0d);
+  box-shadow:0 34px 74px rgba(38,57,91,.20), 0 0 0 1px rgba(0,0,0,.12);
+}
+.hsbc-phone-frame::after {
+  content:'';
+  position:absolute;
+  left:50%; top:16px;
+  transform:translateX(-50%);
+  width:78px; height:19px;
+  border-radius:12px;
+  background:#111;
+  pointer-events:none;
+}
+.hsbc-phone-frame img { width:100%; display:block; border-radius:35px; }
+.visual-annotation {
+  position:absolute;
+  z-index:4;
+  right:0;
+  top:31%;
+  width:190px;
+  padding-left:62px;
+  color:#165dc4;
+}
+.visual-annotation > span {
+  position:absolute;
+  left:0; top:11px;
+  width:50px; height:1px;
+  background:#75a6ff;
+}
+.visual-annotation > span::before {
+  content:'';
+  position:absolute;
+  left:-3px; top:-3px;
+  width:7px; height:7px; border-radius:50%;
+  background:#1769ff;
+}
+.visual-annotation strong { display:block; font-size:10px; letter-spacing:.1em; font-weight:780; }
+.visual-annotation small { display:block; margin-top:6px; font-size:12px; line-height:1.45; color:#52677f; }
+
+@media (max-width: 1120px) {
+  .clarity-stage { grid-template-columns: 1fr 1fr; padding-inline: 36px; }
+  .hero-title { font-size: clamp(50px, 5vw, 68px); }
+  .clarity-field-wrap { width: 55vw; margin-right:-9vw; }
+  .work-intro { grid-template-columns: 1fr; }
+  .work-intro__visual { max-width: 850px; width:100%; min-height:580px; }
+  .visual-annotation { right:8%; }
+}
+
+@media (max-width: 760px) {
+  .clarity-story { height: auto; min-height: 100vh; }
+  .clarity-stage { min-height: 100svh; height:auto; position:relative; display:block; padding:110px 22px 84px; overflow:hidden; }
+  .hero-copy { max-width:none; }
+  .hero-title { font-size: clamp(43px, 12vw, 60px); max-width: 100%; }
+  .hero-subtitle { font-size:16px; }
+  .hero-expertise { font-size:14px; }
+  .hero-actions { align-items:flex-start; flex-direction:column; gap:10px; }
+  .clarity-field-wrap { position:relative; width:112%; margin:54px -6% -30px; aspect-ratio:1/1; opacity:1 !important; }
+  .cf-artifact { }
+  .cf-research { left:0; }.cf-ai{top:6%;}.cf-data{left:5%;top:58%;}.cf-system{right:0;}.cf-components{right:0;bottom:11%;}
+  .hsbc-bridge, .scroll-hint { display:none; }
+  .work-intro { padding:88px 22px; min-height:auto; gap:44px; }
+  .work-intro__copy h2 { font-size:43px; }
+  .work-meta { grid-template-columns:1fr; }
+  .work-intro__visual { min-height:540px; }
+  .visual-annotation { position:relative; right:auto; top:auto; width:min(280px, 100%); margin-top:28px; padding-left:58px; justify-self:center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint__circle { animation:none; }
+  .clarity-story { height:auto; min-height:100vh; }
+  .clarity-stage { position:relative; min-height:100vh; height:auto; }
+}
+
+/* V2.2 spatial clarity-field refinement: preserve independent layers during scroll. */
+.cf-atmosphere {
+  position: absolute;
+  inset: 0;
+  transform-origin: 52% 49%;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+.cf-artifact {
+  will-change: transform, opacity;
+  transform-origin: center;
+}
+
+/* Stronger depth separation: these are individual objects, not a flattened composition. */
+.cf-research { z-index: 7; }
+.cf-data { z-index: 9; }
+.cf-ai { z-index: 10; }
+.cf-system { z-index: 11; }
+.cf-components { z-index: 12; }
+.cf-lens { z-index: 8; }
+.cf-lines { z-index: 4; }
+
+/* Slightly larger initial spatial gaps and asymmetry. */
+.cf-research { left: 0%; top: 22%; }
+.cf-ai { left: 27%; top: 5%; }
+.cf-data { left: 7%; top: 61%; }
+.cf-system { right: -1%; top: 30%; }
+.cf-components { right: -4%; bottom: 10%; }
+.cf-label--user { left: 15%; bottom: 11%; }
+.cf-label--testing { right: 21%; top: 11%; }
+
+/* The lens is a focal layer, not the parent scaling mask. */
+.cf-lens {
+  width: 27%;
+  left: 42%;
+  top: 37%;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+/* Avoid the "flat screenshot" feeling during the pinned sequence. */
+.clarity-field-wrap {
+  transform-origin: center;
+  perspective: 1100px;
+}
+.clarity-field {
+  transform-style: preserve-3d;
+}
+.cf-research { transform: rotate(-4deg) translateZ(18px); }
+.cf-ai { transform: rotate(1.5deg) translateZ(34px); }
+.cf-data { transform: rotate(2.5deg) translateZ(48px); }
+.cf-system { transform: rotate(1deg) translateZ(60px); }
+.cf-components { transform: rotate(-2deg) translateZ(72px); }
+
+/* Compact bridge only; the actual project begins after unpinning. */
+.hsbc-bridge {
+  width: min(540px, 64vw);
+  top: 51%;
+}
+.hsbc-bridge h2 {
+  font-size: clamp(38px, 3.5vw, 56px);
+}
+
+@media (max-width: 760px) {
+  .cf-research, .cf-ai, .cf-data, .cf-system, .cf-components { }
+}
+
+/* V2.5 — COMPLETE WORK SECTION */
+.project-showcase {
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(520px, 1.1fr);
+  gap: clamp(58px, 7vw, 118px);
+  align-items: center;
+  padding: clamp(112px, 10vw, 156px) clamp(42px, 6vw, 104px);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(19, 39, 68, .075);
+  background: #fbfbf9;
+}
+.project-showcase__copy { max-width: 590px; position: relative; z-index: 3; }
+.project-showcase__index { margin-bottom: 18px; color: #1467ff; }
+.project-showcase__copy h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(44px, 4.05vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  color: var(--ink);
+}
+.project-showcase__tags { margin: 13px 0 0; font-size: 14px; line-height: 1.5; color: #56708d; letter-spacing: .01em; }
+.project-showcase__lead { margin: 26px 0 0; max-width: 560px; font-size: 18px; line-height: 1.62; color: #3f5872; }
+.project-showcase__support { margin: 20px 0 27px; max-width: 540px; font-size: 15px; line-height: 1.62; color: #64758a; }
+.project-showcase__facts {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  margin: 34px 0 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(19,39,68,.14);
+}
+.project-showcase__facts div { display: flex; flex-direction: column; gap: 6px; }
+.project-showcase__facts span { font-size: 11px; letter-spacing: .11em; font-weight: 720; color: #60758d; }
+.project-showcase__facts strong { font-size: 14px; line-height: 1.45; font-weight: 590; color: #29425d; }
+.project-showcase__visual { min-width: 0; position: relative; z-index: 2; }
+.project-status-badge {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  margin: -1px 0 20px;
+  padding: 0 10px;
+  border: 1px solid rgba(20,103,255,.25);
+  border-radius: 4px;
+  color: #1b65dd;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: .11em;
+}
+
+/* Friscoach: controlled brand-color moment */
+.project-showcase--frisco { background: linear-gradient(180deg, #fff 0%, #fffdfc 100%); }
+.project-showcase--frisco::after {
+  content: '';
+  position: absolute;
+  right: -12vw;
+  top: 12%;
+  width: 58vw;
+  height: 70%;
+  background: radial-gradient(circle, rgba(199,0,100,.07), rgba(255,90,47,.035) 45%, transparent 72%);
+  filter: blur(34px);
+  pointer-events: none;
+}
+.project-showcase__index--frisco { color: #a80058; }
+.frisco-flow { display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin: 30px 0; color:#5a3c4c; font-size:13px; font-weight:650; }
+.frisco-flow i { width:26px; height:1px; background:linear-gradient(90deg,#c00066,#ff6447); position:relative; }
+.frisco-flow i::after { content:''; position:absolute; right:-1px; top:-2px; width:5px; height:5px; border-radius:50%; background:#c00066; }
+.project-cta--frisco { color:#a80058; border-color:rgba(168,0,88,.27); }
+.project-cta--frisco:hover { border-color:#a80058; box-shadow:0 10px 24px rgba(168,0,88,.08); }
+.frisco-visual { display:grid; place-items:center; min-height:560px; }
+.frisco-visual__frame {
+  width: min(760px, 100%);
+  position:relative;
+  overflow:hidden;
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(81,35,66,.16);
+  background:#f2d0ff;
+}
+.frisco-visual__frame::after { content:''; position:absolute; inset:0; border:1px solid rgba(106,24,71,.10); border-radius:inherit; pointer-events:none; }
+.frisco-visual__frame img { width:100%; display:block; transition:transform .5s cubic-bezier(.22,1,.36,1); }
+.frisco-visual__frame:hover img { transform:scale(1.018); }
+.frisco-visual__note { position:absolute; right:4%; bottom:8%; padding:9px 12px; background:rgba(255,255,255,.88); backdrop-filter:blur(12px); border:1px solid rgba(130,22,76,.13); border-radius:5px; font-size:9px; font-weight:780; letter-spacing:.1em; color:#8c2153; }
+
+/* Hyundai: sketch → final on scroll */
+.project-showcase--hyundai { background:#f8f9fb; }
+.hyundai-progress-label { display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin:30px 0 28px; font-size:13px; font-weight:650; color:#7c8b9d; }
+.hyundai-progress-label span:first-child { color:#1769ff; }
+.hyundai-progress-label i { width:25px; height:1px; background:#aab6c5; position:relative; }
+.hyundai-progress-label i::after { content:'›'; position:absolute; right:-3px; top:-9px; font-size:15px; color:#8fa1b5; }
+.hyundai-visual { min-height:560px; display:grid; place-items:center; }
+.hyundai-visual::before { content:''; position:absolute; width:76%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(50,112,255,.13),rgba(65,83,180,.04) 50%,transparent 72%); filter:blur(40px); }
+.hyundai-visual__layer {
+  grid-area:1/1;
+  width:min(800px, 100%);
+  display:block;
+  border-radius:18px;
+  box-shadow:0 26px 66px rgba(23,35,57,.16);
+  will-change:opacity,transform;
+}
+.hyundai-visual__sketch { filter:saturate(.18) contrast(.96); }
+.hyundai-visual__final { position:relative; z-index:2; }
+.hyundai-visual__caption { position:absolute; left:6%; bottom:5%; z-index:4; display:flex; gap:9px; align-items:center; padding:8px 11px; background:rgba(9,20,35,.76); backdrop-filter:blur(10px); border-radius:5px; color:white; font-size:9px; font-weight:760; letter-spacing:.1em; }
+.hyundai-visual__caption span:nth-child(2) { color:#75a6ff; }
+
+/* AI Design System: fragments → structure */
+.project-showcase--ai-system { min-height:100vh; background:linear-gradient(180deg,#fcfcfb,#f7f9fe); }
+.ai-system-visual { min-height:580px; display:grid; grid-template-columns:repeat(3,minmax(130px,1fr)); gap:18px; align-content:center; padding:60px; border:1px solid rgba(20,70,150,.08); border-radius:26px; background:rgba(255,255,255,.46); box-shadow:inset 0 0 80px rgba(57,119,255,.035); }
+.ai-system-orbit { position:absolute; left:50%; top:50%; width:62%; aspect-ratio:1; border:1px solid rgba(31,106,255,.10); border-radius:50%; transform:translate(-50%,-50%) rotate(-8deg); pointer-events:none; }
+.ai-system-orbit::before,.ai-system-orbit::after { content:''; position:absolute; inset:17%; border:1px solid rgba(78,103,221,.095); border-radius:50%; transform:rotate(24deg); }
+.ai-system-orbit::after { inset:33%; transform:rotate(-29deg); }
+.ai-pattern-card { position:relative; z-index:2; min-height:118px; padding:16px; border:1px solid rgba(20,78,160,.13); background:rgba(255,255,255,.84); backdrop-filter:blur(12px); border-radius:10px; box-shadow:0 15px 38px rgba(28,63,120,.055); display:flex; flex-direction:column; gap:8px; }
+.ai-pattern-card span { color:#1769ff; font-size:12px; font-weight:750; }
+.ai-pattern-card strong { color:#425872; font-size:12px; line-height:1.4; font-weight:540; }
+.ai-pattern-card i { margin-top:auto; height:5px; border-radius:5px; background:#edf2fc; overflow:hidden; }
+.ai-pattern-card i b { display:block; width:62%; height:100%; background:linear-gradient(90deg,#1769ff,#8caeff); border-radius:inherit; }
+.ai-pattern-card--2 i b{width:76%}.ai-pattern-card--3 i b{width:48%}.ai-pattern-card--4 i b{width:69%}.ai-pattern-card--5 i b{width:82%}.ai-pattern-card--6 i b{width:55%}
+.ai-system-foundations { grid-column:1/-1; margin-top:10px; padding-top:18px; border-top:1px solid rgba(20,78,160,.10); display:flex; align-items:center; gap:10px; flex-wrap:wrap; position:relative; z-index:2; }
+.ai-system-foundations small { margin-right:auto; font-size:9px; font-weight:780; letter-spacing:.11em; color:#657b96; }
+.ai-system-foundations span { padding:6px 9px; border:1px solid rgba(20,78,160,.12); border-radius:5px; color:#48617f; font-size:10px; background:white; }
+.project-cta--disabled { cursor:default; color:#687c94; border-color:rgba(70,91,120,.16); background:#f8f9fa; box-shadow:none; }
+.project-cta--disabled:hover { transform:none; border-color:rgba(70,91,120,.16); box-shadow:none; }
+
+@media (max-width: 1120px) {
+  .project-showcase { grid-template-columns:1fr; min-height:auto; }
+  .project-showcase__copy { max-width:720px; }
+  .project-showcase__visual { width:100%; }
+  .frisco-visual,.hyundai-visual,.ai-system-visual { min-height:520px; }
+}
+
+@media (max-width: 760px) {
+  .project-showcase { padding:84px 22px; gap:44px; }
+  .project-showcase__copy h2 { font-size:42px; }
+  .project-showcase__lead { font-size:16px; }
+  .project-showcase__facts { grid-template-columns:1fr; }
+  .frisco-flow { align-items:flex-start; flex-direction:column; }
+  .frisco-flow i { width:1px; height:18px; margin-left:5px; background:linear-gradient(#c00066,#ff6447); }
+  .frisco-visual,.hyundai-visual { min-height:360px; }
+  .frisco-visual__frame { border-radius:14px; }
+  .hyundai-visual__layer { border-radius:12px; }
+  .ai-system-visual { grid-template-columns:1fr 1fr; min-height:auto; padding:20px; gap:12px; border-radius:18px; }
+  .ai-system-foundations { grid-column:1/-1; }
+}
+
+/* V2.6 — PROCESS / CAPABILITIES / ABOUT / CONTACT */
+.section-shell {
+  width: min(1380px, calc(100% - 84px));
+  margin: 0 auto;
+}
+.section-kicker {
+  margin: 0 0 24px;
+  color: var(--blue);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 760;
+  letter-spacing: .14em;
+}
+
+.process-section {
+  background: #f6f7fa;
+  padding: clamp(110px, 10vw, 160px) 0 clamp(120px, 11vw, 170px);
+  border-top: 1px solid rgba(20, 44, 77, .06);
+}
+.process-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, .65fr);
+  gap: 80px;
+  align-items: end;
+}
+.process-heading h2,
+.capabilities-section h2,
+.about-home h2,
+.contact-section h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -.045em;
+  line-height: 1.03;
+}
+.process-heading h2 { font-size: clamp(48px, 5vw, 74px); max-width: 780px; }
+.process-heading__note {
+  margin: 0 0 7px;
+  color: #52677f;
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 440px;
+}
+.process-path {
+  margin-top: 86px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 22px;
+}
+.process-path::before {
+  content: '';
+  position: absolute;
+  left: 3%; right: 3%; top: 19px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(23,105,255,.5), rgba(23,105,255,.16));
+}
+.process-step { position: relative; padding-top: 62px; min-width: 0; }
+.process-step__node {
+  position: absolute;
+  top: 0; left: 0;
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--blue);
+  border: 5px solid #f6f7fa;
+  box-shadow: 0 0 0 1px rgba(23,105,255,.34);
+  font-size: 10px;
+  font-weight: 760;
+  z-index: 2;
+}
+.process-step h3 { margin: 20px 0 8px; font-size: 17px; color: #1d344e; font-weight: 650; }
+.process-step p { margin: 0; color: #647991; font-size: 13px; line-height: 1.58; max-width: 180px; }
+.process-artifact {
+  height: 92px;
+  border: 1px solid rgba(28, 67, 119, .12);
+  border-radius: 10px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 16px 36px rgba(42,63,93,.045);
+  padding: 15px;
+  display: grid;
+  align-content: center;
+  gap: 7px;
+  overflow: hidden;
+}
+.process-artifact i { display: block; border-radius: 6px; background: rgba(43,96,177,.12); height: 6px; }
+.process-artifact i:nth-child(2){ width: 78%; }
+.process-artifact i:nth-child(3){ width: 57%; }
+.process-artifact i:nth-child(4){ width: 34%; background: rgba(23,105,255,.42); }
+.process-artifact--explore { transform: rotate(-1.5deg); }
+.process-artifact--decide i:nth-child(1), .process-artifact--decide i:nth-child(2) { width: 48%; display: inline-block; }
+.process-artifact--build { background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(233,241,255,.72)); }
+.process-artifact--learn i:last-child { width: 72%; height: 2px; background: #1769ff; }
+
+.capabilities-section {
+  background: #fbfbf9;
+  padding: clamp(110px, 9vw, 150px) 0;
+}
+.capabilities-section h2 { font-size: clamp(46px, 4.8vw, 70px); }
+.capability-grid {
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 44px;
+}
+.capability-column h3 {
+  margin: 0 0 24px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid rgba(25,52,86,.12);
+  color: #7187a1;
+  font-size: 11px;
+  letter-spacing: .14em;
+  font-weight: 760;
+}
+.capability-column ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.capability-column li { color: #253b55; font-size: 15px; line-height: 1.4; }
+.tools-line {
+  margin-top: 70px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(25,52,86,.12);
+}
+.tools-line span, .about-exploring > span, .contact-links > div > span, .contact-form__label {
+  display: block;
+  color: #758ba3;
+  font-size: 10px;
+  letter-spacing: .14em;
+  font-weight: 760;
+}
+.tools-line p { margin: 13px 0 0; color: #5c7189; font-size: 14px; }
+
+.about-home {
+  background: #f5f6f8;
+  padding: clamp(116px, 10vw, 165px) 0;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+.about-home__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, .8fr);
+  gap: clamp(70px, 9vw, 150px);
+  align-items: center;
+}
+.about-home__copy h2 { font-size: clamp(46px, 4.7vw, 70px); max-width: 760px; }
+.about-home__copy > p:not(.section-kicker) { margin: 26px 0 0; max-width: 700px; color: #52677f; font-size: 17px; line-height: 1.72; }
+.about-exploring { margin-top: 42px; }
+.about-exploring ul { list-style: none; margin: 19px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 210px)); gap: 13px 34px; }
+.about-exploring li { color: #203852; font-size: 15px; position: relative; padding-left: 16px; }
+.about-exploring li::before { content:''; position:absolute; width:5px; height:5px; border-radius:50%; background:var(--blue); left:0; top:.55em; }
+.about-portrait {
+  position: relative;
+  width: min(100%, 470px);
+  justify-self: center;
+}
+.about-portrait::before {
+  content:'';
+  position:absolute;
+  inset: 8% -10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(71,127,255,.12), rgba(116,101,239,.045) 45%, transparent 72%);
+  filter: blur(30px);
+}
+.about-portrait img { position:relative; z-index:2; display:block; width:100%; opacity:.94; }
+.about-portrait__field { position:absolute; inset:2% -18%; z-index:3; pointer-events:none; }
+.about-node { position:absolute; font-size:9px; letter-spacing:.12em; color:#6d93c8; font-weight:740; }
+.about-node::before { content:''; display:inline-block; width:5px; height:5px; border-radius:50%; background:#3f84ff; margin-right:7px; vertical-align:1px; box-shadow:0 0 0 6px rgba(63,132,255,.07); }
+.about-node--ai { left:0; top:28%; }
+.about-node--research { right:0; top:16%; }
+.about-node--systems { right:-2%; bottom:23%; }
+.about-node--interaction { left:-2%; bottom:20%; }
+
+.contact-section {
+  background: #fbfbf9;
+  padding: clamp(120px, 10vw, 170px) 0 42px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(500px, 1fr);
+  gap: clamp(70px, 9vw, 150px);
+  align-items: start;
+}
+.contact-copy h2 { font-size: clamp(58px, 6vw, 88px); max-width: 720px; }
+.contact-copy h2 span { color: var(--blue); }
+.contact-copy > p:not(.section-kicker) { margin: 26px 0 0; color: #586e86; font-size: 16px; line-height: 1.65; }
+.contact-links { margin-top: 50px; display: grid; gap: 28px; }
+.contact-links > div { display:grid; gap:12px; }
+.contact-links a { width:max-content; max-width:100%; display:flex; align-items:center; gap:8px; color:#0c59db; font-size:15px; text-decoration:none; }
+.copy-email { width:max-content; display:flex; align-items:center; gap:7px; background:white; color:#415873; border:1px solid rgba(25,52,86,.15); border-radius:7px; padding:8px 11px; font-size:12px; cursor:pointer; }
+.contact-form { display:grid; gap:22px; }
+.contact-form__label { margin-bottom: 2px; }
+.contact-form label { display:grid; gap:8px; color:#263b54; font-size:13px; font-weight:600; }
+.contact-form input, .contact-form textarea {
+  width:100%;
+  border:1px solid rgba(24,53,88,.15);
+  background:#fff;
+  border-radius:9px;
+  color:#182f49;
+  font:inherit;
+  font-size:15px;
+  padding:14px 15px;
+  outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.contact-form textarea { resize:vertical; min-height:150px; }
+.contact-form input:focus, .contact-form textarea:focus { border-color:rgba(23,105,255,.62); box-shadow:0 0 0 3px rgba(23,105,255,.08); }
+.contact-form button {
+  min-height:50px;
+  border:0;
+  border-radius:9px;
+  background:#10243b;
+  color:#fff;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:14px;
+  font-weight:650;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.contact-form button:hover { transform: translateY(-2px); box-shadow:0 13px 28px rgba(16,36,59,.12); }
+.home-footer {
+  margin-top: 108px;
+  padding-top: 30px;
+  border-top:1px solid rgba(25,52,86,.11);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  color:#8799ad;
+  font-size:12px;
+}
+.home-footer button { border:0; background:transparent; color:#5d7692; font:inherit; cursor:pointer; display:flex; align-items:center; gap:8px; text-transform:uppercase; letter-spacing:.1em; font-weight:720; }
+.home-footer__arrow { transform: rotate(-45deg); }
+
+@media (max-width: 1100px) {
+  .process-heading { grid-template-columns:1fr; gap:28px; }
+  .process-path { grid-template-columns:repeat(3, 1fr); row-gap:50px; }
+  .process-path::before { display:none; }
+  .capability-grid { grid-template-columns:repeat(2, 1fr); }
+  .about-home__grid, .contact-grid { grid-template-columns:1fr; }
+  .about-portrait { margin-top:20px; }
+  .contact-grid { gap:70px; }
+}
+@media (max-width: 760px) {
+  .section-shell { width:min(100% - 44px, 1380px); }
+  .process-section, .capabilities-section, .about-home, .contact-section { padding-top:90px; padding-bottom:90px; }
+  .process-heading h2, .capabilities-section h2, .about-home__copy h2 { font-size:42px; }
+  .process-path { grid-template-columns:1fr; margin-top:54px; gap:32px; }
+  .process-step { padding-top:52px; }
+  .process-artifact { max-width:310px; }
+  .capability-grid { grid-template-columns:1fr; gap:38px; margin-top:50px; }
+  .about-exploring ul { grid-template-columns:1fr; }
+  .about-portrait { width:min(88vw, 430px); }
+  .contact-grid { grid-template-columns:1fr; }
+  .contact-copy h2 { font-size:52px; }
+  .home-footer { flex-direction:column; align-items:flex-start; gap:24px; margin-top:72px; }
+}
+
+/* V2.7 — softer HERO → HSBC handoff + About portrait breathing room */
+@media (min-width: 761px) {
+  /* Let the Clarity Field visually dissolve into the first project instead of
+     ending on a hard horizontal section edge. */
+  .clarity-story {
+    z-index: 2;
+  }
+
+  .clarity-story::after {
+    content: '';
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    bottom: -86px;
+    height: 210px;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 69% 5%, rgba(87, 126, 255, .13) 0%, rgba(113, 96, 240, .07) 31%, rgba(251, 251, 249, .42) 57%, transparent 78%),
+      linear-gradient(180deg, rgba(248,248,246,0) 0%, rgba(250,250,248,.72) 49%, #fbfbf9 88%);
+    filter: blur(14px);
+  }
+
+  .work-intro {
+    margin-top: -1px;
+    padding-top: clamp(128px, 11vw, 168px);
+    background:
+      radial-gradient(ellipse at 69% -4%, rgba(91,126,255,.085), rgba(112,94,239,.035) 31%, transparent 62%),
+      #fbfbf9;
+  }
+
+  .work-intro::before {
+    top: -220px;
+    height: 390px;
+    opacity: .68;
+    filter: blur(28px);
+  }
+
+  /* Shift the portrait toward the copy, leaving visible breathing room at the
+     right edge rather than letting the composition feel cropped. */
+  .about-portrait {
+    justify-self: start;
+    margin-left: clamp(-54px, -3.4vw, -28px);
+  }
+}
+
+@media (max-width: 1120px) and (min-width: 761px) {
+  .about-portrait {
+    margin-left: -18px;
+  }
+}
+
+/* V2.8 — transparent About portrait prevents white compositing/cropping flash during in-view animation. */
+.about-portrait { isolation: isolate; }
+.about-portrait img { backface-visibility: hidden; transform: translateZ(0); }
+
+/* V2.9 — clearer content hierarchy + final "complexity to clarity" resolution */
+.clarity-story { height: 225vh; }
+
+/* Final scroll state: scattered artefacts resolve into one ordered spatial rail. */
+.clarity-rail {
+  position: absolute;
+  z-index: 14;
+  left: 50%;
+  top: 51%;
+  width: min(76vw, 1120px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.clarity-rail__title {
+  display: block;
+  margin: 0 auto 24px;
+  text-align: center;
+  color: rgba(27,92,198,.84);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: .18em;
+  font-weight: 780;
+}
+.clarity-rail__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: .86fr 1fr 1.16fr 1fr .86fr;
+  gap: clamp(14px, 1.45vw, 24px);
+  align-items: center;
+}
+.clarity-rail__track::before {
+  content: '';
+  position: absolute;
+  left: 4%; right: 4%; top: 50%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(23,105,255,.24) 14%, rgba(23,105,255,.58) 50%, rgba(23,105,255,.24) 86%, transparent);
+  z-index: -1;
+}
+.clarity-rail__card {
+  min-height: 116px;
+  padding: 14px;
+  border: 1px solid rgba(25,59,110,.17);
+  border-radius: 11px;
+  background: rgba(255,255,255,.74);
+  box-shadow: 0 20px 54px rgba(49,75,130,.09);
+  backdrop-filter: blur(10px);
+  transform-origin: center;
+}
+.clarity-rail__card b { font-size: 9px; letter-spacing: .105em; color: #486789; }
+.clarity-rail__card--focus { transform: scale(1.08); filter: blur(0); opacity: 1; box-shadow: 0 24px 68px rgba(48,104,220,.16); }
+.clarity-rail__card--near { transform: scale(.94); filter: blur(.35px); opacity: .82; }
+.clarity-rail__card--far { transform: scale(.84); filter: blur(2.1px); opacity: .47; }
+
+/* Make capability items unmistakably read as lists without adding visual noise. */
+.capability-column li { position: relative; padding-left: 14px; }
+.capability-column li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .64em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(23,105,255,.82);
+}
+.tools-line p { max-width: 1180px; line-height: 1.75; }
+
+/* HSBC recognition — text badge only, so it stays factual and visually restrained. */
+.work-title-row { display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; }
+.work-title-row h2 { margin-bottom: 0; }
+.award-badge {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 7px;
+  padding: 8px 11px;
+  border: 1px solid rgba(25,52,86,.14);
+  border-radius: 7px;
+  background: rgba(255,255,255,.72);
+  color: #61758c;
+  font-size: 9px;
+  line-height: 1.25;
+  letter-spacing: .06em;
+}
+.award-badge strong { color: #243b55; font-size: 10px; letter-spacing: .035em; }
+
+/* Restore the portrait presence lost in V2.8 while retaining its transparent compositing fix. */
+.about-portrait img {
+  opacity: 1;
+  filter: contrast(1.14) brightness(.94);
+}
+
+@media (max-width: 760px) {
+  .clarity-story { height: auto; }
+  .clarity-rail { display: none; }
+  .work-title-row { display: block; }
+  .award-badge { margin: 12px 0 0; width: fit-content; }
+}
+
+/* V2.10 — match the approved spatial Clarity Field reference + restore original About portrait */
+@media (min-width: 761px) {
+  .clarity-story { height: 245vh; }
+
+  /* The final state should read as one ordered spatial sequence, not a second diagram layered on top. */
+  .clarity-rail {
+    top: 48.5%;
+    width: min(67vw, 1060px);
+    filter: none;
+  }
+  .clarity-rail::before,
+  .clarity-rail::after {
+    content: '';
+    position: absolute;
+    top: 21%;
+    bottom: 18%;
+    width: 18%;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .clarity-rail::before {
+    left: -7%;
+    background: linear-gradient(90deg, rgba(248,249,252,.88), rgba(248,249,252,.18), transparent);
+    backdrop-filter: blur(3px);
+    mask-image: linear-gradient(90deg,#000,transparent);
+  }
+  .clarity-rail::after {
+    right: -7%;
+    background: linear-gradient(270deg, rgba(248,249,252,.88), rgba(248,249,252,.18), transparent);
+    backdrop-filter: blur(3px);
+    mask-image: linear-gradient(270deg,#000,transparent);
+  }
+
+  .clarity-rail__track {
+    grid-template-columns: .82fr .94fr 1.18fr .94fr .82fr;
+    gap: clamp(12px, 1.18vw, 20px);
+    perspective: 1200px;
+  }
+  .clarity-rail__track::before {
+    left: -2%;
+    right: -2%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(23,105,255,.22) 7%, rgba(23,105,255,.72) 38%, rgba(23,105,255,.92) 50%, rgba(23,105,255,.72) 62%, rgba(23,105,255,.22) 93%, transparent 100%);
+    box-shadow: 0 0 15px rgba(23,105,255,.16);
+  }
+  .clarity-rail__track::after {
+    content: '';
+    position: absolute;
+    left: 2%; right: 2%; top: 50%;
+    height: 8px;
+    transform: translateY(-50%);
+    background: radial-gradient(circle at center, rgba(36,119,255,.22), transparent 58%);
+    filter: blur(9px);
+    z-index: -2;
+  }
+
+  .clarity-rail__title {
+    margin: 24px auto 0;
+    color: #1769ff;
+    font-size: 10px;
+    letter-spacing: .20em;
+    text-shadow: 0 0 18px rgba(23,105,255,.12);
+  }
+
+  .clarity-rail__card {
+    min-height: 150px;
+    padding: 14px 13px 13px;
+    border-radius: 9px;
+    border-color: rgba(39,86,164,.16);
+    background: rgba(255,255,255,.72);
+    box-shadow: 0 18px 50px rgba(50,84,145,.10);
+    backdrop-filter: blur(12px) saturate(1.06);
+    overflow: hidden;
+  }
+  .clarity-rail__card b {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 8px;
+    letter-spacing: .11em;
+    color: #375d91;
+  }
+  .clarity-rail__card--focus {
+    min-height: 188px;
+    transform: translateZ(36px) scale(1.075);
+    opacity: 1;
+    filter: none;
+    border-color: rgba(33,105,255,.26);
+    background: rgba(255,255,255,.88);
+    box-shadow: 0 24px 72px rgba(35,99,218,.18), 0 0 0 1px rgba(23,105,255,.05);
+  }
+  .clarity-rail__card--near {
+    transform: translateZ(12px) scale(.95);
+    filter: blur(.22px);
+    opacity: .83;
+  }
+  .clarity-rail__card--far {
+    transform: translateZ(-24px) scale(.85);
+    filter: blur(1.45px);
+    opacity: .50;
+  }
+
+  /* Research card */
+  .rail-research { position: relative; height: 106px; border-radius: 5px; background: linear-gradient(180deg,#fbfdff,#eef4ff); border:1px solid rgba(70,113,176,.12); padding:10px; }
+  .rail-research span { display:block; height:4px; margin-bottom:6px; border-radius:4px; background:rgba(53,93,145,.14); }
+  .rail-research span:nth-child(2){width:76%}.rail-research span:nth-child(3){width:55%}
+  .rail-research em { position:absolute; bottom:12px; width:18px; border-radius:3px 3px 0 0; background:linear-gradient(#4d8eff,#b6d2ff); }
+  .rail-research em:nth-of-type(1){left:16px;height:26px}.rail-research em:nth-of-type(2){left:40px;height:40px}
+
+  /* Data card */
+  .rail-data { height:106px; display:grid; grid-template-rows:1fr auto; gap:5px; }
+  .rail-data svg { width:100%; height:68px; overflow:visible; }
+  .rail-data path { stroke:#2d78f6; stroke-width:2.2; vector-effect:non-scaling-stroke; }
+  .rail-data circle { fill:#1769ff; }
+  .rail-data > span { height:5px; border-radius:5px; background:rgba(50,95,158,.10); }
+  .rail-data > span:last-child { width:68%; }
+
+  /* AI card */
+  .rail-ai { display:grid; gap:7px; }
+  .rail-ai strong { display:block; margin:0 0 3px; padding:9px 10px; border-radius:8px; background:#1769ff; color:#fff; font-size:8px; line-height:1.35; font-weight:650; box-shadow:0 8px 18px rgba(23,105,255,.16); }
+  .rail-ai i { display:block; height:12px; border-radius:7px; background:linear-gradient(90deg,rgba(71,112,169,.12),rgba(71,112,169,.06)); }
+  .rail-ai i:nth-of-type(2){width:84%}.rail-ai i:nth-of-type(3){width:66%}
+  .rail-ai > div { display:flex; justify-content:flex-end; gap:6px; padding-top:3px; }
+  .rail-ai > div span { width:20px; height:20px; border-radius:50%; background:rgba(23,105,255,.12); border:1px solid rgba(23,105,255,.20); }
+  .rail-ai > div span:last-child { background:#1769ff; }
+
+  /* System map */
+  .rail-system-map { position:relative; height:106px; }
+  .rsm { position:absolute; width:28px; height:17px; border-radius:4px; background:#f6faff; border:1px solid rgba(23,105,255,.32); box-shadow:0 2px 6px rgba(25,70,140,.05); }
+  .rsm-a{left:50%;top:5px;transform:translateX(-50%)} .rsm-b{left:10%;top:45px}.rsm-c{left:50%;top:45px;transform:translateX(-50%)}.rsm-d{right:10%;top:45px}.rsm-e{left:50%;bottom:2px;transform:translateX(-50%)}
+  .rsl{position:absolute; background:rgba(23,105,255,.30); transform-origin:left center; height:1px; width:44px; left:50%; top:29px;}
+  .rsl-a{transform:rotate(145deg)}.rsl-b{transform:rotate(35deg)}.rsl-c{top:63px;transform:rotate(145deg)}.rsl-d{top:63px;transform:rotate(35deg)}
+
+  /* Components */
+  .rail-components { display:grid; grid-template-columns:1fr 1fr; gap:8px 7px; padding-top:4px; }
+  .rail-components span { min-height:22px; display:grid; place-items:center; border-radius:10px; padding:4px 6px; color:#3971c7; background:#f5f9ff; border:1px solid rgba(23,105,255,.16); font-size:7px; line-height:1; }
+  .rail-components span:nth-child(2), .rail-components span:nth-child(5){ background:#1769ff; color:#fff; border-color:#1769ff; }
+
+  /* The old scattered composition should be completely gone by the time the rail resolves. */
+  .clarity-rail + .scroll-hint { z-index: 16; }
+}
+
+/* Use the exact supplied portrait artwork. No extra contrast/brightness treatment. */
+.about-portrait::before {
+  opacity: .48;
+  background: radial-gradient(circle, rgba(71,127,255,.07), rgba(116,101,239,.025) 48%, transparent 73%);
+}
+.about-portrait img {
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  object-fit: contain;
+  object-position: center center;
+  background: transparent;
+}
+
+/* V2.11 — one continuous Clarity Field animation using the SAME artifact nodes */
+@media (min-width: 761px) {
+  .clarity-story { height: 255vh; }
+
+  /* Full-screen colour field grows behind the original cards. */
+  .fullscreen-clarity-field {
+    left: 50%;
+    top: 50%;
+    width: 112vmax;
+    max-width: none;
+  }
+  .fullscreen-clarity-field__halo {
+    inset: 8%;
+    background:
+      radial-gradient(circle at 50% 48%, rgba(255,255,255,.98) 0 2%, rgba(169,218,255,.72) 5%, rgba(72,142,255,.42) 15%, rgba(86,91,244,.31) 31%, rgba(139,110,255,.18) 51%, rgba(221,226,255,.10) 66%, rgba(255,255,255,0) 80%);
+    filter: blur(24px);
+    box-shadow: 0 0 150px rgba(70,123,255,.18);
+  }
+  .fullscreen-clarity-field__ring { border-color: rgba(48,112,232,.12); }
+  .fullscreen-clarity-field__ring--1 { width: 30%; height: 23%; }
+  .fullscreen-clarity-field__ring--2 { width: 46%; height: 36%; }
+  .fullscreen-clarity-field__ring--3 { width: 64%; height: 51%; opacity: .55; }
+  .fullscreen-clarity-field__label {
+    top: 68%;
+    color: rgba(23,105,255,.82);
+    letter-spacing: .19em;
+    font-size: 10px;
+  }
+  .fullscreen-clarity-field__core { opacity: .32; }
+
+  /* Blur is optical depth only. The middle stays crisp, edges soften. */
+  .peripheral-focus-blur {
+    z-index: 6;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(250,250,248,.006);
+    -webkit-mask-image: radial-gradient(ellipse 40% 58% at 50% 50%, transparent 0 43%, rgba(0,0,0,.08) 51%, rgba(0,0,0,.55) 72%, #000 100%);
+    mask-image: radial-gradient(ellipse 40% 58% at 50% 50%, transparent 0 43%, rgba(0,0,0,.08) 51%, rgba(0,0,0,.55) 72%, #000 100%);
+  }
+
+  /* The original field becomes the final spatial rail. No second layer exists. */
+  .clarity-field-wrap {
+    z-index: 7;
+    width: min(48vw, 760px);
+    transform-origin: 50% 50%;
+  }
+  .cf-lens { z-index: 2; }
+  .cf-lines { z-index: 3; }
+  .cf-artifact { z-index: 8; }
+
+  /* Final cards retain the same glass language from the scattered state. */
+  .cf-artifact {
+    min-height: 84px;
+    background: rgba(255,255,255,.74);
+    border-color: rgba(39,86,164,.18);
+    box-shadow: 0 18px 48px rgba(47,82,145,.10);
+    backdrop-filter: blur(12px) saturate(1.05);
+    -webkit-backdrop-filter: blur(12px) saturate(1.05);
+  }
+  .cf-ai {
+    background: rgba(255,255,255,.89);
+    border-color: rgba(23,105,255,.25);
+    box-shadow: 0 22px 62px rgba(35,99,218,.17);
+  }
+
+  /* Research: the richer content exists from the start, so nothing swaps on scroll. */
+  .mini-research-detail { margin-top: 8px; }
+  .mini-research-detail svg { display:block; width:100%; height:34px; }
+  .mini-research-detail path { stroke:#2876f7; stroke-width:1.8; }
+  .mini-research-detail circle { fill:#1769ff; }
+  .mini-research-detail__rows { display:grid; gap:4px; margin-top:4px; }
+  .mini-research-detail__rows i { display:block; height:4px; border-radius:4px; background:rgba(50,95,158,.11); }
+  .mini-research-detail__rows i:nth-child(2){ width:78%; }
+  .mini-research-detail__rows i:nth-child(3){ width:58%; }
+
+  /* Data / signals */
+  .mini-data-detail { margin-top:8px; display:grid; gap:4px; }
+  .mini-data-detail svg { width:100%; height:45px; overflow:visible; }
+  .mini-data-detail path { stroke:#2876f7; stroke-width:2; }
+  .mini-data-detail circle { fill:#1769ff; }
+  .mini-data-detail > i { display:block; height:4px; border-radius:4px; background:rgba(50,95,158,.10); }
+  .mini-data-detail > i:last-child { width:66%; }
+
+  /* Systems */
+  .mini-system-detail { position:relative; height:61px; margin-top:8px; }
+  .msd-node { position:absolute; width:24px; height:13px; border:1px solid rgba(23,105,255,.32); border-radius:3px; background:rgba(246,250,255,.86); z-index:2; }
+  .msd-node--a{left:50%;top:0;transform:translateX(-50%)}
+  .msd-node--b{left:8%;top:23px}.msd-node--c{right:8%;top:23px}
+  .msd-node--d{left:23%;bottom:0}.msd-node--e{right:23%;bottom:0}
+  .msd-line { position:absolute; display:block; background:rgba(23,105,255,.22); z-index:1; }
+  .msd-line--v { left:50%; top:12px; width:1px; height:39px; }
+  .msd-line--h1 { left:20%; right:20%; top:29px; height:1px; }
+  .msd-line--h2 { left:35%; right:35%; bottom:8px; height:1px; }
+
+  /* Components */
+  .mini-components-detail { display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; }
+  .mini-components-detail span { padding:4px 7px; border-radius:999px; border:1px solid rgba(23,105,255,.18); background:rgba(238,245,255,.8); color:#4170ad; font-size:7px; line-height:1; }
+  .mini-components-detail span:nth-child(2), .mini-components-detail span:nth-child(5) { background:#1769ff; color:#fff; border-color:#1769ff; }
+
+  /* The old duplicate final rail is intentionally disabled even if stale CSS remains. */
+  .clarity-rail { display:none !important; }
+}
+
+@media (min-width: 761px) {
+  .cf-resolution-line {
+    position:absolute;
+    z-index:5;
+    left:9%;
+    right:3%;
+    top:51.5%;
+    height:2px;
+    transform-origin:50% 50%;
+    background:linear-gradient(90deg, transparent 0%, rgba(23,105,255,.26) 7%, rgba(23,105,255,.78) 25%, rgba(23,105,255,.92) 50%, rgba(23,105,255,.72) 75%, rgba(23,105,255,.22) 93%, transparent 100%);
+    box-shadow:0 0 16px rgba(23,105,255,.18);
+    pointer-events:none;
+  }
+  .cf-resolution-line > i {
+    position:absolute;
+    top:50%;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#1769ff;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 0 5px rgba(23,105,255,.06);
+  }
+  .cf-resolution-line > i:nth-child(1){left:7%}
+  .cf-resolution-line > i:nth-child(2){left:28%}
+  .cf-resolution-line > i:nth-child(3){left:50%; width:9px; height:9px; box-shadow:0 0 0 7px rgba(23,105,255,.08),0 0 20px rgba(23,105,255,.25)}
+  .cf-resolution-line > i:nth-child(4){left:72%}
+  .cf-resolution-line > i:nth-child(5){left:93%}
+}
+
+/* V2.12 — approved Clarity Field: richer persistent cards + resolved optical rail */
+@media (min-width: 761px) {
+  .clarity-story { height: 270vh; }
+
+  /* Keep one set of artefacts throughout. Richer cards are visible from the first frame. */
+  .cf-artifact {
+    border-radius: 11px;
+    padding: 13px 14px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(36,83,162,.17);
+    box-shadow: 0 20px 54px rgba(36,75,145,.10);
+    backdrop-filter: blur(14px) saturate(1.08);
+    -webkit-backdrop-filter: blur(14px) saturate(1.08);
+    transform-origin: center center;
+  }
+  .cf-artifact__eyebrow {
+    display:block;
+    font-size: 9px;
+    line-height:1.1;
+    letter-spacing:.11em;
+    font-weight:800;
+    color:#365a8a;
+  }
+  .cf-research { min-height: 168px; }
+  .cf-data { min-height: 176px; }
+  .cf-ai { min-height: 205px; background:rgba(255,255,255,.93); border-color:rgba(23,105,255,.26); box-shadow:0 28px 74px rgba(31,92,218,.18); }
+  .cf-system { min-height: 178px; }
+  .cf-components { min-height: 170px; }
+
+  /* Research — compact dashboard / insight card. */
+  .mini-research-detail { margin-top:12px; display:grid; gap:8px; }
+  .mini-research-detail__dashboard { position:relative; height:54px; border:1px solid rgba(23,105,255,.12); border-radius:7px; background:rgba(244,248,255,.75); padding:6px 34px 5px 5px; }
+  .mini-research-detail__dashboard svg { width:100%; height:100%; }
+  .mini-research-detail__dashboard path { stroke:#1769ff; stroke-width:1.8; }
+  .mini-research-detail__dashboard circle { fill:#1769ff; }
+  .mini-research-detail__metric { position:absolute; right:5px; top:6px; bottom:6px; width:29px; border-radius:5px; background:#fff; display:grid; place-content:center; text-align:center; box-shadow:0 3px 10px rgba(45,86,156,.08); }
+  .mini-research-detail__metric b { font-size:7px; color:#1769ff; }
+  .mini-research-detail__metric span { font-size:5px; color:#7d91ab; }
+  .mini-research-detail__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:4px; }
+  .mini-research-detail__grid i { height:12px; border-radius:3px; background:linear-gradient(180deg,rgba(221,235,255,.8),rgba(244,248,255,.9)); border:1px solid rgba(55,105,185,.09); }
+  .mini-research-detail__rows { display:grid; gap:4px; }
+  .mini-research-detail__rows i { height:4px; border-radius:4px; background:rgba(50,95,158,.11); }
+  .mini-research-detail__rows i:nth-child(2){ width:78%; }
+  .mini-research-detail__rows i:nth-child(3){ width:58%; }
+
+  /* Data — line chart, axis and supporting rows. */
+  .mini-data-detail { margin-top:11px; display:grid; gap:6px; }
+  .mini-data-detail__caption { font-size:6px; letter-spacing:.08em; font-weight:760; color:#89a0bc; }
+  .mini-data-detail svg { width:100%; height:58px; padding:2px 0 0; border-bottom:1px solid rgba(51,91,151,.12); background-image:linear-gradient(rgba(58,103,171,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(58,103,171,.05) 1px,transparent 1px); background-size:18px 18px; }
+  .mini-data-detail path { stroke:#1769ff; stroke-width:2; }
+  .mini-data-detail circle { fill:#1769ff; }
+  .mini-data-detail__axis { display:flex; justify-content:space-between; margin-top:-3px; }
+  .mini-data-detail__axis span { font-size:5px; color:#a2b2c6; }
+  .mini-data-detail > i { display:block; height:4px; border-radius:4px; background:rgba(50,95,158,.10); }
+  .mini-data-detail > i:nth-last-child(2){ width:82%; }
+  .mini-data-detail > i:last-child{ width:55%; }
+
+  /* AI — make the centre visually richer and unmistakably conversational. */
+  .mini-chat { margin-top:11px; display:grid; gap:7px; }
+  .mini-chat__prompt { justify-self:end; max-width:88%; padding:9px 10px; border-radius:11px 11px 3px 11px; color:#fff; background:linear-gradient(135deg,#327cff,#1769ff 62%,#4d63f3); font-size:8px; line-height:1.3; box-shadow:0 9px 22px rgba(23,105,255,.22); }
+  .mini-chat__row { display:grid; grid-template-columns:12px 1fr; gap:6px; align-items:center; padding:6px 7px; border-radius:7px; background:rgba(240,246,255,.82); }
+  .mini-chat__row b { width:10px; height:10px; border-radius:50%; background:rgba(23,105,255,.18); }
+  .mini-chat__row i { height:5px; width:75%; border-radius:5px; background:rgba(63,102,159,.13); }
+  .mini-chat__input { min-height:26px; border:1px solid rgba(51,93,156,.13); border-radius:7px; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 7px; }
+  .mini-chat__input span { font-size:6px; color:#9caec2; }
+  .mini-chat__input em { width:15px; height:15px; border-radius:50%; display:grid; place-items:center; font-style:normal; background:#eaf2ff; color:#1769ff; font-size:8px; }
+  .mini-chat__actions { display:flex; gap:5px; align-items:center; justify-content:flex-end; }
+  .mini-chat__actions i, .mini-chat__actions span { width:18px; height:18px; border-radius:50%; border:1px solid rgba(23,105,255,.14); background:#f4f8ff; }
+  .mini-chat__actions span { background:#1769ff; box-shadow:0 5px 12px rgba(23,105,255,.18); }
+
+  /* System — denser flow map closer to the approved visual. */
+  .mini-system-detail { position:relative; height:106px; margin-top:11px; }
+  .msd-node { position:absolute; width:28px; height:15px; border:1px solid rgba(23,105,255,.38); border-radius:4px; background:rgba(250,252,255,.94); z-index:2; box-shadow:0 2px 7px rgba(41,88,158,.05); }
+  .msd-node--a{left:50%;top:0;transform:translateX(-50%)}
+  .msd-node--b{left:3%;top:30px}.msd-node--c{right:3%;top:30px}
+  .msd-node--d{left:21%;top:59px}.msd-node--e{right:21%;top:59px}
+  .msd-node--f{left:50%;top:30px;transform:translateX(-50%)}
+  .msd-node--g{left:50%;bottom:0;transform:translateX(-50%)}
+  .msd-line { position:absolute; display:block; background:rgba(23,105,255,.29); z-index:1; }
+  .msd-line--v { left:50%; top:14px; width:1px; height:78px; }
+  .msd-line--v2 { left:50%; top:45px; width:1px; height:52px; transform:translateX(22px) rotate(42deg); transform-origin:top; }
+  .msd-line--h1 { left:15%; right:15%; top:37px; height:1px; }
+  .msd-line--h2 { left:29%; right:29%; top:67px; height:1px; }
+
+  /* Components — richer family of states / tokens. */
+  .mini-components-detail { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px 7px; margin-top:11px; }
+  .mini-components-detail span { min-width:0; text-align:center; padding:5px 5px; border-radius:999px; border:1px solid rgba(23,105,255,.15); background:rgba(245,249,255,.9); color:#5177a7; font-size:6px; line-height:1; box-shadow:0 2px 7px rgba(54,94,157,.035); }
+  .mini-components-detail span:nth-child(2), .mini-components-detail span:nth-child(5), .mini-components-detail span:nth-child(9) { background:#1769ff; color:#fff; border-color:#1769ff; }
+
+  /* The resolving baseline is perfectly horizontal and completes before the section exits. */
+  .cf-resolution-line { top:50%; left:4%; right:-9%; height:2px; }
+  .cf-resolution-line > i:nth-child(1){left:11%}
+  .cf-resolution-line > i:nth-child(2){left:33%}
+  .cf-resolution-line > i:nth-child(3){left:54%}
+  .cf-resolution-line > i:nth-child(4){left:76%}
+  .cf-resolution-line > i:nth-child(5){left:96%}
+
+  /* Make the final depth read more like a lens: centre crisp, near cards subtle, edges soft. */
+  .peripheral-focus-blur {
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    -webkit-mask-image: radial-gradient(ellipse 44% 62% at 52% 50%, transparent 0 40%, rgba(0,0,0,.04) 49%, rgba(0,0,0,.38) 68%, #000 100%);
+    mask-image: radial-gradient(ellipse 44% 62% at 52% 50%, transparent 0 40%, rgba(0,0,0,.04) 49%, rgba(0,0,0,.38) 68%, #000 100%);
+  }
+}
+
+/* V2.13 — final Clarity Field alignment & optical depth
+   The same five cards resolve onto one horizontal optical axis. The centre stays
+   crisp; neighbouring cards recede gently; outer cards recede further. */
+@media (min-width: 761px) {
+  .cf-resolution-line {
+    top: 49.2%;
+    left: 8%;
+    right: 1%;
+  }
+
+  /* Keep the cards visually coherent once the rail resolves. Motion controls
+     their exact final scale/opacity/blur; these rules only improve depth cues. */
+  .cf-artifact {
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cf-ai {
+    box-shadow: 0 28px 74px rgba(31,92,218,.18), 0 0 0 1px rgba(23,105,255,.05);
+  }
+
+  /* The optical axis should read through every card rather than visually
+     stopping behind the centre object. */
+  .cf-resolution-line { z-index: 6; }
+  .cf-artifact { z-index: 8; }
+  .cf-ai { z-index: 10; }
+}
+
+/* V2.14 — mathematically tidy final Clarity Field rail.
+   Final target geometry follows the supplied reference: every card shares the
+   same optical Y centre; visible edge-to-edge gaps are ~20px after scaling.
+   Depth is created only with scale / opacity / blur — never by vertical drift. */
+@media (min-width: 761px) {
+  .cf-resolution-line {
+    top: 50%;
+    left: 1.25%;
+    right: 1.1%;
+    height: 1.5px;
+  }
+
+  /* Five markers sit on the same optical axis as the five resolved cards. */
+  .cf-resolution-line > i:nth-child(1) { left: 6.4%; }
+  .cf-resolution-line > i:nth-child(2) { left: 25.5%; }
+  .cf-resolution-line > i:nth-child(3) { left: 48.1%; }
+  .cf-resolution-line > i:nth-child(4) { left: 71.0%; }
+  .cf-resolution-line > i:nth-child(5) { left: 90.7%; }
+
+  /* Avoid inherited perspective/rotation cues fighting the final straight rail. */
+  .cf-artifact {
+    transform-origin: center center;
+    will-change: transform, opacity, filter;
+  }
+
+  /* Keep the centre visually forward without increasing its physical size so
+     the mathematical spacing remains predictable. */
+  .cf-ai {
+    box-shadow:
+      0 30px 80px rgba(31,92,218,.19),
+      0 0 0 1px rgba(23,105,255,.07),
+      0 0 42px rgba(80,128,255,.09);
+  }
+}
+
+/* V2.16 — final Clarity Field resolves onto a true single-plane process rail. */
+@media (min-width: 761px) {
+  .clarity-field {
+    --cf-axis-y: 50%;
+  }
+
+  /* Shared centre anchor: all final y transforms resolve to zero, so the cards
+     genuinely sit on the same optical plane instead of on independent layers. */
+  .cf-research,
+  .cf-data,
+  .cf-ai,
+  .cf-system,
+  .cf-components {
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    top: var(--cf-axis-y) !important;
+    margin: 0 !important;
+    transform: none;
+    transform-origin: 50% 50%;
+  }
+
+  .cf-research { width: 144px; margin-left: -72px !important; margin-top: -58px !important; }
+  .cf-data { width: 158px; margin-left: -79px !important; margin-top: -78px !important; }
+  .cf-ai { width: 170px; margin-left: -85px !important; margin-top: -112px !important; }
+  .cf-system { width: 164px; margin-left: -82px !important; margin-top: -78px !important; }
+  .cf-components { width: 180px; margin-left: -90px !important; margin-top: -58px !important; }
+
+  .clarity-process-axis {
+    position: absolute;
+    left: 4.5%;
+    right: 4.5%;
+    top: var(--cf-axis-y);
+    height: 1px;
+    z-index: 6;
+    transform-origin: left center;
+    background: linear-gradient(90deg,
+      rgba(36, 111, 255, 0),
+      rgba(36, 111, 255, .46) 10%,
+      rgba(36, 111, 255, .66) 50%,
+      rgba(36, 111, 255, .46) 90%,
+      rgba(36, 111, 255, 0));
+    box-shadow: 0 0 16px rgba(46, 116, 255, .14);
+    pointer-events: none;
+  }
+
+  .clarity-process-axis span {
+    position: absolute;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #2f78ff;
+    border: 2px solid rgba(255,255,255,.9);
+    box-shadow: 0 0 0 3px rgba(47,120,255,.08);
+    transform: translate(-50%, -50%);
+  }
+  .clarity-process-axis span:nth-child(1) { left: 7.5%; }
+  .clarity-process-axis span:nth-child(2) { left: 30.5%; }
+  .clarity-process-axis span:nth-child(3) { left: 50%; }
+  .clarity-process-axis span:nth-child(4) { left: 70.5%; }
+  .clarity-process-axis span:nth-child(5) { left: 93%; }
+
+  /* Perspective is communicated only through scale / blur / opacity. The cards
+     themselves stay on one plane, which keeps the final composition tidy. */
+  .cf-artifact {
+    perspective: none;
+    transform-style: flat;
+  }
+}
+
+/* V2.17 — Home page final polish: recognition, accessibility and system consistency. */
+.home-v2 {
+  --text-aa: #536b86;
+  --text-aa-strong: #415a76;
+  --text-aa-muted: #596f88;
+}
+
+/* iF recognition — factual, linked to the official winning project page. */
+.award-badge {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  padding: 7px 10px 7px 7px;
+  border: 1px solid rgba(176, 20, 38, .22);
+  border-radius: 7px;
+  background: rgba(255,255,255,.92);
+  color: #4c6179;
+  text-decoration: none;
+  box-shadow: 0 7px 20px rgba(31, 48, 76, .05);
+}
+.if-award-mark {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  background: #e30613;
+  color: #fff;
+}
+.if-award-mark b {
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 820;
+  letter-spacing: -.06em;
+}
+.award-badge__copy { display: grid; gap: 2px; }
+.award-badge__copy small {
+  font-size: 11px;
+  line-height: 1.2;
+  color: #5b6d82;
+  letter-spacing: .015em;
+}
+.award-badge__copy strong {
+  font-size: 11px;
+  line-height: 1.2;
+  color: #243b55;
+  letter-spacing: .035em;
+}
+.award-badge:hover { border-color: rgba(227,6,19,.42); box-shadow: 0 10px 24px rgba(31,48,76,.08); }
+
+/* HSBC annotation should point to the contextual chat prompt directly below the fee. */
+.visual-annotation { top: 38.5%; }
+.visual-annotation strong { font-size: 11px; color: #0f58d5; }
+.visual-annotation small { font-size: 13px; color: #415a76; }
+
+/* Hyundai — a complete evidence-to-interface story with no broken arrow separators. */
+.hyundai-progress-label {
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #536b86;
+}
+.hyundai-progress-label span:first-child { color: #0f58d5; }
+.hyundai-progress-label b {
+  color: #8194aa;
+  font-weight: 700;
+  line-height: 1;
+}
+.hyundai-progress-label i { display: none; }
+.hyundai-visual__caption {
+  left: max(0px, calc(50% - 400px));
+  bottom: 5%;
+  font-size: 11px;
+  line-height: 1.2;
+  padding: 9px 12px;
+  background: rgba(9,20,35,.88);
+}
+
+/* WCAG 2.2 AA-oriented visible-text pass. Decorative microcopy inside aria-hidden
+   Clarity Field cards intentionally remains miniature because it is illustrative. */
+.project-showcase__facts span,
+.work-meta span,
+.capability-column h3,
+.tools-line span,
+.about-exploring > span,
+.contact-links > div > span,
+.contact-form__label {
+  color: var(--text-aa);
+  font-size: 12px;
+}
+.project-showcase__tags { color: #4d6783; }
+.project-showcase__support { color: #536b86; }
+.process-step p { color: #536b86; font-size: 14px; }
+.capability-column h3 { color: #536b86; }
+.tools-line p { color: #4f6680; font-size: 15px; }
+.home-footer { color: #596f88; font-size: 13px; }
+.home-footer button { color: #4f6680; }
+.project-status-badge { font-size: 11px; color: #0f58d5; }
+.frisco-visual__note { font-size: 11px; }
+.contact-form label { font-size: 14px; }
+.copy-email { font-size: 13px; min-height: 44px; }
+.about-node { color: #4e6f9c; }
+
+/* Consistent interactive states and minimum usable hit areas. */
+.home-v2 a:focus-visible,
+.home-v2 button:focus-visible,
+.home-v2 input:focus-visible,
+.home-v2 textarea:focus-visible,
+.award-badge:focus-visible {
+  outline: 3px solid rgba(23,105,255,.42);
+  outline-offset: 3px;
+}
+.home-v2 a,
+.home-v2 button { text-underline-offset: 3px; }
+.text-cta:hover,
+.contact-links a:hover { text-decoration: underline; }
+
+@media (max-width: 1120px) {
+  .visual-annotation { top: 39%; }
+}
+@media (max-width: 760px) {
+  .award-badge { display: inline-flex; }
+  .visual-annotation { top: 40%; }
+  .hyundai-progress-label { gap: 7px; }
+  .hyundai-visual__caption { left: 6%; }
+}
+
+/* Small visible system labels are kept at a readable floor without changing hierarchy. */
+.section-kicker { font-size: 12px; }
+.ai-system-foundations small { font-size: 11px; color: #536b86; }
+.ai-system-foundations span { font-size: 11px; color: #415a76; }
+
+/* V2.26 — mobile polish. Desktop rules above remain unchanged. */
+@media (max-width: 760px) {
+  /* Keep the hero as a genuine scroll story on mobile instead of flattening the
+     desktop composition into one crowded static image. */
+  .clarity-story {
+    height: 220svh !important;
+    min-height: 220svh;
+    overflow: visible;
+  }
+  .clarity-stage {
+    position: sticky !important;
+    top: 0;
+    height: 100svh !important;
+    min-height: 620px !important;
+    padding: 82px 20px 34px !important;
+    overflow: hidden;
+    display: block;
+  }
+  .clarity-stage::before {
+    opacity: .14;
+    mask-image: linear-gradient(180deg, transparent 0, rgba(0,0,0,.55) 26%, #000 100%);
+  }
+  .hero-copy {
+    max-width: 100%;
+    position: relative;
+    z-index: 18;
+    will-change: transform, opacity;
+  }
+  .hero-eyebrow { font-size: 10px; margin-bottom: 18px; }
+  .hero-title {
+    max-width: 335px;
+    font-size: clamp(40px, 11.2vw, 49px) !important;
+    line-height: .99;
+    letter-spacing: -.045em;
+  }
+  .hero-subtitle { margin-top: 22px; font-size: 15px; line-height: 1.55; }
+  .hero-expertise { margin-top: 10px; font-size: 12px; line-height: 1.55; }
+  .hero-actions { margin-top: 22px; gap: 8px; }
+  .primary-cta { min-height: 48px; padding-inline: 18px; }
+  .hero-status { margin-top: 26px; padding-top: 18px; }
+
+  /* Same Clarity Field, portrait geometry. It moves to the viewport centre as
+     the copy leaves, and the same artifact nodes resolve onto a vertical axis. */
+  .clarity-field-wrap {
+    position: absolute !important;
+    z-index: 7;
+    left: 50%;
+    top: 48%;
+    width: min(92vw, 410px) !important;
+    height: min(92vw, 410px);
+    margin: 0 !important;
+    translate: -50% -50%;
+    aspect-ratio: 1;
+    opacity: 1 !important;
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+  .clarity-field { width: 100%; height: 100%; }
+  .cf-atmosphere { transform-origin: 50% 50%; }
+  .cf-aura--one { opacity: .9; }
+  .cf-aura--two { opacity: .74; }
+  .cf-lines { opacity: .30; }
+  .cf-lens { opacity: .62; }
+
+  /* Common anchor makes every final card share the same X plane. Motion only
+     changes y/scale/opacity/blur, which prevents the layered/crooked finish. */
+  .cf-research,
+  .cf-data,
+  .cf-ai,
+  .cf-system,
+  .cf-components {
+    left: 50% !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform-origin: center center !important;
+    will-change: transform, opacity, filter;
+  }
+  .cf-research { width: 122px !important; margin-left: -61px !important; margin-top: -54px !important; }
+  .cf-data { width: 132px !important; margin-left: -66px !important; margin-top: -69px !important; }
+  .cf-ai { width: 150px !important; margin-left: -75px !important; margin-top: -98px !important; }
+  .cf-system { width: 134px !important; margin-left: -67px !important; margin-top: -70px !important; }
+  .cf-components { width: 128px !important; margin-left: -64px !important; margin-top: -55px !important; }
+  .cf-artifact { min-height: 76px; padding: 11px !important; border-radius: 10px; }
+  .cf-ai { min-height: 174px; }
+  .cf-artifact__eyebrow { font-size: 7px !important; letter-spacing: .095em; }
+  .mini-chat__prompt { font-size: 7px; padding: 7px 8px; }
+  .mini-chat__row { padding: 5px 6px; }
+  .mini-data-detail svg { height: 44px; }
+  .mini-system-detail { height: 84px; }
+  .mini-components-detail { gap: 4px; }
+
+  /* Vertical process rail. The desktop horizontal rail remains untouched. */
+  .clarity-process-axis {
+    display: block !important;
+    left: 50% !important;
+    right: auto !important;
+    top: 9% !important;
+    width: 1px !important;
+    height: 82% !important;
+    transform-origin: center top !important;
+    background: linear-gradient(180deg,
+      rgba(36,111,255,0), rgba(36,111,255,.42) 12%,
+      rgba(36,111,255,.64) 50%, rgba(36,111,255,.42) 88%, rgba(36,111,255,0)) !important;
+  }
+  .clarity-process-axis span { left: 50% !important; }
+  .clarity-process-axis span:nth-child(1) { top: 8%; }
+  .clarity-process-axis span:nth-child(2) { top: 29%; }
+  .clarity-process-axis span:nth-child(3) { top: 50%; }
+  .clarity-process-axis span:nth-child(4) { top: 71%; }
+  .clarity-process-axis span:nth-child(5) { top: 92%; }
+  .cf-resolution-line { display: none !important; }
+  .cf-label--user { left: 2% !important; bottom: 4% !important; }
+  .cf-label--testing { right: 0 !important; top: 2% !important; }
+
+  .fullscreen-clarity-field {
+    left: 50% !important;
+    top: 50% !important;
+    width: 135vmax !important;
+  }
+  .peripheral-focus-blur {
+    -webkit-mask-image: radial-gradient(ellipse 54% 44% at 50% 50%, transparent 0 38%, rgba(0,0,0,.10) 52%, rgba(0,0,0,.52) 76%, #000 100%) !important;
+    mask-image: radial-gradient(ellipse 54% 44% at 50% 50%, transparent 0 38%, rgba(0,0,0,.10) 52%, rgba(0,0,0,.52) 76%, #000 100%) !important;
+  }
+  .scroll-hint { display: none !important; }
+
+  /* Mobile project rhythm: no desktop-sized empty visual slots. */
+  .work-intro,
+  .project-showcase {
+    min-height: auto !important;
+    padding: 62px 20px !important;
+    gap: 24px !important;
+  }
+  .work-intro { padding-top: 68px !important; }
+  .project-showcase__copy { max-width: 100%; }
+  .project-showcase__copy h2 { font-size: clamp(36px, 10.5vw, 44px) !important; }
+  .project-showcase__lead { margin-top: 18px; font-size: 15px !important; line-height: 1.55; }
+  .project-showcase__facts { gap: 14px; margin: 24px 0 20px; }
+  .project-showcase__visual { margin-top: 0 !important; }
+  .frisco-flow, .hyundai-progress-label { margin: 22px 0; }
+  .frisco-visual,
+  .hyundai-visual,
+  .ai-system-visual {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  .frisco-visual { display: block; }
+  .frisco-visual__frame { width: 100%; aspect-ratio: 16 / 10; }
+  .frisco-visual__frame img { width: 100%; height: 100%; object-fit: cover; }
+  .frisco-visual__note { position: relative; display: inline-flex; right: auto; bottom: auto; margin: 12px 0 0; }
+  .hyundai-visual { aspect-ratio: 16 / 10; }
+  .hyundai-visual__layer { width: 100%; height: 100%; object-fit: cover; }
+  .hyundai-visual__caption { left: 10px !important; bottom: 10px !important; max-width: calc(100% - 20px); }
+
+  .work-intro__visual { min-height: 0 !important; height: auto; padding-top: 8px; }
+  .hsbc-phone-frame { width: min(84vw, 330px); }
+  .visual-annotation { margin-top: 16px; }
+}
+
+@media (max-width: 420px) {
+  .clarity-stage { padding-inline: 16px !important; }
+  .hero-title { font-size: clamp(38px, 11.4vw, 45px) !important; }
+  .clarity-field-wrap { width: min(94vw, 382px) !important; height: min(94vw, 382px); }
+  .work-intro, .project-showcase { padding-inline: 18px !important; }
+}
+
+
+/* V2.27 — mobile HERO separation.
+   Copy + CTAs own the upper viewport; the existing Clarity Field is staged
+   below them. No desktop rule or artifact DOM structure is changed. */
+@media (max-width: 760px) {
+  .clarity-story {
+    height: 245svh !important;
+    min-height: 245svh !important;
+  }
+
+  .clarity-stage {
+    padding-top: 82px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .hero-copy {
+    z-index: 24 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-actions,
+  .hero-status {
+    position: relative;
+    z-index: 25;
+  }
+
+  /* Place the animation beneath the complete text/CTA block on first load.
+     Motion values in Home.tsx then lift it into the centre after the copy exits. */
+  .clarity-field-wrap {
+    top: 82% !important;
+    width: min(88vw, 390px) !important;
+    height: min(88vw, 390px) !important;
+    z-index: 8 !important;
+    pointer-events: none;
+  }
+
+  /* Preserve the richer desktop card proportions instead of making the mobile
+     artifacts look like a separate visual system. */
+  .cf-research { width: 132px !important; margin-left: -66px !important; }
+  .cf-data { width: 145px !important; margin-left: -72.5px !important; }
+  .cf-ai { width: 158px !important; margin-left: -79px !important; min-height: 184px !important; }
+  .cf-system { width: 148px !important; margin-left: -74px !important; }
+  .cf-components { width: 140px !important; margin-left: -70px !important; }
+
+  .cf-artifact {
+    padding: 12px 13px !important;
+    border-radius: 11px !important;
+  }
+
+  /* The colour field follows the animation rather than washing over the CTA
+     at page load. */
+  .fullscreen-clarity-field {
+    top: 66% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .clarity-story {
+    height: 255svh !important;
+    min-height: 255svh !important;
+  }
+  .clarity-field-wrap {
+    top: 84% !important;
+    width: min(86vw, 350px) !important;
+    height: min(86vw, 350px) !important;
+  }
+  .hero-status { margin-top: 22px !important; }
+}
+
+
+/* V2.28 — mobile hero: clean above-the-fold + full Clarity Field below */
+@media (max-width: 760px) {
+  /* One clean screen for the proposition. The field begins only after it. */
+  .clarity-story {
+    height: 330svh !important;
+    min-height: 330svh !important;
+    background: #fff !important;
+  }
+
+  .clarity-stage {
+    min-height: 100svh !important;
+    padding-top: 92px !important;
+    background: #fff !important;
+  }
+
+  .hero-copy {
+    min-height: calc(100svh - 92px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    z-index: 30 !important;
+    background: #fff !important;
+  }
+
+  /* Absolutely no field / blur / artifact leakage into the first viewport. */
+  .clarity-field-wrap {
+    top: 152svh !important;
+    width: min(92vw, 410px) !important;
+    height: min(92vw, 410px) !important;
+    z-index: 10 !important;
+  }
+
+  .fullscreen-clarity-field {
+    top: 128svh !important;
+    opacity: .72 !important;
+  }
+
+  /* Mobile menu is icon-only; button retains its accessible name. */
+  .mobile-menu-label {
+    width: 28px !important;
+    height: 22px !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  .hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+  }
+
+  /* Re-create the desktop convergence as a vertical mobile sequence.
+     The cards share one centre axis, then settle into an ordered stack. */
+  .cf-artifact {
+    left: 50% !important;
+    right: auto !important;
+    transform-origin: 50% 50% !important;
+  }
+  .cf-research     { top: 4% !important; }
+  .cf-data         { top: 24% !important; }
+  .cf-ai           { top: 43% !important; }
+  .cf-system       { top: 66% !important; }
+  .cf-components   { top: 84% !important; }
+
+  .cf-axis {
+    left: 50% !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .clarity-story {
+    height: 345svh !important;
+    min-height: 345svh !important;
+  }
+  .clarity-field-wrap {
+    top: 158svh !important;
+    width: min(90vw, 365px) !important;
+    height: min(90vw, 365px) !important;
+  }
+  .fullscreen-clarity-field { top: 134svh !important; }
+}
+
+
+/* V2.29 — mobile Clarity Field gets its own long scroll chapter */
+@media (max-width: 760px) {
+  .clarity-story {
+    height: 440svh !important;
+    min-height: 440svh !important;
+  }
+
+  .clarity-stage {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  /* Important: keep the field INSIDE the sticky viewport. V2.28 placed it
+     below the clipping boundary, which is why it disappeared. Visibility is
+     now controlled by scroll-linked opacity in Home.tsx instead. */
+  .clarity-field-wrap {
+    top: 53% !important;
+    left: 50% !important;
+    width: min(90vw, 400px) !important;
+    height: min(90vw, 400px) !important;
+    translate: -50% -50% !important;
+    z-index: 10 !important;
+  }
+
+  .fullscreen-clarity-field {
+    top: 52% !important;
+    left: 50% !important;
+    translate: -50% -50% !important;
+  }
+
+  /* All cards share one physical plane. Motion values then settle them to a
+     single vertical process axis: Research → Data → AI → Systems → Components. */
+  .cf-research,
+  .cf-data,
+  .cf-ai,
+  .cf-system,
+  .cf-components {
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+  }
+
+  .clarity-process-axis {
+    left: 50% !important;
+    top: 12% !important;
+    bottom: 12% !important;
+    width: 1px !important;
+    height: auto !important;
+    transform-origin: 50% 0 !important;
+  }
+
+  /* Slightly smaller cards leave enough breathing room in the final stack. */
+  .cf-research { width: 126px !important; margin-left: -63px !important; }
+  .cf-data { width: 138px !important; margin-left: -69px !important; }
+  .cf-ai { width: 152px !important; margin-left: -76px !important; min-height: 176px !important; }
+  .cf-system { width: 138px !important; margin-left: -69px !important; }
+  .cf-components { width: 126px !important; margin-left: -63px !important; }
+}
+
+@media (max-width: 420px) {
+  .clarity-story {
+    height: 470svh !important;
+    min-height: 470svh !important;
+  }
+  .clarity-field-wrap {
+    width: min(88vw, 356px) !important;
+    height: min(88vw, 356px) !important;
+  }
+}
+
+
+/* V2.30 — mobile HERO concept:
+   1) clean copy first,
+   2) copy exits to the LEFT,
+   3) Clarity Field takes over as a compact HORIZONTAL composition,
+   4) the same cards resolve onto one horizontal process rail. */
+@media (max-width: 760px) {
+  .clarity-story {
+    height: 410svh !important;
+    min-height: 410svh !important;
+    background: #fff !important;
+  }
+
+  .clarity-stage {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  .hero-copy {
+    min-height: calc(100svh - 92px) !important;
+    width: calc(100% - 36px) !important;
+    margin-inline: 18px !important;
+    padding-bottom: 34px !important;
+    z-index: 30 !important;
+    background: #fff !important;
+    will-change: transform, opacity;
+  }
+
+  /* The animation lives in the sticky viewport but remains invisible until
+     the copy has started leaving to the left. */
+  .clarity-field-wrap {
+    top: 55% !important;
+    left: 50% !important;
+    width: min(98vw, 430px) !important;
+    height: min(76vw, 330px) !important;
+    aspect-ratio: 1.32 / 1 !important;
+    translate: -50% -50% !important;
+    z-index: 12 !important;
+    overflow: visible !important;
+  }
+
+  .clarity-field {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .fullscreen-clarity-field {
+    top: 53% !important;
+    left: 50% !important;
+    width: 118vw !important;
+    height: 82vw !important;
+    max-height: 420px !important;
+    translate: -50% -50% !important;
+  }
+
+  /* All five cards share one centre anchor; Framer Motion supplies only x/y/scale.
+     This prevents inherited vertical positions from fighting the final rail. */
+  .cf-research,
+  .cf-data,
+  .cf-ai,
+  .cf-system,
+  .cf-components {
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: 0 !important;
+    transform-origin: 50% 50% !important;
+  }
+
+  /* Compact mobile-specific card sizes. Final perspective comes from scale,
+     opacity and blur rather than overlap. */
+  .cf-research {
+    width: 82px !important;
+    margin-left: -41px !important;
+  }
+  .cf-data {
+    width: 92px !important;
+    margin-left: -46px !important;
+  }
+  .cf-ai {
+    width: 108px !important;
+    min-height: 132px !important;
+    margin-left: -54px !important;
+  }
+  .cf-system {
+    width: 92px !important;
+    margin-left: -46px !important;
+  }
+  .cf-components {
+    width: 82px !important;
+    margin-left: -41px !important;
+  }
+
+  .cf-artifact {
+    padding: 8px 9px !important;
+    border-radius: 9px !important;
+    overflow: hidden !important;
+  }
+
+  .cf-artifact-title {
+    font-size: 6.5px !important;
+    letter-spacing: .08em !important;
+    white-space: nowrap !important;
+  }
+
+  /* Horizontal mobile process axis. */
+  .clarity-process-axis {
+    position: absolute !important;
+    left: 7% !important;
+    right: 7% !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: auto !important;
+    height: 1px !important;
+    transform-origin: left center !important;
+    background: linear-gradient(90deg,
+      rgba(36,111,255,0),
+      rgba(36,111,255,.42) 9%,
+      rgba(36,111,255,.64) 50%,
+      rgba(36,111,255,.42) 91%,
+      rgba(36,111,255,0)) !important;
+  }
+
+  .clarity-process-axis span {
+    top: 50% !important;
+    width: 6px !important;
+    height: 6px !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .clarity-process-axis span:nth-child(1) { left: 6% !important; }
+  .clarity-process-axis span:nth-child(2) { left: 28% !important; }
+  .clarity-process-axis span:nth-child(3) { left: 50% !important; }
+  .clarity-process-axis span:nth-child(4) { left: 72% !important; }
+  .clarity-process-axis span:nth-child(5) { left: 94% !important; }
+
+  /* Hide large peripheral labels that are useful on desktop but make the
+     compact mobile field visually noisy. */
+  .cf-label,
+  .cf-orbit-label {
+    font-size: 7px !important;
+    opacity: .42 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .clarity-story {
+    height: 430svh !important;
+    min-height: 430svh !important;
+  }
+
+  .clarity-field-wrap {
+    width: min(98vw, 390px) !important;
+    height: min(78vw, 305px) !important;
+  }
+
+  .cf-research { width: 76px !important; margin-left: -38px !important; }
+  .cf-data { width: 86px !important; margin-left: -43px !important; }
+  .cf-ai { width: 100px !important; min-height: 124px !important; margin-left: -50px !important; }
+  .cf-system { width: 86px !important; margin-left: -43px !important; }
+  .cf-components { width: 76px !important; margin-left: -38px !important; }
+}
+
+
+/* V2.31 — shorter, tidier mobile horizontal Clarity Field */
+@media (max-width: 760px) {
+  .clarity-story {
+    height: 300svh !important;
+    min-height: 300svh !important;
+  }
+
+  .clarity-field-wrap {
+    top: 55% !important;
+    width: min(97vw, 420px) !important;
+    height: min(73vw, 310px) !important;
+  }
+
+  .fullscreen-clarity-field {
+    width: 112vw !important;
+    height: 76vw !important;
+    max-height: 390px !important;
+    opacity: .60 !important;
+  }
+
+  /* Put the blue process rail through the visual middle of the cards. */
+  .clarity-process-axis {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 1 !important;
+  }
+
+  /* Cards float above the rail; softer opacity/blur creates depth. */
+  .cf-artifact {
+    z-index: 2 !important;
+    background: rgba(255,255,255,.82) !important;
+    border-color: rgba(90,135,220,.22) !important;
+    box-shadow: 0 10px 26px rgba(70,100,170,.10) !important;
+  }
+
+  .cf-research,
+  .cf-components {
+    opacity: .40 !important;
+    filter: blur(1.8px) !important;
+  }
+
+  .cf-data,
+  .cf-system {
+    opacity: .62 !important;
+    filter: blur(.7px) !important;
+  }
+
+  .cf-ai {
+    opacity: .96 !important;
+    filter: none !important;
+  }
+
+  /* Smaller, desktop-like typography inside cards. */
+  .cf-artifact-title {
+    font-size: 6px !important;
+    line-height: 1.1 !important;
+    letter-spacing: .10em !important;
+  }
+
+  .cf-artifact p,
+  .cf-artifact span,
+  .cf-artifact label,
+  .cf-artifact input,
+  .cf-artifact button {
+    font-size: 5.6px !important;
+    line-height: 1.18 !important;
+  }
+
+  .cf-ai .cf-artifact-title {
+    font-size: 6.6px !important;
+  }
+
+  .cf-ai p,
+  .cf-ai span,
+  .cf-ai label,
+  .cf-ai input,
+  .cf-ai button {
+    font-size: 6px !important;
+  }
+
+  /* Refined compact sizes, closer to desktop proportions. */
+  .cf-research { width: 76px !important; margin-left: -38px !important; }
+  .cf-data { width: 88px !important; margin-left: -44px !important; }
+  .cf-ai { width: 106px !important; min-height: 126px !important; margin-left: -53px !important; }
+  .cf-system { width: 88px !important; margin-left: -44px !important; }
+  .cf-components { width: 76px !important; margin-left: -38px !important; }
+
+  .cf-artifact {
+    padding: 7px 8px !important;
+    border-radius: 9px !important;
+  }
+
+  .cf-label,
+  .cf-orbit-label {
+    opacity: .30 !important;
+    font-size: 6.5px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .clarity-story {
+    height: 315svh !important;
+    min-height: 315svh !important;
+  }
+
+  .clarity-field-wrap {
+    width: min(97vw, 380px) !important;
+    height: min(75vw, 295px) !important;
+  }
+
+  .cf-research { width: 72px !important; margin-left: -36px !important; }
+  .cf-data { width: 82px !important; margin-left: -41px !important; }
+  .cf-ai { width: 98px !important; min-height: 118px !important; margin-left: -49px !important; }
+  .cf-system { width: 82px !important; margin-left: -41px !important; }
+  .cf-components { width: 72px !important; margin-left: -36px !important; }
+}
+
+
+/* V2.32 — Mobile cards: less transparent / more solid */
+@media (max-width: 760px) {
+  .cf-artifact {
+    background: rgba(255,255,255,.96) !important;
+  }
+
+  .cf-research,
+  .cf-components {
+    opacity: .72 !important;
+    filter: blur(1px) !important;
+  }
+
+  .cf-data,
+  .cf-system {
+    opacity: .84 !important;
+    filter: blur(.35px) !important;
+  }
+
+  .cf-ai {
+    opacity: 1 !important;
+    background: rgba(255,255,255,.99) !important;
+    filter: none !important;
+  }
+}
+
+
+/* V2.33 — Mobile app-like cards */
+@media (max-width: 760px) {
+  /* Main AI card: strongest visual priority */
+  .cf-ai {
+    opacity: 1 !important;
+    background: rgba(255,255,255,1) !important;
+    border-color: rgba(35,105,255,.32) !important;
+    box-shadow:
+      0 18px 42px rgba(31,83,180,.16),
+      0 0 0 1px rgba(35,105,255,.06) !important;
+    filter: none !important;
+  }
+
+  /* Blue "mobile UI" accents */
+  .cf-ai .cf-question {
+    background: linear-gradient(135deg, #2874ff, #3f63f4) !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+  }
+
+  .cf-ai .cf-input {
+    background: #f4f7ff !important;
+    border: 1px solid rgba(35,105,255,.22) !important;
+    border-radius: 9px !important;
+  }
+
+  .cf-ai .cf-input::after {
+    color: #1769ff !important;
+  }
+
+  .cf-ai::after {
+    content: "";
+    position: absolute;
+    left: 14%;
+    right: 14%;
+    bottom: 13px;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      rgba(35,105,255,.12) 0 22%,
+      rgba(35,105,255,.38) 22% 46%,
+      #2369ff 46% 69%,
+      rgba(35,105,255,.20) 69% 100%
+    );
+  }
+
+  /* Supporting cards stay secondary but gain subtle app-screen details */
+  .cf-data,
+  .cf-system {
+    background: rgba(255,255,255,.97) !important;
+    border-color: rgba(35,105,255,.15) !important;
+  }
+
+  .cf-research,
+  .cf-components {
+    background: rgba(255,255,255,.94) !important;
+  }
+
+  .cf-data::after,
+  .cf-system::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(35,105,255,.22);
+  }
+}
+
+
+/* V2.34 — mobile animation mirrors desktop card design */
+@media (max-width: 760px) {
+  /* Keep decorative animation background BEHIND all cards */
+  .hero-visual,
+  .hero-visual-inner,
+  .cf-stage {
+    isolation: isolate;
+  }
+
+  .cf-orbits,
+  .cf-orbit,
+  .cf-axis,
+  .cf-line,
+  .cf-glow,
+  .cf-bg,
+  .cf-label,
+  .cf-dot {
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .cf-card {
+    z-index: 5 !important;
+    position: absolute;
+    background: #fff !important;
+    background-color: #fff !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    overflow: hidden;
+  }
+
+  /* Central card: copy desktop visual hierarchy */
+  .cf-ai {
+    z-index: 10 !important;
+    opacity: 1 !important;
+    background: #fff !important;
+    border: 1px solid rgba(49,112,255,.30) !important;
+    box-shadow: 0 12px 32px rgba(42,87,170,.13) !important;
+  }
+
+  /* remove V2.33 artificial bottom stripe */
+  .cf-ai::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .cf-ai .cf-question {
+    display: block !important;
+    margin: 10px 10px 12px !important;
+    padding: 10px 11px !important;
+    min-height: 42px;
+    border-radius: 10px !important;
+    background: #2f6fff !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    box-shadow: 0 5px 12px rgba(47,111,255,.12);
+  }
+
+  /* Two subtle response rows like desktop */
+  .cf-ai .cf-row {
+    background: #f7f9fc !important;
+    border-radius: 8px !important;
+  }
+
+  .cf-ai .cf-row-dot {
+    background: #d8e5ff !important;
+  }
+
+  .cf-ai .cf-row:first-of-type .cf-row-dot,
+  .cf-ai .cf-row:nth-of-type(2) .cf-row-dot {
+    background: #2f6fff !important;
+  }
+
+  .cf-ai .cf-row-line {
+    background: #dce3ed !important;
+  }
+
+  /* Desktop-like input field */
+  .cf-ai .cf-input {
+    margin: 8px 9px 9px !important;
+    min-height: 31px !important;
+    background: #fff !important;
+    border: 1px solid #dfe5ee !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+    color: #9aa8ba !important;
+  }
+
+  .cf-ai .cf-input::after {
+    color: #2f6fff !important;
+    background: #eef4ff;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    display: grid;
+    place-items: center;
+  }
+
+  /* Four pager/status circles positioned as in desktop card */
+  .cf-ai .cf-status {
+    display: flex !important;
+    justify-content: flex-end;
+    gap: 7px;
+    padding: 0 10px 10px;
+  }
+
+  .cf-ai .cf-status span {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #c8d9ff;
+    background: #fff;
+  }
+
+  .cf-ai .cf-status span:nth-last-child(-n+2) {
+    background: #236dff;
+    border-color: #236dff;
+  }
+
+  /* Supporting cards: opaque white, desktop-like */
+  .cf-research,
+  .cf-data,
+  .cf-system,
+  .cf-components {
+    background: #fff !important;
+    opacity: 1 !important;
+    border: 1px solid rgba(49,112,255,.15) !important;
+    box-shadow: 0 8px 22px rgba(50,83,140,.07) !important;
+  }
+
+  /* remove artificial V2.33 blue bottom bars */
+  .cf-data::after,
+  .cf-system::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* ensure orbit/line can never paint over opaque cards */
+  .cf-card,
+  .cf-card * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cf-orbits,
+  .cf-orbits *,
+  .cf-axis,
+  .cf-line,
+  .cf-glow {
+    position: absolute;
+    z-index: -1 !important;
+  }
+}
+
+
+/* =========================================================
+   V2.35 — Mobile Clarity Field cards based on user's design
+   ========================================================= */
+@media (max-width: 760px) {
+
+  /* ---------- layering: atmosphere always BEHIND cards ---------- */
+  .fullscreen-clarity-field,
+  .fullscreen-clarity-field__halo,
+  .fullscreen-clarity-field__ring,
+  .fullscreen-clarity-field__core,
+  .clarity-field::before,
+  .clarity-field::after,
+  .clarity-process-axis,
+  .cf-label {
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .clarity-field-wrap,
+  .clarity-field {
+    isolation: isolate !important;
+  }
+
+  .cf-artifact {
+    position: absolute !important;
+    z-index: 5 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Supporting cards remain behind the hero card, but opaque. */
+  .cf-research,
+  .cf-data,
+  .cf-system,
+  .cf-components {
+    z-index: 4 !important;
+    background: rgba(255,255,255,.98) !important;
+  }
+
+  /* ---------- central AI card ---------- */
+  .cf-ai {
+    z-index: 12 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    background: #fff !important;
+    border: 1.5px solid rgba(38,108,255,.65) !important;
+    border-radius: 16px !important;
+    box-shadow:
+      0 16px 34px rgba(50,88,170,.14),
+      0 0 0 1px rgba(38,108,255,.05) !important;
+    overflow: hidden !important;
+    padding: 14px 13px 13px !important;
+  }
+
+  /* Make the eyebrow match the user's tile — larger and clearer. */
+  .cf-ai .cf-artifact__eyebrow {
+    display: block !important;
+    margin: 0 0 16px 0 !important;
+    color: #3f4650 !important;
+    font-size: 9px !important;
+    line-height: 1.1 !important;
+    font-weight: 700 !important;
+    letter-spacing: .07em !important;
+  }
+
+  /* Remove previous generated accents. */
+  .cf-ai::before,
+  .cf-ai::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .mini-chat {
+    display: grid !important;
+    grid-template-rows: auto auto auto 1fr auto !important;
+    gap: 10px !important;
+    margin-top: 0 !important;
+    min-height: 185px !important;
+  }
+
+  /* Blue prompt bubble placed in the upper-right, like the supplied design. */
+  .mini-chat__prompt {
+    justify-self: end !important;
+    width: 76% !important;
+    max-width: none !important;
+    min-height: 46px !important;
+    box-sizing: border-box !important;
+    padding: 10px 11px !important;
+    border-radius: 11px 11px 2px 11px !important;
+    background: linear-gradient(135deg, #3e87f8 0%, #2f6fe8 56%, #285a9e 100%) !important;
+    color: #fff !important;
+    font-size: 8.7px !important;
+    line-height: 1.25 !important;
+    font-weight: 500 !important;
+    box-shadow: 0 8px 16px rgba(42,91,160,.18) !important;
+  }
+
+  /* Two large light-blue content blocks with white content lines.
+     Existing b/i markup is reused — no extra DOM needed. */
+  .mini-chat__row {
+    position: relative !important;
+    display: block !important;
+    height: 43px !important;
+    box-sizing: border-box !important;
+    padding: 11px 12px !important;
+    border: 0 !important;
+    border-radius: 9px !important;
+    background: #dce9fb !important;
+    overflow: hidden !important;
+  }
+
+  .mini-chat__row b,
+  .mini-chat__row i {
+    display: block !important;
+    height: 7px !important;
+    border-radius: 1px !important;
+    background: rgba(255,255,255,.92) !important;
+  }
+
+  .mini-chat__row b {
+    width: 88% !important;
+    margin-bottom: 6px !important;
+  }
+
+  .mini-chat__row i {
+    width: 60% !important;
+  }
+
+  /* Input zone pinned visually to the bottom. */
+  .mini-chat__input {
+    align-self: end !important;
+    min-height: 40px !important;
+    box-sizing: border-box !important;
+    padding: 6px 7px !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.98) !important;
+    box-shadow: 0 7px 18px rgba(40,70,120,.05) !important;
+  }
+
+  .mini-chat__input span {
+    display: flex !important;
+    align-items: center !important;
+    width: calc(100% - 31px) !important;
+    height: 27px !important;
+    padding: 0 8px !important;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    background: #dbe8fa !important;
+    color: #8f969f !important;
+    font-size: 8px !important;
+    line-height: 1 !important;
+  }
+
+  .mini-chat__input em {
+    width: 27px !important;
+    height: 27px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 50% !important;
+    background: #eef4ff !important;
+    color: #6f87a6 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+  }
+
+  /* User's new tile has no action dots below the input. */
+  .mini-chat__actions {
+    display: none !important;
+  }
+
+  /* ---------- supporting cards: visually closer to desktop ---------- */
+  .cf-research,
+  .cf-data,
+  .cf-system,
+  .cf-components {
+    border: 1px solid rgba(48,107,225,.18) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 9px 22px rgba(57,83,135,.08) !important;
+    overflow: hidden !important;
+  }
+
+  .cf-research .cf-artifact__eyebrow,
+  .cf-data .cf-artifact__eyebrow,
+  .cf-system .cf-artifact__eyebrow,
+  .cf-components .cf-artifact__eyebrow {
+    color: #4d6483 !important;
+    font-weight: 700 !important;
+    letter-spacing: .07em !important;
+  }
+
+  /* Ensure no old pseudo-elements create strange blue stripes. */
+  .cf-research::after,
+  .cf-data::after,
+  .cf-system::after,
+  .cf-components::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Atmospheric path should run behind card centres, never on top. */
+  .clarity-process-axis {
+    z-index: 1 !important;
+    opacity: .55 !important;
+  }
+
+  .cf-artifact {
+    z-index: 4 !important;
+  }
+
+  .cf-ai {
+    z-index: 10 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .cf-ai {
+    padding: 12px 11px 11px !important;
+  }
+
+  .cf-ai .cf-artifact__eyebrow {
+    font-size: 8px !important;
+    margin-bottom: 13px !important;
+  }
+
+  .mini-chat {
+    min-height: 172px !important;
+    gap: 8px !important;
+  }
+
+  .mini-chat__prompt {
+    min-height: 42px !important;
+    font-size: 8px !important;
+    padding: 9px 10px !important;
+  }
+
+  .mini-chat__row {
+    height: 39px !important;
+    padding: 10px 11px !important;
+  }
+
+  .mini-chat__input {
+    min-height: 37px !important;
+  }
+
+  .mini-chat__input span,
+  .mini-chat__input em {
+    height: 25px !important;
+  }
+
+  .mini-chat__input em {
+    width: 25px !important;
+  }
+}
+
+
+/* =========================================================
+   V2.37 — Mobile Clarity cards: reference proportions
+   ========================================================= */
+@media (max-width: 760px) {
+  .clarity-field-wrap {
+    width: min(98vw, 430px) !important;
+    height: min(72vw, 300px) !important;
+  }
+
+  .cf-research,
+  .cf-data,
+  .cf-ai,
+  .cf-system,
+  .cf-components {
+    top: 50% !important;
+  }
+
+  /* Rebalanced card proportions — no more tall/phone-like centre tile */
+  .cf-research {
+    width: 72px !important;
+    height: 118px !important;
+    margin-left: -36px !important;
+  }
+
+  .cf-data {
+    width: 90px !important;
+    height: 132px !important;
+    margin-left: -45px !important;
+  }
+
+  .cf-ai {
+    width: 148px !important;
+    height: 190px !important;
+    min-height: 190px !important;
+    max-height: 190px !important;
+    margin-left: -74px !important;
+    padding: 13px 12px 12px !important;
+    border-radius: 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  .cf-system {
+    width: 90px !important;
+    height: 132px !important;
+    margin-left: -45px !important;
+  }
+
+  .cf-components {
+    width: 72px !important;
+    height: 118px !important;
+    margin-left: -36px !important;
+  }
+
+  /* Reposition into a cleaner horizontal rail with centre emphasis */
+  .cf-research {
+    transform-origin: center center !important;
+  }
+
+  /* Central content scaled to the new wider/shorter card */
+  .cf-ai .cf-artifact__eyebrow {
+    font-size: 7.4px !important;
+    margin-bottom: 10px !important;
+    letter-spacing: .08em !important;
+  }
+
+  .mini-chat {
+    min-height: 145px !important;
+    height: 145px !important;
+    gap: 7px !important;
+    grid-template-rows: auto auto auto 1fr auto !important;
+  }
+
+  .mini-chat__prompt {
+    width: 74% !important;
+    min-height: 40px !important;
+    padding: 8px 9px !important;
+    font-size: 7.4px !important;
+    line-height: 1.22 !important;
+    border-radius: 10px 10px 2px 10px !important;
+  }
+
+  .mini-chat__row {
+    height: 34px !important;
+    padding: 8px 9px !important;
+    border-radius: 8px !important;
+  }
+
+  .mini-chat__row b,
+  .mini-chat__row i {
+    height: 5px !important;
+  }
+
+  .mini-chat__row b {
+    margin-bottom: 5px !important;
+  }
+
+  .mini-chat__input {
+    min-height: 34px !important;
+    padding: 5px 6px !important;
+    border-radius: 10px !important;
+  }
+
+  .mini-chat__input span {
+    height: 23px !important;
+    width: calc(100% - 27px) !important;
+    font-size: 7px !important;
+  }
+
+  .mini-chat__input em {
+    width: 23px !important;
+    height: 23px !important;
+    font-size: 10px !important;
+  }
+
+  /* Supporting cards look like compact mobile app screens */
+  .cf-research,
+  .cf-data,
+  .cf-system,
+  .cf-components {
+    padding: 8px !important;
+    border-radius: 11px !important;
+    background: #fff !important;
+  }
+
+  .cf-research .cf-artifact__eyebrow,
+  .cf-data .cf-artifact__eyebrow,
+  .cf-system .cf-artifact__eyebrow,
+  .cf-components .cf-artifact__eyebrow {
+    font-size: 5.6px !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Process rail sits exactly through visual centres */
+  .clarity-process-axis {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .clarity-field-wrap {
+    width: min(97vw, 390px) !important;
+    height: min(74vw, 285px) !important;
+  }
+
+  .cf-research {
+    width: 66px !important;
+    height: 108px !important;
+    margin-left: -33px !important;
+  }
+
+  .cf-data {
+    width: 82px !important;
+    height: 122px !important;
+    margin-left: -41px !important;
+  }
+
+  .cf-ai {
+    width: 136px !important;
+    height: 178px !important;
+    min-height: 178px !important;
+    max-height: 178px !important;
+    margin-left: -68px !important;
+  }
+
+  .cf-system {
+    width: 82px !important;
+    height: 122px !important;
+    margin-left: -41px !important;
+  }
+
+  .cf-components {
+    width: 66px !important;
+    height: 108px !important;
+    margin-left: -33px !important;
+  }
+
+  .mini-chat {
+    min-height: 135px !important;
+    height: 135px !important;
+  }
+}
+
+
+/* =========================================================
+   V2.38 — Mobile AI card: 3 bubbles only
+   ========================================================= */
+@media (max-width: 760px) {
+  .cf-ai .mini-chat__input {
+    display: none !important;
+  }
+
+  .cf-ai .mini-chat {
+    grid-template-rows: auto auto auto !important;
+    align-content: start !important;
+    gap: 9px !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .cf-ai .mini-chat__prompt {
+    margin-bottom: 2px !important;
+  }
+
+  .cf-ai .mini-chat__row {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .cf-ai .mini-chat {
+    gap: 8px !important;
+  }
+}
+
+
+/* =========================================================
+   V2.39 — Mobile annotation cleanup
+   ========================================================= */
+@media (max-width: 760px) {
+  /* HSBC: the desktop callout relies on a directional relationship that
+     becomes ambiguous below the stacked mobile mockup, so remove it on mobile. */
+  .work-intro__visual .visual-annotation {
+    display: none !important;
+  }
+
+  /* About portrait: pull the blue system labels inward so they remain fully
+     readable and deliberately overlap the artwork instead of being clipped. */
+  .about-portrait {
+    overflow: visible !important;
+  }
+
+  .about-portrait__field {
+    overflow: visible !important;
+  }
+
+  .about-node--research {
+    right: 3% !important;
+    left: auto !important;
+    transform: translateX(0) !important;
+  }
+
+  .about-node--systems {
+    right: 1% !important;
+    left: auto !important;
+    transform: translateX(0) !important;
+  }
+
+  .about-node--interaction {
+    left: 1% !important;
+    right: auto !important;
+    transform: translateX(0) !important;
+  }
+
+  .about-node--ai {
+    left: 4% !important;
+    right: auto !important;
+    transform: translateX(0) !important;
+  }
+
+  .about-node {
+    max-width: 42% !important;
+    white-space: nowrap !important;
+    z-index: 5 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-node--research { right: 2% !important; }
+  .about-node--systems { right: 0 !important; }
+  .about-node--interaction { left: 0 !important; }
+  .about-node--ai { left: 2% !important; }
+}
+
+/* =========================================================
+   V2.40 — About mobile annotations overlap artwork
+   ========================================================= */
+@media (max-width: 760px) {
+  /* Keep annotation anchors inside the portrait bounds so every label remains
+     readable while still feeling embedded in the sketch composition. */
+  .about-portrait__field {
+    inset: 2% 0 !important;
+  }
+
+  .about-node--research {
+    right: 5% !important;
+    top: 16% !important;
+  }
+
+  .about-node--systems {
+    right: 3% !important;
+    bottom: 23% !important;
+  }
+
+  .about-node--interaction {
+    left: 3% !important;
+    bottom: 20% !important;
+  }
+
+  .about-node--ai {
+    left: 5% !important;
+    top: 28% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-node--research { right: 4% !important; }
+  .about-node--systems { right: 2% !important; }
+  .about-node--interaction { left: 2% !important; }
+  .about-node--ai { left: 4% !important; }
+}

@@ -1,0 +1,59 @@
+
+/* Portfolio keyboard accessibility — visible focus without changing pointer styling. */
+header a:focus-visible,
+header button:focus-visible {
+  outline: 3px solid rgba(23,105,255,.42);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Global responsive + accessibility hardening */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  overflow-x: clip;
+}
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(0, 102, 255, .42);
+  outline-offset: 3px;
+}
