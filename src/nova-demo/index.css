@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-bg: #F5F6F8;
+  --color-surface: #FFFFFF;
+  --color-surface2: #ECEEF2;
+  --color-surface3: #F3F5F8;
+  --color-navy: #0F172A;
+  --color-ink: #1C2233;   /* 14.5:1 on white — high-contrast primary text */
+  --color-ink2: #374151;  /* 10.7:1 on white — readable secondary text */
+  --color-ink3: #64748B;  /* 4.95:1 on white — WCAG AA for metadata/labels */
+  --color-inkdisabled: #9CA3AF; /* 2.85:1 — only for disabled/decorative elements */
+  --color-border: #E0E2E8;
+  --color-border2: #C8CBD4;
+
+  --color-primary: #2E5FD9;
+  --color-primaryhover: #254BB5;
+  --color-primarysurface: #EBF0FD;
+  --color-primaryborder: #C7D4F8;
+
+  --color-success: #166534;
+  --color-successsurface: #F0FDF4;
+  --color-successborder: #BBF7D0;
+
+  --color-caution: #92400E;
+  --color-cautionsurface: #FFFBEB;
+  --color-cautionborder: #FDE68A;
+
+  --color-risk: #9A3412;
+  --color-risksurface: #FFF7ED;
+  --color-riskborder: #FED7AA;
+
+  --color-error: #991B1B;
+  --color-errorsurface: #FEF2F2;
+  --color-errorborder: #FECACA;
+
+  --color-attention: #5B21B6;
+  --color-attentionsurface: #F5F3FF;
+  --color-attentionborder: #DDD6FE;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; height: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root { height: 100%; }
+
+/* Scrollbar — hidden by default, thin on hover */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; border-radius: 3px; transition: background 0.2s; }
+.overflow-y-auto:hover::-webkit-scrollbar-thumb,
+.overflow-y-scroll:hover::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); }
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── MD3 Type Scale ──────────────────────────────────────────────────────── */
+/* sp values mapped 1:1 to px at 1x density */
+
+:root {
+  /* Display */
+  --type-display-large:   font-size:57px; line-height:64px; letter-spacing:-0.25px; font-weight:400;
+  --type-display-small:   36px;
+
+  /* Headline */
+  --type-headline-large:  32px;
+  --type-headline-medium: 28px;
+  --type-headline-small:  24px;
+
+  /* Title */
+  --type-title-large:   22px;
+  --type-title-medium:  16px;
+  --type-title-small:   14px;
+
+  /* Body */
+  --type-body-large:    16px;
+  --type-body-medium:   14px;
+  --type-body-small:    12px;
+
+  /* Label */
+  --type-label-large:   14px;
+  --type-label-medium:  12px;
+  --type-label-small:   11px;
+
+  /* ─── MD3 Elevation shadows ──────────────────────────────────────────────── */
+  --elev-0: none;
+  --elev-1: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --elev-2: 0 2px 6px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  --elev-3: 0 4px 12px rgba(0,0,0,0.1),  0 2px 4px rgba(0,0,0,0.06);
+
+  /* ─── MD3 Color roles (mapped to NOVA palette) ───────────────────────────── */
+  --color-on-primary:           #FFFFFF;
+  --color-primary-container:    var(--color-primarysurface);
+  --color-on-primary-container: #0B2880;
+  --color-on-surface:           var(--color-ink);
+  --color-on-surface-variant:   var(--color-ink2);
+  --color-surface-variant:      var(--color-surface2);
+  --color-outline:              var(--color-border);
+  --color-outline-variant:      var(--color-border2);
+
+  /* ─── Knowledge type palette ─────────────────────────────────────────────── */
+  --color-fact-surface:       #F0F9FF;
+  --color-fact-border:        #BAE6FD;
+  --color-fact-text:          #075985;
+  --color-preference-surface: #FDF4FF;
+  --color-preference-border:  #E9D5FF;
+  --color-preference-text:    #6B21A8;
+  --color-rule-surface:       #FFF7ED;
+  --color-rule-border:        #FED7AA;
+  --color-rule-text:          #9A3412;
+  --color-perm-surface:       var(--color-primarysurface);
+  --color-perm-border:        var(--color-primaryborder);
+  --color-perm-text:          var(--color-primary);
+}
+
+/* ─── MD3 State Layers ────────────────────────────────────────────────────── */
+/* Overlay pseudo-element; color is inherited from currentColor of the element */
+
+.md3-state {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.md3-state::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease;
+}
+
+.md3-state:not(:disabled):hover::after   { opacity: 0.08; }
+.md3-state:not(:disabled):focus-visible::after { opacity: 0.12; }
+.md3-state:not(:disabled):active::after  { opacity: 0.12; }
+
+/* ─── Pulse animation for working state ─────────────────────────────────── */
+@keyframes nova-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.nova-pulse { animation: nova-pulse 1.8s ease-in-out infinite; }
+
+/* Fade in for screens */
+@keyframes nova-fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nova-fadein { animation: nova-fadein 0.25s ease-out forwards; }
+
+/* Chat bubble typing indicator */
+@keyframes bounce-dot {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-4px); }
+}
+
+/* Active workflow ring indicator — rings expand and fade on "Working" state */
+@keyframes nova-ring-expand {
+  0%   { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+.nova-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  animation: nova-ring-expand 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-ring::after { animation: none; }
+}
+
+/* Ask Nova panel slide-in */
+@keyframes nova-slide-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.nova-slide-in { animation: nova-slide-in 0.2s ease-out forwards; }
+
+/* ─── Nova Core orb animations ──────────────────────────────────────────── */
+
+@keyframes nc-pulse-slow   { 0%,100%{opacity:.72}  50%{opacity:1}    }
+@keyframes nc-pulse-medium { 0%,100%{opacity:.62}  50%{opacity:1}    }
+@keyframes nc-pulse-fast   { 0%,100%{opacity:.55}  50%{opacity:1}    }
+@keyframes nc-pulse-warm   { 0%,100%{opacity:.48}  50%{opacity:.88}  }
+@keyframes nc-pulse-dim    { 0%,100%{opacity:.28}  50%{opacity:.52}  }
+@keyframes nc-orbit-spin   { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes nc-complete-flash { 0%{opacity:0} 12%{opacity:.4} 100%{opacity:0} }
+
+/* ready */
+.nc-ready .nc-inner-glow { animation: nc-pulse-slow   4s   ease-in-out infinite; }
+.nc-ready .nc-star        { animation: nc-pulse-slow   4s   ease-in-out infinite; }
+
+/* understanding */
+.nc-understanding .nc-inner-glow { animation: nc-pulse-medium 2.2s ease-in-out infinite; }
+.nc-understanding .nc-star        { animation: nc-pulse-medium 2.2s ease-in-out infinite; }
+
+/* planning */
+.nc-planning .nc-inner-glow { animation: nc-pulse-medium 3s   ease-in-out infinite; }
+.nc-planning .nc-orbit       { animation: nc-orbit-spin  7s   linear    infinite; transform-origin: 50px 50px; }
+
+/* working */
+.nc-working .nc-inner-glow { animation: nc-pulse-fast   2s   ease-in-out infinite; }
+.nc-working .nc-star        { animation: nc-pulse-fast   2s   ease-in-out infinite; }
+.nc-working .nc-edge        { animation: nc-pulse-fast   2s   ease-in-out infinite; }
+
+/* waiting */
+.nc-waiting .nc-inner-glow { animation: nc-pulse-warm   5s   ease-in-out infinite; }
+.nc-waiting .nc-star        { animation: nc-pulse-warm   5s   ease-in-out infinite; }
+
+/* needs approval */
+.nc-approval .nc-inner-glow { animation: nc-pulse-medium 2s   ease-in-out infinite; }
+.nc-approval .nc-star        { animation: nc-pulse-medium 2s   ease-in-out infinite; }
+.nc-approval .nc-edge        { animation: nc-pulse-medium 2s   ease-in-out infinite; }
+
+/* completed */
+.nc-completed .nc-inner-glow      { opacity: .88; }
+.nc-completed .nc-complete-flash  { animation: nc-complete-flash 2.2s ease-out forwards; }
+.nc-completed .nc-star            { animation: nc-pulse-slow 4s ease-in-out infinite; }
+
+/* paused / blocked */
+.nc-paused .nc-inner-glow { animation: nc-pulse-dim 6s ease-in-out infinite; }
+
+/* reduced motion — static variants */
+@media (prefers-reduced-motion: reduce) {
+  .nc-ready .nc-inner-glow,
+  .nc-understanding .nc-inner-glow,
+  .nc-planning .nc-inner-glow,
+  .nc-working .nc-inner-glow,
+  .nc-waiting .nc-inner-glow,
+  .nc-approval .nc-inner-glow,
+  .nc-completed .nc-inner-glow,
+  .nc-paused .nc-inner-glow,
+  .nc-ready .nc-star,
+  .nc-understanding .nc-star,
+  .nc-working .nc-star,
+  .nc-working .nc-edge,
+  .nc-waiting .nc-star,
+  .nc-approval .nc-star,
+  .nc-approval .nc-edge,
+  .nc-completed .nc-star,
+  .nc-planning .nc-orbit,
+  .nc-completed .nc-complete-flash { animation: none !important; }
+}
+
+/* Nova Core v2 — glass orb + state-driven DNA motion */
+@keyframes nova-core-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+@keyframes nova-floor-breathe { 0%,100%{transform:translateX(-50%) scaleX(.82);opacity:.38} 50%{transform:translateX(-50%) scaleX(1.06);opacity:.68} }
+@keyframes nova-approval-call { 0%,100%{opacity:.25;transform:scale(.92)} 45%{opacity:.85;transform:scale(1.03)} 70%{opacity:.38;transform:scale(1.08)} }
+.nova-core-svg { animation:nova-core-float 5.8s ease-in-out infinite; transform-origin:center; }
+.nc-understanding,.nc-planning,.nc-working { animation-duration:3.6s; }
+.nc-waiting,.nc-completed { animation-duration:8s; }
+.nc-needs-approval { animation:none; }
+.nova-core-floor{position:absolute;left:50%;bottom:-10%;width:78%;height:18%;border-radius:50%;background:radial-gradient(ellipse at center,var(--nova-rim) 0%,color-mix(in srgb,var(--nova-rim) 35%,transparent) 38%,transparent 74%);filter:blur(8px);opacity:.55;z-index:0;animation:nova-floor-breathe 5.8s ease-in-out infinite;pointer-events:none}
+.nova-approval-signal{transform-origin:50px 50px;animation:nova-approval-call 2.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.nova-core-svg,.nova-core-floor,.nova-approval-signal{animation:none!important}.nova-dna animate{display:none}}
+
+/* ─── NOVA MD3 layout system pass (v7) ────────────────────────────────────
+   One 4dp grid, compact desktop density. These tokens are the single source
+   of truth for spacing/controls across the prototype. */
+:root {
+  --md3-space-1: 4px;
+  --md3-space-2: 8px;
+  --md3-space-3: 12px;
+  --md3-space-4: 16px;
+  --md3-space-5: 20px;
+  --md3-space-6: 24px;
+  --md3-space-8: 32px;
+  --md3-control-sm: 32px;
+  --md3-control-md: 40px;
+  --md3-control-lg: 48px;
+  --md3-card-padding: 16px;
+  --md3-section-gap: 24px;
+  --md3-card-gap: 12px;
+}
+
+/* predictable text rhythm */
+p, h1, h2, h3, h4 { margin-block-start: 0; margin-block-end: 0; }
+
+/* Desktop density: cards use 16px, not oversized 24–40px padding. */
+.md3-card-content { padding: var(--md3-card-padding); }
+.md3-stack { display:flex; flex-direction:column; gap:var(--md3-card-gap); }
+.md3-section-stack { display:flex; flex-direction:column; gap:var(--md3-section-gap); }
+
+/* Execution plan: a step is content-driven, never a tall fixed row. */
+.execution-step { min-height: 0 !important; height: auto !important; }
+.execution-step > div { display:flex; flex-direction:column; gap:4px; }
+.execution-step p, .execution-step button { margin-top:0 !important; margin-bottom:0 !important; }
+
+/* Material compact desktop buttons. Prevent the Ask Nova regression. */
+button { line-height: 1.25; }
+nav button { min-height: 40px; }
+
+/* Consistent chip/tag geometry. */
+.md3-chip { min-height:24px; padding-inline:12px; border-radius:999px; }
+
+
+/* v18 — section separation is handled with whitespace, not divider lines.
+   Removed global tab separators because they disturbed content rhythm. */
+.nova-sectioned-page > section + section {
+  border-top: 0;
+  padding-top: 0;
+}

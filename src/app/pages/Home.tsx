@@ -8,6 +8,7 @@ import hyundaiSketch from '../../imports/Hyundai_Tucson.jpg';
 import hyundaiFinal from '../../imports/Hyundai_Tucson.png';
 import mariaPortrait from '../../imports/About_Portrait.png';
 import './home-v2.css';
+import NovaCoreOrb from '../nova/NovaCoreOrb';
 
 const Artifact = ({
   className,
@@ -456,43 +457,34 @@ export function Home() {
         </div>
       </section>
 
-      <section className="project-showcase project-showcase--ai-system" aria-labelledby="ai-system-title">
+      <section className="project-showcase project-showcase--nova" aria-labelledby="nova-title">
         <div className="project-showcase__copy">
-          <p className="section-index project-showcase__index">04 / AI DESIGN SYSTEM</p>
-          <span className="project-status-badge">CONCEPT / IN PROGRESS</span>
-          <h2 id="ai-system-title">Human–AI Interaction System</h2>
-          <p className="project-showcase__tags">AI Product Design · Design Systems · Accessibility</p>
-          <p className="project-showcase__lead">Exploring scalable interaction patterns for trustworthy AI products — from sources and confidence to confirmation, regeneration and recovery.</p>
-          <p className="project-showcase__support">This project is being developed as a systems-focused case study and will be added to the portfolio when complete.</p>
-          <span className="project-cta project-cta--disabled" aria-disabled="true">Case study in progress</span>
-        </div>
-        <div className="project-showcase__visual ai-system-visual" aria-label="AI interaction pattern system">
-          <div className="ai-system-orbit" aria-hidden="true" />
-          {[
-            ['AI Response', 'Generated output'],
-            ['Sources', 'Grounding & evidence'],
-            ['Confidence', 'Calibrated trust'],
-            ['Regenerate', 'User control'],
-            ['Confirm', 'Explicit action'],
-            ['Error & Recovery', 'Safe fallback'],
-          ].map(([title, note], index) => (
-            <motion.div
-              key={title}
-              className={`ai-pattern-card ai-pattern-card--${index + 1}`}
-              initial={reduceMotion ? false : { opacity: 0, y: 18, rotate: index % 2 ? 2 : -2 }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, rotate: 0 }}
-              viewport={{ once: true, amount: .45 }}
-              transition={{ duration: .48, delay: index * .06 }}
-            >
-              <span>{title}</span>
-              <strong>{note}</strong>
-              <i><b/></i>
-            </motion.div>
-          ))}
-          <div className="ai-system-foundations">
-            <small>FOUNDATIONS</small><span>Color</span><span>Type</span><span>Spacing</span><span>States</span>
+          <p className="section-index project-showcase__index">04 / AGENTIC AI</p>
+          <span className="project-status-badge">CONCEPT PROJECT</span>
+          <h2 id="nova-title">NOVA — Agentic Operations Assistant</h2>
+          <p className="project-showcase__tags">Agentic AI · Product Design · Human–AI Interaction</p>
+          <p className="project-showcase__lead">Designing how people delegate work to AI — with clear authority, human checkpoints and safe recovery.</p>
+          <div className="project-showcase__facts">
+            <div><span>ROLE</span><strong>Product Design · UX Strategy</strong></div>
+            <div><span>FOCUS</span><strong>Delegation · Autonomy · Trust</strong></div>
           </div>
+          <p className="project-showcase__support">A clickable concept exploring how an AI agent can plan, act, escalate consequential decisions and recover safely from partial failure.</p>
+          <Link className="project-cta" to="/project/nova-agentic-ai">Explore case study <ArrowUpRight size={17} aria-hidden="true" /></Link>
         </div>
+        <motion.div
+          className="project-showcase__visual nova-showcase-visual"
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: .35 }}
+          transition={{ duration: .65 }}
+          aria-label="NOVA agent states"
+        >
+          <div className="nova-state nova-state--working"><NovaCoreOrb state="working" px={118}/><span>WORKING</span><small>Acting within authority</small></div>
+          <div className="nova-state nova-state--approval"><NovaCoreOrb state="needs-approval" px={168}/><span>DECISION REQUIRED</span><small>Human checkpoint</small></div>
+          <div className="nova-state nova-state--complete"><NovaCoreOrb state="completed" px={108}/><span>COMPLETED</span><small>Goal finished</small></div>
+          <div className="nova-state nova-state--paused"><NovaCoreOrb state="paused" px={88}/><span>PAUSED</span><small>Safe recovery</small></div>
+          <div className="nova-showcase-caption"><b>NOVA CORE</b><span>One identity · state-aware behavior</span></div>
+        </motion.div>
       </section>
 
       <section id="process" className="process-section" aria-labelledby="process-title">

@@ -3312,3 +3312,33 @@
   .about-node--interaction { left: 2% !important; }
   .about-node--ai { left: 4% !important; }
 }
+
+/* NOVA — real frozen prototype identity, replacing the former AI-system concept. */
+.project-showcase--nova { background: radial-gradient(circle at 82% 50%, rgba(91,78,255,.07), transparent 28%), #fbfcfe; }
+.nova-showcase-visual { position:relative; min-height:560px; isolation:isolate; }
+.nova-showcase-visual::before { content:""; position:absolute; inset:8% 4%; border-radius:50%; background:radial-gradient(circle,rgba(70,96,255,.12),rgba(119,71,255,.04) 42%,transparent 70%); filter:blur(20px); z-index:-1; }
+.nova-state { position:absolute; display:flex; flex-direction:column; align-items:center; text-align:center; filter:drop-shadow(0 18px 32px rgba(32,55,110,.10)); }
+.nova-state span { margin-top:10px; font-size:10px; letter-spacing:.11em; font-weight:700; color:#233a58; }
+.nova-state small { margin-top:3px; font-size:11px; color:#657b94; }
+.nova-state--approval { left:38%; top:23%; z-index:4; }
+.nova-state--working { left:7%; top:8%; transform:rotate(-2deg); }
+.nova-state--complete { right:5%; top:12%; transform:rotate(2deg); }
+.nova-state--paused { right:13%; bottom:7%; }
+.nova-showcase-caption { position:absolute; left:12%; bottom:9%; display:flex; flex-direction:column; gap:3px; padding:12px 15px; border:1px solid rgba(42,73,120,.12); border-radius:10px; background:rgba(255,255,255,.82); backdrop-filter:blur(10px); }
+.nova-showcase-caption b { font-size:10px; letter-spacing:.12em; color:#1769ff; }
+.nova-showcase-caption span { font-size:12px; color:#536b86; }
+@media(max-width:760px){.nova-showcase-visual{min-height:430px}.nova-state--approval{left:31%;top:24%}.nova-state--working{left:0;top:7%}.nova-state--complete{right:-2%;top:9%}.nova-state--paused{right:8%;bottom:4%}.nova-showcase-caption{left:4%;bottom:5%}}
+
+/* Nova Core v2 — glass orb + state-driven DNA motion */
+@keyframes nova-core-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+@keyframes nova-floor-breathe { 0%,100%{transform:translateX(-50%) scaleX(.82);opacity:.38} 50%{transform:translateX(-50%) scaleX(1.06);opacity:.68} }
+@keyframes nova-approval-call { 0%,100%{opacity:.25;transform:scale(.92)} 45%{opacity:.85;transform:scale(1.03)} 70%{opacity:.38;transform:scale(1.08)} }
+.nova-core-svg { animation:nova-core-float 5.8s ease-in-out infinite; transform-origin:center; }
+.nc-understanding,.nc-planning,.nc-working { animation-duration:3.6s; }
+.nc-waiting,.nc-completed { animation-duration:8s; }
+.nc-needs-approval { animation:none; }
+.nova-core-floor{position:absolute;left:50%;bottom:-10%;width:78%;height:18%;border-radius:50%;background:radial-gradient(ellipse at center,var(--nova-rim) 0%,color-mix(in srgb,var(--nova-rim) 35%,transparent) 38%,transparent 74%);filter:blur(8px);opacity:.55;z-index:0;animation:nova-floor-breathe 5.8s ease-in-out infinite;pointer-events:none}
+.nova-approval-signal{transform-origin:50px 50px;animation:nova-approval-call 2.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.nova-core-svg,.nova-core-floor,.nova-approval-signal{animation:none!important}.nova-dna animate{display:none}}
+
+/* ─── NOVA MD3 layout system pass (v7) ────────────────────────────────────
